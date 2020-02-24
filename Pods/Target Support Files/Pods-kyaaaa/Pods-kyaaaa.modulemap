@@ -1,0 +1,6 @@
+framework module Pods_kyaaaa {
+  umbrella header "Pods-kyaaaa-umbrella.h"
+
+  export *
+  module * { export * }
+}
