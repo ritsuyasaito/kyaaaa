@@ -8,5 +8,12 @@ target 'kyaaaa' do
   # Pods for kyaaaa
 
   pod 'Firebase/Analytics'
+  pod 'Firebase'
+  pod 'Firebase/Database’
+  pod 'Firebase/Storage'
+  pod 'Firebase/Auth’
+  pod 'Firebase/Firestore'
+  pod 'SwiftMessages'
+  pod 'PKHUD', '~> 5.0'
 
 end
