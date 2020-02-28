@@ -15,5 +15,7 @@ target 'kyaaaa' do
   pod 'Firebase/Firestore'
   pod 'SwiftMessages'
   pod 'PKHUD', '~> 5.0'
+  pod 'GoogleSignIn'
+ 
 
 end

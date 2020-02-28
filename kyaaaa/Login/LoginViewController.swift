@@ -31,7 +31,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             guard let email = emailTextField.text else { return }
             guard let password = passwordTextField.text else { return }
             
-            HUD.flash(.success, delay: 1.0)
+            
             UserModel.login(email: email, password: password) { (error) in
                 //SVProgressHUD.dismiss()
                 if let error = error {
@@ -44,6 +44,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     view.bodyLabel?.text = error.localizedDescription
                     SwiftMessages.show(view: view)
                 } else {
+                    HUD.flash(.success, delay: 1.0)
                     let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
                     let rootViewController = storyboard.instantiateViewController(withIdentifier: "RootTabBarController")
                     UIApplication.shared.keyWindow?.rootViewController = rootViewController
