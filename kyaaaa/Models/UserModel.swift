@@ -13,6 +13,8 @@ import Firebase
 import FirebaseStorage
 import FirebaseAnalytics
 import GoogleSignIn
+import FirebaseFirestore
+
 // ユーザーを扱いやすくするモデルクラス(設計図)を作成
 struct UserModel {
     // ユーザーの設計
