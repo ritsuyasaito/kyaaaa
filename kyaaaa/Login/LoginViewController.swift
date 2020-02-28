@@ -44,7 +44,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     view.bodyLabel?.text = error.localizedDescription
                     SwiftMessages.show(view: view)
                 } else {
-                    HUD.flash(.success, delay: 1.0)
+                    HUD.show(.success)
                     let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
                     let rootViewController = storyboard.instantiateViewController(withIdentifier: "RootTabBarController")
                     UIApplication.shared.keyWindow?.rootViewController = rootViewController
