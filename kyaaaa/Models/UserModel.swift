@@ -12,7 +12,7 @@ import FirebaseAuth
 import Firebase
 import FirebaseStorage
 import FirebaseAnalytics
-
+import GoogleSignIn
 // ユーザーを扱いやすくするモデルクラス(設計図)を作成
 struct UserModel {
     // ユーザーの設計
@@ -21,6 +21,7 @@ struct UserModel {
     var displayName: String? // 表示名
     var photoURL: String? // 画像のURL
     var age: String?
+    
     
     
     
@@ -147,7 +148,8 @@ struct UserModel {
            do {
                try Auth.auth().signOut()
            } catch let error {
-               completion(error)
+            print("ログアウトに失敗")
+            completion(error)
            }
        }
     
