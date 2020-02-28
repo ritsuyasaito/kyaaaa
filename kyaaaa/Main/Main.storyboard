@@ -7,17 +7,24 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item-->
+        <!--male-->
         <scene sceneID="5oK-9C-D4K">
             <objects>
                 <viewController id="5Io-fi-ch7" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="PC4-1W-rHO">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LiQ-75-2uF">
+                                <rect key="frame" x="348" y="63" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="gsB-vQ-Lc4"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="bXJ-rV-gG3"/>
+                    <tabBarItem key="tabBarItem" title="male" id="bXJ-rV-gG3"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uuG-Ue-l2X" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -42,7 +49,7 @@
             </objects>
             <point key="canvasLocation" x="-133.33333333333334" y="-11.383928571428571"/>
         </scene>
-        <!--Item-->
+        <!--female-->
         <scene sceneID="Rpo-Oc-Ryh">
             <objects>
                 <viewController id="u3I-KQ-Yd3" customClass="UserPageViewController" customModule="kyaaaa" customModuleProvider="target" sceneMemberID="viewController">
@@ -62,7 +69,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="tp7-HO-7Jt"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="n8v-LE-kB7"/>
+                    <tabBarItem key="tabBarItem" title="female" id="n8v-LE-kB7"/>
                     <navigationItem key="navigationItem" id="85X-6c-5df"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aFz-FM-3ve" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

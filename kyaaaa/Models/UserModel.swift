@@ -21,6 +21,7 @@ struct UserModel {
     var displayName: String? // 表示名
     var photoURL: String? // 画像のURL
     var age: String?
+    var gender: String?
     
     
     
@@ -40,6 +41,7 @@ struct UserModel {
             "displayName" : displayName,
             "photoURL" : photoURL,
             "age" : age,
+            "gender": gender,
             
        
         ]) { error in
@@ -65,6 +67,8 @@ struct UserModel {
                     currentUser.displayName = data?["displayName"] as! String
                     currentUser.photoURL = data!["photoURL"] as? String
                     currentUser.age = data!["age"] as? String
+                    currentUser.gender = data!["gender"] as? String
+                    
                     
                 } else {
                     print("Document does not exist")
@@ -115,6 +119,7 @@ struct UserModel {
                      "displayName" : "",
                      "photoURL" : "",
                      "age" : "",
+                     "gender" : "",
                      
                 
                  ]) { error in
