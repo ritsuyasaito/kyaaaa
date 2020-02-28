@@ -16,6 +16,12 @@ target 'kyaaaa' do
   pod 'SwiftMessages'
   pod 'PKHUD', '~> 5.0'
   pod 'GoogleSignIn'
- 
+  pod 'Kingfisher'
+  pod 'FacebookSDK'
+  pod 'Firebase/Core'
+  pod 'FacebookCore'
+  pod 'FacebookLogin'
+  pod 'FacebookShare'
+  pod 'SDWebImage/WebP'
 
 end
