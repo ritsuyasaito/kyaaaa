@@ -13,10 +13,16 @@ import FBSDKLoginKit
 import FacebookCore
 import FacebookLogin
 import Firebase
+import FirebaseAuth
 
-class SigninViewController: UIViewController, LoginButtonDelegate {
+class SigninViewController: UIViewController, LoginButtonDelegate{
+    
+    
+//    @IBOutlet var GoogleButton:GIDSignInButton!
+    @IBOutlet weak var loginBaseView: LoginBaseView!
     
     let fbLoginButton: FBLoginButton = FBLoginButton()
+    
     var displayName = String()
     var pictureURL = String()
     var pictureURLString = String()
@@ -25,19 +31,36 @@ class SigninViewController: UIViewController, LoginButtonDelegate {
         super.viewDidLoad()
         
         GIDSignIn.sharedInstance().presentingViewController = self
+        GIDSignIn.sharedInstance().signIn()
         
         fbLoginButton.delegate = self
-//        fbLoginButton.frame = CGRect(x: view.frame.size.width / 2 - view.frame.size.width / 4, y: view.frame.size.height / 4, width: view.frame.size.width / 2, height: 660)
+//        　fbLoginButton.frame = CGRect(x: view.frame.size.width / 2 - view.frame.size.width / 4, y: view.frame.size.height / 4, width: view.frame.size.width / 2, height: 660)
         fbLoginButton.frame = CGRect(x: 32, y: 650, width: 351, height: 41)
-        
+
         //許可するもの
         fbLoginButton.permissions = ["public_profile, email"]
-
         view.addSubview(fbLoginButton)
 
 
-        // Do any additional setup after loading the view.
     }
+    
+    
+//    //googleログイン
+//    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
+//      // ...
+//        
+//      if let error = error {
+//        self.delegate?.loginBaseView(failedBy: .google)
+//                
+//        return
+//      }
+//
+//      guard let authentication = user.authentication else { return }
+//      let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
+//                                                        accessToken: authentication.accessToken)
+//      // ...
+//    }
+    
     //FBログイン
        func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
            //aigninする
@@ -59,12 +82,29 @@ class SigninViewController: UIViewController, LoginButtonDelegate {
                //string型に強制変換
                self.pictureURLString = (result?.user.photoURL!.absoluteString)!
                self.pictureURLString = self.pictureURLString + "?type=large"
+            
+            var user = result?.user
+            // Firestoreのデータベースを取得
+                              let db = Firestore.firestore()
+                              // データベースのpostsパスに対して投稿データを追加し保存
+                              
+            db.collection("users").document(user!.uid).setData([
+                                  "displayName" : "",
+                                  "photoURL" : "",
+                                  "age" : "",
+                                  "gender" : "",
+                                  
+                             
+                              ]) { error in
+                                  // 処理が終了したらcompletionブロックにerrorを返す.errorがnilなら成功
+                               
+                              }
                
                let ud = UserDefaults.standard
                //ログイン状態の保持
                ud.set(true, forKey: "isLogin")
                ud.synchronize()
-               ud.set(self.pictureURLString, forKey: "pictureURLString")
+//               ud.set(self.pictureURLString, forKey: "pictureURLString")
                
                let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
                let rootViewController = storyboard.instantiateViewController(withIdentifier: "RootTabBarController")
@@ -72,13 +112,43 @@ class SigninViewController: UIViewController, LoginButtonDelegate {
                
            }
            
-           
-           
        }
        
        func loginButtonDidLogOut(_ loginButton: FBLoginButton) {
            
        }
-       
+      
 
 }
+extension SigninViewController: LoginBaseViewDelegate {
+    func loginBaseView(succeededBy type: LoginType) {
+        switch type {
+        case .firebase:
+            print("Success FireBase")
+        case .google:
+            print("Success Google Login")
+
+        }
+        //ログイン成功
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let rootViewController = storyboard.instantiateViewController(withIdentifier: "RootTabBarController")
+        UIApplication.shared.keyWindow?.rootViewController = rootViewController
+
+        //ログイン状態の保持
+        let ud = UserDefaults.standard
+        ud.set(true, forKey: "isLogin")
+        ud.synchronize()
+    }
+
+    func loginBaseView(failedBy type: LoginType) {
+        switch type {
+        case .firebase:
+            print("Failed FireBase")
+        case .google:
+            print("Failed Google Login")
+
+        }
+    }
+}
+
+
