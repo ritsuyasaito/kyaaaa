@@ -13,15 +13,7 @@ class MailViewController: UIViewController {
     
 
    
-    enum AuthenticationState {
-        case loggedin, loggedout
-    }
-    var state: AuthenticationState = .loggedout {
-        didSet {
-      
-        }
-    }
-    var context: LAContext = LAContext()
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +24,21 @@ class MailViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
+    
+    
+    
+    
+    //   ----------------パスワード要求ー---------------
+    
+    enum AuthenticationState {
+        case loggedin, loggedout
+    }
+    var state: AuthenticationState = .loggedout {
+        didSet {
+      
+        }
+    }
+    var context: LAContext = LAContext()
     
     @IBAction func didTabLoginButton(_ sender: Any) {
         
