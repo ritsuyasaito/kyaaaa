@@ -75,45 +75,7 @@ class UserPageViewController: UIViewController {
         
     }
     
-    @IBAction func logout() {
-           // SVProgressHUD.show()
-             
-            UserModel.logout { (error)  in
-                HUD.show(.progress)
-            
-                if let error = error {
-                    HUD.show(.error)
-                    print(error)
-                } else {
-                    // ログイン画面に移動
-//                    let storyboard = UIStoryboard(name: "Login", bundle: Bundle.main)
-//                    let rootViewController = storyboard.instantiateViewController(withIdentifier: "RootNavigationController")
-//                    UIApplication.shared.keyWindow?.rootViewController = rootViewController
-//
-//                    // ログイン状態の保持
-//                    let ud = UserDefaults.standard
-//                    ud.set(false, forKey: "isLogin")
-//                    ud.synchronize()
-                   
-                }
-            }
-        PKHUD.sharedHUD.contentView = PKHUDSuccessView()
-        PKHUD.sharedHUD.show()
-        PKHUD.sharedHUD.hide(afterDelay: 2.0) { success in
-            // Completion Handler
-            let storyboard = UIStoryboard(name: "Login", bundle: Bundle.main)
-            let rootViewController = storyboard.instantiateViewController(withIdentifier: "RootNavigationController")
-            UIApplication.shared.keyWindow?.rootViewController = rootViewController
-            
-            // ログイン状態の保持
-            let ud = UserDefaults.standard
-            ud.set(false, forKey: "isLogin")
-            ud.synchronize()
-        }
-        
-            
-        
-    }
+    
     
     @IBAction func didTapEditButton() {
         performSegue(withIdentifier: "toEdit", sender: nil)
