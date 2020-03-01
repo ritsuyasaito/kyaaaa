@@ -91,6 +91,8 @@ struct Post {
                         post.uid = document.documentID
                         post.userId = data["userId"] as? String
                         post.createdAt = data["createdAt"] as? String
+                        post.age = data["age"] as? String
+                        post.initial = data["initial"] as? String
                     
                         post.text = data["text"] as? String
                         post.userPhotoURL = data["userPhotoURL"] as? String

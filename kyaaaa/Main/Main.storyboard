@@ -313,20 +313,13 @@
             </objects>
             <point key="canvasLocation" x="-133.33333333333334" y="-11.383928571428571"/>
         </scene>
-        <!--View Controller-->
+        <!--Femail View Controller-->
         <scene sceneID="Rpo-Oc-Ryh">
             <objects>
-                <viewController id="u3I-KQ-Yd3" sceneMemberID="viewController">
+                <viewController id="u3I-KQ-Yd3" customClass="FemailViewController" customModule="kyaaaa" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="oVI-YV-gmN">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="stD-ZY-Quu">
-                                <rect key="frame" x="158" y="265" width="98" height="82"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="ログアウト"/>
-                            </button>
-                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="tp7-HO-7Jt"/>
                     </view>
