@@ -23,7 +23,6 @@ target 'kyaaaa' do
   pod 'FacebookLogin'
   pod 'FacebookShare'
   pod 'SDWebImage/WebP'
-  pod 'DZNEmptyDataSet'
   
 
 end
