@@ -1,14 +1,15 @@
 //
-//  LoginBaseView.swift
+//  LoginBaseView2.swift
 //  kyaaaa
 //
-//  Created by 藤田えりか on 2020/02/29.
+//  Created by 齋藤律哉 on 2020/03/01.
 //  Copyright © 2020 ritsuya. All rights reserved.
 //
 
 import UIKit
 import  Firebase
 import  GoogleSignIn
+
 
 protocol LoginBaseViewDelegate: class {
     func loginBaseView(succeededBy type: LoginType)
@@ -21,7 +22,7 @@ enum LoginType {
     
 }
 
-class LoginBaseView: UIView, GIDSignInDelegate {
+class LoginBaseView2: UIView, GIDSignInDelegate {
 
     weak var delegate: LoginBaseViewDelegate?
      lazy var gidSignInButton: GIDSignInButton = createGoogleButton()
@@ -65,7 +66,7 @@ class LoginBaseView: UIView, GIDSignInDelegate {
            Auth.auth().signIn(with: credential) { (result, error) in
                if let error = error {
                    return
-               }
+            }
               
             
             var user = result?.user
@@ -142,3 +143,4 @@ class LoginBaseView: UIView, GIDSignInDelegate {
      
        
 }
+

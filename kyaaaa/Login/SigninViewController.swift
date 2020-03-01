@@ -16,11 +16,9 @@ import Firebase
 import FirebaseAuth
 
 class SigninViewController: UIViewController, LoginButtonDelegate{
-    
-    
+  
 //    @IBOutlet var GoogleButton:GIDSignInButton!
-    @IBOutlet weak var loginBaseView: LoginBaseView!
-    
+    @IBOutlet weak var loginBaseView: LoginBaseView2!
     let fbLoginButton: FBLoginButton = FBLoginButton()
     
     var displayName = String()
@@ -120,6 +118,8 @@ class SigninViewController: UIViewController, LoginButtonDelegate{
       
 
 }
+
+
 extension SigninViewController: LoginBaseViewDelegate {
     func loginBaseView(succeededBy type: LoginType) {
         switch type {

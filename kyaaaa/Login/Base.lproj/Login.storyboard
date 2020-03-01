@@ -48,7 +48,7 @@
                                     <segue destination="i7T-Ev-7TU" kind="show" id="9SN-Ob-NqV"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tL3-uY-toF" customClass="LoginBaseView" customModule="kyaaaa" customModuleProvider="target">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tL3-uY-toF" customClass="LoginBaseView2" customModule="kyaaaa" customModuleProvider="target">
                                 <rect key="frame" x="32" y="697" width="351" height="41"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -59,7 +59,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="Nfo-xb-Nlv"/>
                     <connections>
-                        <outlet property="loginBaseView" destination="tL3-uY-toF" id="1Rd-73-Ch1"/>
+                        <outlet property="loginBaseView" destination="tL3-uY-toF" id="mlf-yS-QOR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
