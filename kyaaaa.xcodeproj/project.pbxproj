@@ -29,7 +29,6 @@
 		240B9C19240A62B400FF7FB3 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B9C18240A62B300FF7FB3 /* Post.swift */; };
 		240B9C1B240A689800FF7FB3 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B9C1A240A689800FF7FB3 /* PostViewController.swift */; };
 		240B9C1D240B9E8100FF7FB3 /* LoginBaseView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B9C1C240B9E8100FF7FB3 /* LoginBaseView2.swift */; };
-		243A9396240BB34C001BA23A /* FemailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243A9395240BB34C001BA23A /* FemailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,7 +55,6 @@
 		240B9C18240A62B300FF7FB3 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		240B9C1A240A689800FF7FB3 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		240B9C1C240B9E8100FF7FB3 /* LoginBaseView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginBaseView2.swift; sourceTree = "<group>"; };
-		243A9395240BB34C001BA23A /* FemailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FemailViewController.swift; sourceTree = "<group>"; };
 		24F58F720C576286429F4B55 /* Pods-kyaaaa.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kyaaaa.release.xcconfig"; path = "Target Support Files/Pods-kyaaaa/Pods-kyaaaa.release.xcconfig"; sourceTree = "<group>"; };
 		7296136D7E71358EFA1CADB0 /* Pods-kyaaaa.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kyaaaa.debug.xcconfig"; path = "Target Support Files/Pods-kyaaaa/Pods-kyaaaa.debug.xcconfig"; sourceTree = "<group>"; };
 		9AFA8380FB5D76B887643C2B /* Pods_kyaaaa.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_kyaaaa.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -129,7 +127,6 @@
 				240B9C102408E41000FF7FB3 /* MailViewController.swift */,
 				240B9C082407D3E800FF7FB3 /* UserPageViewController.swift */,
 				240B9C1A240A689800FF7FB3 /* PostViewController.swift */,
-				243A9395240BB34C001BA23A /* FemailViewController.swift */,
 				240B9C162408FF5C00FF7FB3 /* EditUserProfileViewController.swift */,
 			);
 			path = Main;
@@ -320,7 +317,6 @@
 				240B9C132408F85E00FF7FB3 /* ImageUpLoader.swift in Sources */,
 				240B9C112408E41000FF7FB3 /* MailViewController.swift in Sources */,
 				240B9BB82403788B00FF7FB3 /* AppDelegate.swift in Sources */,
-				243A9396240BB34C001BA23A /* FemailViewController.swift in Sources */,
 				240B9BF82404E01000FF7FB3 /* UserModel.swift in Sources */,
 				240B9BBA2403788B00FF7FB3 /* SceneDelegate.swift in Sources */,
 			);
