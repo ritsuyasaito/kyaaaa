@@ -10,11 +10,18 @@ import UIKit
 import Firebase
 import PKHUD
 import DZNEmptyDataSet
+import LocalAuthentication
 
-class FemailViewController: UIViewController {
+class FemailViewController: UIViewController, UITableViewDataSource {
     
     
     var posts = [Post]()
+    let currentUser = Auth.auth().currentUser
+    var userGender: String = ""
+    
+    @IBOutlet var postButton: UIButton!
+    
+    @IBOutlet var FemaleTableView: UITableView!
     
     // 読み込み中かどうかを判別する変数(読み込み結果が0件の場合DZNEmptyDataSetで空の表示をさせるため)
     var isLoading: Bool = false
@@ -25,8 +32,66 @@ class FemailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        loadTimeline()
+      
         // Do any additional setup after loading the view.
+        
+        // これを実行しないと context.biometryType が有効にならないので一度実行
+        context.canEvaluatePolicy(.deviceOwnerAuthentication, error: nil)
+        state = .loggedout
+        
+        FemaleTableView.dataSource = self
+        
+        FemaleTableView.rowHeight = 400
+        
+        
+        let nib = UINib(nibName: "TimelineTableViewCell", bundle: Bundle.main)
+        FemaleTableView.register(nib, forCellReuseIdentifier: "Cell")
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        loadTimeline()
+        getUserData()
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return posts.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! TimelineTableViewCell
+        if let age = posts[indexPath.row].age {
+            cell.ageLabel.text = age
+        } else {
+            cell.ageLabel.text = ""
+        }
+        if let initial = posts[indexPath.row].initial {
+            cell.initialLabel.text = initial
+        } else {
+            cell.initialLabel.text = ""
+        }
+        if let text = posts[indexPath.row].text {
+            cell.textView.text = text
+        } else {
+            cell.textView.text = ""
+        }
+        if let kyaaaaCount = posts[indexPath.row].kyaaaaUsers?.count {
+            cell.kaaaaaCountLabel.text = String(kyaaaaCount)
+        } else {
+            cell.kaaaaaCountLabel.text = "0"
+        }
+        if let sorenaCount = posts[indexPath.row].kyaaaaUsers?.count {
+            cell.sorenaCountLabel.text = String(sorenaCount)
+        } else {
+            cell.sorenaCountLabel.text = "0"
+        }
+        if let naruhodoCount = posts[indexPath.row].naruhodoUsers?.count {
+            cell.naruhodoCountLabel.text = String(naruhodoCount)
+        } else {
+            cell.naruhodoCountLabel.text = "0"
+        }
+       
+        
+        return cell
     }
     
     @IBAction func toPostPage() {
@@ -41,6 +106,31 @@ class FemailViewController: UIViewController {
             postVC.fromGender = "女性から"
         }
     }
+    
+    func getUserData() {
+        // Firestoreのデータベースを取得
+        let db = Firestore.firestore()
+        if currentUser != nil {
+            let docRef = db.collection("users").document(currentUser!.uid)
+            docRef.getDocument { (document, error) in
+                if let document = document, document.exists {
+                    let dataDescription = document.data() as! [String:Any]
+                    
+                    if dataDescription["gender"] != nil {
+                        self.userGender = dataDescription["gender"] as! String
+                        if self.userGender == "女" {
+                            self.postButton.isEnabled = true
+                        } else {
+                            self.postButton.isEnabled = false
+                        }
+                        
+                    }
+                }
+            }
+        }
+
+    }
+
     
 
     func loadTimeline(isAdditional: Bool = false) {
@@ -69,12 +159,76 @@ class FemailViewController: UIViewController {
                     }
                     print("成功")
                     print(posts)
+                    self.FemaleTableView.reloadData()
                     
                 }
             }
         }
         
+    }
+    
+    //   ----------------パスワード要求ー---------------
+    
+    enum AuthenticationState {
+        case loggedin, loggedout
+    }
+    var state: AuthenticationState = .loggedout {
+        didSet {
+      
+        }
+    }
+    var context: LAContext = LAContext()
+    
+    @IBAction func didTabLoginButton(_ sender: Any) {
         
+        guard state == .loggedout else {
+            self.performSegue(withIdentifier: "toUserPage", sender: nil)
+            state = .loggedout
+            return
+        }
+        
+        context = LAContext()
+        if context.canEvaluatePolicy(.deviceOwnerAuthentication, error: nil) {
+            
+            let reason = "本人認証を行います"
+            context.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: reason) { success, error in
+                if success {
+                    DispatchQueue.main.async { [unowned self] in
+                        self.performSegue(withIdentifier: "toUserPage", sender: nil)
+                        self.state = .loggedin
+                    }
+                } else if let laError = error as? LAError {
+                    switch laError.code {
+                    case .authenticationFailed:
+                        break
+                    case .userCancel:
+                        break
+                    case .userFallback:
+                        break
+                    case .systemCancel:
+                        break
+                    case .passcodeNotSet:
+                        break
+                    case .touchIDNotAvailable:
+                        break
+                    case .touchIDNotEnrolled:
+                        break
+                    case .touchIDLockout:
+                        break
+                    case .appCancel:
+                        break
+                    case .invalidContext:
+                        break
+                    case .notInteractive:
+                        break
+                    @unknown default:
+                        break
+                    }
+                }
+            }
+        } else {
+            // 生体認証ができない場合の認証画面表示など
+        }
     }
 
 }

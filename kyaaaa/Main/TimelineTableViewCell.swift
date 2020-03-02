@@ -9,6 +9,19 @@
 import UIKit
 
 class TimelineTableViewCell: UITableViewCell {
+    
+    @IBOutlet var userImageView: UIImageView!
+    @IBOutlet var ageLabel: UILabel!
+    @IBOutlet var initialLabel: UILabel!
+    @IBOutlet var textView: UITextView!
+    @IBOutlet var sorenaButton: UIButton!
+    @IBOutlet var sorenaCountLabel: UILabel!
+    @IBOutlet var naruhodoButton: UIButton!
+    @IBOutlet var naruhodoCountLabel: UILabel!
+    @IBOutlet var kyaaaaButton: UIButton!
+    @IBOutlet var kaaaaaCountLabel: UILabel!
+    
+    
 
     override func awakeFromNib() {
         super.awakeFromNib()

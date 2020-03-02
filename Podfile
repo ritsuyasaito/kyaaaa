@@ -25,6 +25,9 @@ target 'kyaaaa' do
   pod 'SDWebImage/WebP'
   pod 'ViewAnimator'
   pod 'DZNEmptyDataSet'
+  pod 'BubbleTransition', '~> 3.0.0'
+  pod 'JonContextMenu', :git => 'https://github.com/jonSurrey/JonContextMenu.git', :branch => 'master'
+  pod 'ASExtendedCircularMenu', :git => 'https://github.com/anshul18895/ASExtendedCircularMenu'
   
 
 end

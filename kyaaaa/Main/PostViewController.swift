@@ -10,23 +10,73 @@ import UIKit
 import FirebaseAuth
 import Firebase
 
-class PostViewController: UIViewController {
+
+class PostViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     
-    @IBOutlet var ageaTextField: UITextField!
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return ageArray.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return ageArray[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        ageTextField.text = ageArray[row]
+    }
+    
+    
+    @IBOutlet var ageTextField: UITextField!
     @IBOutlet var initialTextField: UITextField!
     @IBOutlet var postTextView: UITextView!
     
     var fromGender: String?
     var collection = "MailPosts"
     
+    var ageArray = ["中学生","高校生","19~22歳","23~29歳","30~40代","50代〜"]
+    var pickerView1: UIPickerView = UIPickerView()
+    
     var currentUser = Auth.auth().currentUser
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        ageTextField.delegate = self
+        initialTextField.delegate = self
+        
+        pickerView1.delegate = self
+        pickerView1.dataSource = self
+        
+        let toolbar1 = UIToolbar(frame: CGRectMake(0, 0, 0, 35))
+        let doneItem1 = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(EditUserProfileViewController.done1))
+        let cancelItem1 = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(EditUserProfileViewController.cancel1))
+        toolbar1.setItems([cancelItem1, doneItem1], animated: true)
+        
+        self.ageTextField.inputView = pickerView1
+        self.ageTextField.inputAccessoryView = toolbar1
 
         // Do any additional setup after loading the view.
         
+    }
+    
+    func CGRectMake(_ x: CGFloat, _ y: CGFloat, _ width: CGFloat, _ height: CGFloat) -> CGRect {
+        return CGRect(x: x, y: y, width: width, height: height)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+    }
+    
+    @objc func cancel1() {
+        self.ageTextField.endEditing(true)
+    }
+
+    @objc func done1() {
+        self.ageTextField.endEditing(true)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -40,7 +90,7 @@ class PostViewController: UIViewController {
     @IBAction func post() {
         
         var post = Post()
-        post.age = ageaTextField.text!
+        post.age = ageTextField.text!
         post.initial = initialTextField.text!
         post.text = postTextView.text!
         post.userId = currentUser?.uid
@@ -69,6 +119,7 @@ class PostViewController: UIViewController {
     @IBAction func back() {
         self.dismiss(animated: true, completion: nil)
     }
+    
     
 
 }
