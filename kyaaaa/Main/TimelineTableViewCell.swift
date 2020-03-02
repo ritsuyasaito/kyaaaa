@@ -8,7 +8,20 @@
 
 import UIKit
 
+
+protocol TimeLineTableViewCellDelegate {
+    func didTapSorenaButton(tableViewCell: UITableViewCell, button: UIButton)
+    func didTapNaruhodoButton(tableViewCell: UITableViewCell, button: UIButton)
+    func didTapKyaaaaButton(tableViewCell: UITableViewCell, button: UIButton)
+    func didTapShareButton(tableViewCell: UITableViewCell, button: UIButton)
+    
+}
+
+
+
 class TimelineTableViewCell: UITableViewCell {
+    
+    var delegate: TimeLineTableViewCellDelegate?
     
     @IBOutlet var userImageView: UIImageView!
     @IBOutlet var ageLabel: UILabel!
@@ -26,12 +39,31 @@ class TimelineTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        userImageView.layer.cornerRadius = userImageView.bounds.width / 2.0
+        userImageView.clipsToBounds = true
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    @IBAction func sorenaButton(button: UIButton) {
+        self.delegate?.didTapSorenaButton(tableViewCell: self, button: button)
+    }
+    
+    @IBAction func naruhodoButton(button: UIButton) {
+        self.delegate?.didTapNaruhodoButton(tableViewCell: self, button: button)
+    }
+    
+    @IBAction func kyaaaaButton(button: UIButton) {
+        self.delegate?.didTapKyaaaaButton(tableViewCell: self, button: button)
+    }
+    
+    @IBAction func shareButton(button: UIButton) {
+        self.delegate?.didTapShareButton(tableViewCell: self, button: button)
     }
     
 }

@@ -12,10 +12,75 @@ import PKHUD
 import DZNEmptyDataSet
 import LocalAuthentication
 
-class FemailViewController: UIViewController, UITableViewDataSource {
+class FemailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate,TimeLineTableViewCellDelegate {
+    
+    func didTapSorenaButton(tableViewCell: UITableViewCell, button: UIButton) {
+        selectedPost = posts[tableViewCell.tag]
+        self.selectedPost!.sorena(collection: "Femailposts") { (error) in
+            if let error = error {
+                print("error === " + error.localizedDescription)
+            } else {
+                self.loadTimeline()
+            }
+        }
+    }
+    
+    func didTapNaruhodoButton(tableViewCell: UITableViewCell, button: UIButton) {
+        selectedPost = posts[tableViewCell.tag]
+        self.selectedPost!.naruhodo(collection: "Femailposts") { (error) in
+            if let error = error {
+                print("error === " + error.localizedDescription)
+            } else {
+                self.loadTimeline()
+            }
+        }
+    }
+    
+    func didTapKyaaaaButton(tableViewCell: UITableViewCell, button: UIButton) {
+        selectedPost = posts[tableViewCell.tag]
+        
+         self.selectedPost!.kyaaaa(collection: "Femailposts") { (error) in
+             if let error = error {
+                 print("error === " + error.localizedDescription)
+             } else {
+                 self.loadTimeline()
+             }
+         }
+    }
+    
+    func didTapShareButton(tableViewCell: UITableViewCell, button: UIButton) {
+        selectedPost = posts[tableViewCell.tag]
+        let alertController = UIAlertController(title: "", message: "", preferredStyle: .alert)
+        let otherShareAction = UIAlertAction(title: "共有", style: UIAlertAction.Style.default) { (action) in
+            //ActivityViewController
+            
+           // let text = self.selectedPost?.user.displayName
+           // let text2 = self.selectedPost?.text
+            let dear = self.selectedPost?.age
+            let text = self.selectedPost?.text
+            let items = ["Dear\(dear)",text] as [Any]
+            // UIActivityViewControllerをインスタンス化
+            let activityVc = UIActivityViewController(activityItems: items, applicationActivities: nil)
+            // UIAcitivityViewControllerを表示
+            self.present(activityVc, animated: true, completion: nil)
+            
+        }
+        let cancelAction = UIAlertAction(title: "キャンセル", style: .cancel) { (action) in
+            
+        }
+        
+        alertController.addAction(otherShareAction)
+        alertController.addAction(cancelAction)
+        
+        present(alertController,animated: true,completion: nil)
+        
+        
+    }
+    
     
     
     var posts = [Post]()
+    var selectedPost: Post?
     let currentUser = Auth.auth().currentUser
     var userGender: String = ""
     
@@ -40,6 +105,7 @@ class FemailViewController: UIViewController, UITableViewDataSource {
         state = .loggedout
         
         FemaleTableView.dataSource = self
+        FemaleTableView.dataSource = self
         
         FemaleTableView.rowHeight = 400
         
@@ -59,6 +125,7 @@ class FemailViewController: UIViewController, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! TimelineTableViewCell
+        cell.delegate = self
         if let age = posts[indexPath.row].age {
             cell.ageLabel.text = age
         } else {

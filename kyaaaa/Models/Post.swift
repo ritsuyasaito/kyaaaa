@@ -24,8 +24,10 @@ struct Post {
     var naruhodoUsers: [String]? // 投稿にいいねしたユーザーId一覧
     var sorenaUsers: [String]? // 投稿にいいねしたユーザーId一覧
     var kyaaaaUsers: [String]? // 投稿にkyaaaaしたユーザーId一覧
-    var isgood: Bool?
-    var iskyaaaa: Bool?
+    var isGood: Bool = false
+    var isSorena: Bool = false
+    var isKyaaaa: Bool = false
+    
 
     
     // 投稿をDBに保存
@@ -63,40 +65,40 @@ struct Post {
         }
     }
     
-    // 投稿をDBに保存
-    func saveFromMail(completion: @escaping(Error?) -> ()) {
-        // ログインしているユーザー、テキストの記入、写真の設定がない場合、投稿できずreturnするようにしている
-        guard let userId = UserModel.currentUser()?.uid else { return }
-        
-        guard let text = self.text else { return }
-        
-        //guard let userPhotoURL = self.userPhotoURL else { return }
-        
-        guard let age = self.age else {
-            return
-        }
-        guard let initial = self.initial else {
-            return
-        }
-        //guard let user = self.user else { return }
-        // Firestoreのデータベースを取得
-        let db = Firestore.firestore()
-        
-        // データベースのpostsパスに対して投稿データを追加し保存
-        db.collection("Mailposts").addDocument(data: [
-            
-            "text": text,
-            "age" : age,
-            "initial" : initial,
-            "userId": userId,
-            //"userPhotoURL": userPhotoURL,
-            //"user": user,
-            "createdAt": String(Date().timeIntervalSince1970)
-        ]) { error in
-            // 処理が終了したらcompletionブロックにerrorを返す.errorがnilなら成功
-            completion(error)
-        }
-    }
+//    // 投稿をDBに保存
+//    func saveFromMail(completion: @escaping(Error?) -> ()) {
+//        // ログインしているユーザー、テキストの記入、写真の設定がない場合、投稿できずreturnするようにしている
+//        guard let userId = UserModel.currentUser()?.uid else { return }
+//
+//        guard let text = self.text else { return }
+//
+//        //guard let userPhotoURL = self.userPhotoURL else { return }
+//
+//        guard let age = self.age else {
+//            return
+//        }
+//        guard let initial = self.initial else {
+//            return
+//        }
+//        //guard let user = self.user else { return }
+//        // Firestoreのデータベースを取得
+//        let db = Firestore.firestore()
+//
+//        // データベースのpostsパスに対して投稿データを追加し保存
+//        db.collection("Mailposts").addDocument(data: [
+//
+//            "text": text,
+//            "age" : age,
+//            "initial" : initial,
+//            "userId": userId,
+//            //"userPhotoURL": userPhotoURL,
+//            //"user": user,
+//            "createdAt": String(Date().timeIntervalSince1970)
+//        ]) { error in
+//            // 処理が終了したらcompletionブロックにerrorを返す.errorがnilなら成功
+//            completion(error)
+//        }
+//    }
     
     // DBから投稿を取得
     static func getAll(collection: String, isAdditional: Bool = false, lastSnapshot: DocumentSnapshot? = nil, completion: @escaping(_ posts: [Post]?, _ lastSnapshot: DocumentSnapshot?, _ error: Error?) -> ()) {
@@ -155,27 +157,72 @@ struct Post {
         }
     }
     
-//    func favorite(completion: @escaping(Error?) -> ()) {
-//        guard let userId = UserModel.currentUser()?.uid else { return }
-//        if self.favoriteUsers?.contains(userId) == true {
-//            // いいねを解除
-//            guard let postId = self.uid else { return }
-//            guard let currentUserId = UserModel.currentUser()?.uid else { return }
-//            let db = Firestore.firestore()
-//            db.document("posts/\(postId)").updateData(["favoriteUsers": FieldValue.arrayRemove([currentUserId])]) { (error) in
-//                completion(error)
-//            }
-//        } else {
-//            // いいね
-//            guard let postId = self.uid else { return }
-//            guard let currentUserId = UserModel.currentUser()?.uid else { return }
-//            let db = Firestore.firestore()
-//            db.document("posts/\(postId)").updateData(["favoriteUsers": [currentUserId]]) { (error) in
-//                completion(error)
-//            }
-//        }
-//
-//    }
+    func kyaaaa(collection: String, completion: @escaping(Error?) -> ()) {
+        guard let userId = UserModel.currentUser()?.uid else { return }
+        if self.kyaaaaUsers?.contains(userId) == true {
+            // いいねを解除
+            guard let postId = self.uid else { return }
+            guard let currentUserId = UserModel.currentUser()?.uid else { return }
+            let db = Firestore.firestore()
+            db.document("\(collection)/\(postId)").updateData(["kyaaaaUsers": FieldValue.arrayRemove([currentUserId])]) { (error) in
+                completion(error)
+            }
+        } else {
+            // いいね
+            guard let postId = self.uid else { return }
+            guard let currentUserId = UserModel.currentUser()?.uid else { return }
+            let db = Firestore.firestore()
+            db.document("\(collection)/\(postId)").updateData(["kyaaaaUsers": [currentUserId]]) { (error) in
+                completion(error)
+            }
+        }
+        
+    }
+    
+    func sorena(collection: String, completion: @escaping(Error?) -> ()) {
+        guard let userId = UserModel.currentUser()?.uid else { return }
+        if self.kyaaaaUsers?.contains(userId) == true {
+            // いいねを解除
+            guard let postId = self.uid else { return }
+            guard let currentUserId = UserModel.currentUser()?.uid else { return }
+            let db = Firestore.firestore()
+            db.document("\(collection)/\(postId)").updateData(["sorenaUsers": FieldValue.arrayRemove([currentUserId])]) { (error) in
+                completion(error)
+            }
+        } else {
+            // いいね
+            guard let postId = self.uid else { return }
+            guard let currentUserId = UserModel.currentUser()?.uid else { return }
+            let db = Firestore.firestore()
+            db.document("\(collection)/\(postId)").updateData(["sorenaUsers": [currentUserId]]) { (error) in
+                completion(error)
+            }
+        }
+        
+    }
+    
+    
+    func naruhodo(collection: String, completion: @escaping(Error?) -> ()) {
+        guard let userId = UserModel.currentUser()?.uid else { return }
+        if self.kyaaaaUsers?.contains(userId) == true {
+            // いいねを解除
+            guard let postId = self.uid else { return }
+            guard let currentUserId = UserModel.currentUser()?.uid else { return }
+            let db = Firestore.firestore()
+            db.document("\(collection)/\(postId)").updateData(["naruhodoUsers": FieldValue.arrayRemove([currentUserId])]) { (error) in
+                completion(error)
+            }
+        } else {
+            // いいね
+            guard let postId = self.uid else { return }
+            guard let currentUserId = UserModel.currentUser()?.uid else { return }
+            let db = Firestore.firestore()
+            db.document("\(collection)/\(postId)").updateData(["naruhodoUsers": [currentUserId]]) { (error) in
+                completion(error)
+            }
+        }
+        
+    }
     
 }
 
