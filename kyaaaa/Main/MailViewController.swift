@@ -8,15 +8,29 @@
 
 import UIKit
 import LocalAuthentication
+import FirebaseAuth
+import Firebase
+import PKHUD
 
 
 
 //女子から男子へ、女子の投稿
-class MailViewController: UIViewController {
+class MailViewController: UIViewController, UITableViewDataSource {
     
 
+    let currentUser = Auth.auth().currentUser
+    var userGender: String = ""
+    @IBOutlet var postButton: UIButton!
+  
    
+    @IBOutlet var maleTableView: UITableView!
     
+    var posts = [Post]()
+    // 読み込み中かどうかを判別する変数(読み込み結果が0件の場合DZNEmptyDataSetで空の表示をさせるため)
+    var isLoading: Bool = false
+    
+    // 下に引っ張って追加読み込みしたい場合に使う、読み込んだ投稿の最後の投稿を保存する変数
+    var lastSnapshot: DocumentSnapshot?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,9 +40,125 @@ class MailViewController: UIViewController {
         state = .loggedout
 
         // Do any additional setup after loading the view.
+        getUserData()
+        
+        maleTableView.dataSource = self
+        
+        maleTableView.rowHeight = 400
+        
+        
+        let nib = UINib(nibName: "TimelineTableViewCell", bundle: Bundle.main)
+        maleTableView.register(nib, forCellReuseIdentifier: "Cell")
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        getUserData()
+        loadTimeline()
     }
     
     
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return posts.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! TimelineTableViewCell
+        if let age = posts[indexPath.row].age {
+            cell.ageLabel.text = age
+        } else {
+            cell.ageLabel.text = ""
+        }
+        if let initial = posts[indexPath.row].initial {
+            cell.initialLabel.text = initial
+        } else {
+            cell.initialLabel.text = ""
+        }
+        if let text = posts[indexPath.row].text {
+            cell.textView.text = text
+        } else {
+            cell.textView.text = ""
+        }
+        if let kyaaaaCount = posts[indexPath.row].kyaaaaUsers?.count {
+            cell.kaaaaaCountLabel.text = String(kyaaaaCount)
+        } else {
+            cell.kaaaaaCountLabel.text = "0"
+        }
+        if let sorenaCount = posts[indexPath.row].kyaaaaUsers?.count {
+            cell.sorenaCountLabel.text = String(sorenaCount)
+        } else {
+            cell.sorenaCountLabel.text = "0"
+        }
+        if let naruhodoCount = posts[indexPath.row].naruhodoUsers?.count {
+            cell.naruhodoCountLabel.text = String(naruhodoCount)
+        } else {
+            cell.naruhodoCountLabel.text = "0"
+        }
+       
+        
+        return cell
+    }
+    
+    func getUserData() {
+        // Firestoreのデータベースを取得
+        let db = Firestore.firestore()
+        if currentUser != nil {
+            let docRef = db.collection("users").document(currentUser!.uid)
+            docRef.getDocument { (document, error) in
+                if let document = document, document.exists {
+                    let dataDescription = document.data() as! [String:Any]
+                    
+                    if dataDescription["gender"] != nil {
+                        self.userGender = dataDescription["gender"] as! String
+                        if self.userGender == "男" {
+                            self.postButton.isEnabled = true
+                        } else {
+                            self.postButton.isEnabled = false
+                        }
+                        
+                    }
+                }
+            }
+        }
+
+    }
+    
+    func loadTimeline(isAdditional: Bool = false) {
+        isLoading = true
+        Post.getAll(collection: "Mailposts", isAdditional: isAdditional, lastSnapshot: lastSnapshot) { (posts, lastSnapshot, error) in
+            // 読み込み完了
+            self.isLoading = false
+            self.lastSnapshot = lastSnapshot
+            //self.timelineTableView.headRefreshControl.endRefreshing()
+           // self.timelineTableView.footRefreshControl.endRefreshing()
+            
+            if let error = error {
+                print(error)
+                // エラー処理
+               // self.showError(error: error)
+                HUD.show(.error)
+            } else {
+                // 読み込みが成功した場合
+                if let posts = posts {
+                    // 追加読み込みなら配列に追加、そうでないなら配列に再代入
+                    if isAdditional == true {
+                        self.posts = self.posts + posts
+                    } else {
+                        self.posts = posts
+                        
+                    }
+                    print("成功")
+                    print(posts)
+                    self.maleTableView.reloadData()
+                }
+            }
+        }
+        
+        
+        
+    }
+
     
     
     //   ----------------パスワード要求ー---------------
@@ -96,6 +226,9 @@ class MailViewController: UIViewController {
     }
 
     @IBAction func toPostPage() {
+        if userGender == "男" {
+            
+        }
         performSegue(withIdentifier: "toPostPage", sender: nil)
     }
     
@@ -107,6 +240,9 @@ class MailViewController: UIViewController {
             postVC.fromGender = "男性から"
         }
     }
+    
+    
+
    
 
 }

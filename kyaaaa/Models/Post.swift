@@ -21,7 +21,8 @@ struct Post {
     var initial: String?
     
     var text: String? // 投稿に付加したテキスト
-    var favoriteUsers: [String]? // 投稿にいいねしたユーザーId一覧
+    var naruhodoUsers: [String]? // 投稿にいいねしたユーザーId一覧
+    var sorenaUsers: [String]? // 投稿にいいねしたユーザーId一覧
     var kyaaaaUsers: [String]? // 投稿にkyaaaaしたユーザーId一覧
     var isgood: Bool?
     var iskyaaaa: Bool?
@@ -135,7 +136,9 @@ struct Post {
                         post.text = data["text"] as? String
                         post.userPhotoURL = data["userPhotoURL"] as? String
                         
-                        post.favoriteUsers = data["favoriteUsers"] as? [String]
+                        post.naruhodoUsers = data["naruhodoUsers"] as? [String]
+                        post.sorenaUsers = data["sorenaUsers"] as? [String]
+                        post.kyaaaaUsers = data["kyaaaaUsers"] as? [String]
                         posts.append(post)
                     }
                     
@@ -152,27 +155,27 @@ struct Post {
         }
     }
     
-    func favorite(completion: @escaping(Error?) -> ()) {
-        guard let userId = UserModel.currentUser()?.uid else { return }
-        if self.favoriteUsers?.contains(userId) == true {
-            // いいねを解除
-            guard let postId = self.uid else { return }
-            guard let currentUserId = UserModel.currentUser()?.uid else { return }
-            let db = Firestore.firestore()
-            db.document("posts/\(postId)").updateData(["favoriteUsers": FieldValue.arrayRemove([currentUserId])]) { (error) in
-                completion(error)
-            }
-        } else {
-            // いいね
-            guard let postId = self.uid else { return }
-            guard let currentUserId = UserModel.currentUser()?.uid else { return }
-            let db = Firestore.firestore()
-            db.document("posts/\(postId)").updateData(["favoriteUsers": [currentUserId]]) { (error) in
-                completion(error)
-            }
-        }
-        
-    }
+//    func favorite(completion: @escaping(Error?) -> ()) {
+//        guard let userId = UserModel.currentUser()?.uid else { return }
+//        if self.favoriteUsers?.contains(userId) == true {
+//            // いいねを解除
+//            guard let postId = self.uid else { return }
+//            guard let currentUserId = UserModel.currentUser()?.uid else { return }
+//            let db = Firestore.firestore()
+//            db.document("posts/\(postId)").updateData(["favoriteUsers": FieldValue.arrayRemove([currentUserId])]) { (error) in
+//                completion(error)
+//            }
+//        } else {
+//            // いいね
+//            guard let postId = self.uid else { return }
+//            guard let currentUserId = UserModel.currentUser()?.uid else { return }
+//            let db = Firestore.firestore()
+//            db.document("posts/\(postId)").updateData(["favoriteUsers": [currentUserId]]) { (error) in
+//                completion(error)
+//            }
+//        }
+//
+//    }
     
 }
 
