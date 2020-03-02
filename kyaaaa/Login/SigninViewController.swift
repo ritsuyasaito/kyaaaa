@@ -105,7 +105,7 @@ class SigninViewController: UIViewController, LoginButtonDelegate{
 //               ud.set(self.pictureURLString, forKey: "pictureURLString")
                
                let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-               let rootViewController = storyboard.instantiateViewController(withIdentifier: "RootTabBarController")
+               let rootViewController = storyboard.instantiateViewController(withIdentifier: "First")
                UIApplication.shared.keyWindow?.rootViewController = rootViewController
                
            }
@@ -131,7 +131,7 @@ extension SigninViewController: LoginBaseViewDelegate {
         }
         //ログイン成功
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        let rootViewController = storyboard.instantiateViewController(withIdentifier: "RootTabBarController")
+        let rootViewController = storyboard.instantiateViewController(withIdentifier: "First")
         UIApplication.shared.keyWindow?.rootViewController = rootViewController
 
         //ログイン状態の保持
