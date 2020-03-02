@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ViewAnimator
 
 class FirstViewController: UIViewController {
 
