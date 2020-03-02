@@ -15,7 +15,71 @@ import PKHUD
 
 
 //女子から男子へ、女子の投稿
-class MailViewController: UIViewController, UITableViewDataSource {
+class MailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, TimeLineTableViewCellDelegate {
+    
+    func didTapSorenaButton(tableViewCell: UITableViewCell, button: UIButton) {
+        selectedPost = posts[tableViewCell.tag]
+        self.selectedPost!.sorena(collection: "Mailposts") { (error) in
+            if let error = error {
+                print("error === " + error.localizedDescription)
+            } else {
+                self.loadTimeline()
+            }
+        }
+       
+    }
+    
+    func didTapNaruhodoButton(tableViewCell: UITableViewCell, button: UIButton) {
+      
+        selectedPost = posts[tableViewCell.tag]
+        self.selectedPost!.naruhodo(collection: "Mailposts") { (error) in
+            if let error = error {
+                print("error === " + error.localizedDescription)
+            } else {
+                self.loadTimeline()
+            }
+        }
+    }
+    
+    func didTapKyaaaaButton(tableViewCell: UITableViewCell, button: UIButton) {
+        selectedPost = posts[tableViewCell.tag]
+       
+        self.selectedPost!.kyaaaa(collection: "Mailposts") { (error) in
+            if let error = error {
+                print("error === " + error.localizedDescription)
+            } else {
+                self.loadTimeline()
+            }
+        }
+        
+    }
+    
+    func didTapShareButton(tableViewCell: UITableViewCell, button: UIButton) {
+        
+        let alertController = UIAlertController(title: "", message: "", preferredStyle: .alert)
+        let otherShareAction = UIAlertAction(title: "共有", style: UIAlertAction.Style.default) { (action) in
+            //ActivityViewController
+            self.selectedPost = self.posts[tableViewCell.tag]
+           // let text = self.selectedPost?.user.displayName
+           // let text2 = self.selectedPost?.text
+            var dear = self.selectedPost?.age
+            var text = self.selectedPost?.text
+            var items = ["Dear\(dear)",text] as [Any]
+            // UIActivityViewControllerをインスタンス化
+            let activityVc = UIActivityViewController(activityItems: items, applicationActivities: nil)
+            // UIAcitivityViewControllerを表示
+            self.present(activityVc, animated: true, completion: nil)
+            
+        }
+        let cancelAction = UIAlertAction(title: "キャンセル", style: .cancel) { (action) in
+            
+        }
+        
+        alertController.addAction(otherShareAction)
+        alertController.addAction(cancelAction)
+        
+        present(alertController,animated: true,completion: nil)
+    }
     
 
     let currentUser = Auth.auth().currentUser
@@ -26,6 +90,7 @@ class MailViewController: UIViewController, UITableViewDataSource {
     @IBOutlet var maleTableView: UITableView!
     
     var posts = [Post]()
+    var selectedPost: Post?
     // 読み込み中かどうかを判別する変数(読み込み結果が0件の場合DZNEmptyDataSetで空の表示をさせるため)
     var isLoading: Bool = false
     
@@ -42,6 +107,7 @@ class MailViewController: UIViewController, UITableViewDataSource {
         // Do any additional setup after loading the view.
         getUserData()
         
+        maleTableView.delegate = self
         maleTableView.dataSource = self
         
         maleTableView.rowHeight = 400
@@ -65,6 +131,8 @@ class MailViewController: UIViewController, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! TimelineTableViewCell
+        cell.delegate = self
+        cell.userImageView.image = UIImage(named: "male-placeHolder.jpg")
         if let age = posts[indexPath.row].age {
             cell.ageLabel.text = age
         } else {
