@@ -28,7 +28,7 @@ struct Post {
 
     
     // 投稿をDBに保存
-    func save(completion: @escaping(Error?) -> ()) {
+    func save(collection: String, completion: @escaping(Error?) -> ()) {
         // ログインしているユーザー、テキストの記入、写真の設定がない場合、投稿できずreturnするようにしている
         guard let userId = UserModel.currentUser()?.uid else { return }
         
@@ -47,7 +47,42 @@ struct Post {
         let db = Firestore.firestore()
         
         // データベースのpostsパスに対して投稿データを追加し保存
-        db.collection("posts").addDocument(data: [
+        db.collection(collection).addDocument(data: [
+            
+            "text": text,
+            "age" : age,
+            "initial" : initial,
+            "userId": userId,
+            //"userPhotoURL": userPhotoURL,
+            //"user": user,
+            "createdAt": String(Date().timeIntervalSince1970)
+        ]) { error in
+            // 処理が終了したらcompletionブロックにerrorを返す.errorがnilなら成功
+            completion(error)
+        }
+    }
+    
+    // 投稿をDBに保存
+    func saveFromMail(completion: @escaping(Error?) -> ()) {
+        // ログインしているユーザー、テキストの記入、写真の設定がない場合、投稿できずreturnするようにしている
+        guard let userId = UserModel.currentUser()?.uid else { return }
+        
+        guard let text = self.text else { return }
+        
+        //guard let userPhotoURL = self.userPhotoURL else { return }
+        
+        guard let age = self.age else {
+            return
+        }
+        guard let initial = self.initial else {
+            return
+        }
+        //guard let user = self.user else { return }
+        // Firestoreのデータベースを取得
+        let db = Firestore.firestore()
+        
+        // データベースのpostsパスに対して投稿データを追加し保存
+        db.collection("Mailposts").addDocument(data: [
             
             "text": text,
             "age" : age,
@@ -63,9 +98,9 @@ struct Post {
     }
     
     // DBから投稿を取得
-    static func getAll(isAdditional: Bool = false, lastSnapshot: DocumentSnapshot? = nil, completion: @escaping(_ posts: [Post]?, _ lastSnapshot: DocumentSnapshot?, _ error: Error?) -> ()) {
+    static func getAll(collection: String, isAdditional: Bool = false, lastSnapshot: DocumentSnapshot? = nil, completion: @escaping(_ posts: [Post]?, _ lastSnapshot: DocumentSnapshot?, _ error: Error?) -> ()) {
         // データベースへの参照を作る
-        let ref = Firestore.firestore().collection("posts")
+        let ref = Firestore.firestore().collection(collection)
         
         // タイムラインは新しい投稿が上にくるので降順にし、50件ずつ取得するクエリを作成
         var query = ref.order(by: "createdAt", descending: true).limit(to: 50)

@@ -16,6 +16,9 @@ class PostViewController: UIViewController {
     @IBOutlet var initialTextField: UITextField!
     @IBOutlet var postTextView: UITextView!
     
+    var fromGender: String?
+    var collection = "MailPosts"
+    
     var currentUser = Auth.auth().currentUser
 
     
@@ -23,6 +26,15 @@ class PostViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if fromGender == "男性から" {
+            collection = "Mailposts"
+        } else {
+            collection = "Femailposts"
+        }
     }
     
     @IBAction func post() {
@@ -34,7 +46,7 @@ class PostViewController: UIViewController {
         post.userId = currentUser?.uid
         //post.userPhotoURL = currentUser?.photoURL
         
-        post.save(completion: { (error) in
+        post.save(collection: collection, completion: { (error) in
                DispatchQueue.main.async {
         //           SVProgressHUD.dismiss()
                    if let error = error {

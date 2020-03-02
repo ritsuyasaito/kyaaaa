@@ -10,6 +10,7 @@ import UIKit
 import LocalAuthentication
 
 
+
 //女子から男子へ、女子の投稿
 class MailViewController: UIViewController {
     
@@ -94,10 +95,16 @@ class MailViewController: UIViewController {
         }
     }
 
+    @IBAction func toPostPage() {
+        performSegue(withIdentifier: "toPostPage", sender: nil)
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toUserPage" {
             
+        } else if segue.identifier == "toPostPage" {
+            let postVC = segue.destination as! PostViewController
+            postVC.fromGender = "男性から"
         }
     }
    

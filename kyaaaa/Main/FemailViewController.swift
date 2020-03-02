@@ -29,10 +29,23 @@ class FemailViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    @IBAction func toPostPage() {
+        performSegue(withIdentifier: "toPostPage", sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toUserPage" {
+            
+        } else if segue.identifier == "toPostPage" {
+            let postVC = segue.destination as! PostViewController
+            postVC.fromGender = "女性から"
+        }
+    }
+    
 
     func loadTimeline(isAdditional: Bool = false) {
         isLoading = true
-        Post.getAll(isAdditional: isAdditional, lastSnapshot: lastSnapshot) { (posts, lastSnapshot, error) in
+        Post.getAll(collection: "Femailposts", isAdditional: isAdditional, lastSnapshot: lastSnapshot) { (posts, lastSnapshot, error) in
             // 読み込み完了
             self.isLoading = false
             self.lastSnapshot = lastSnapshot

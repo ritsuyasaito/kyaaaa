@@ -20,7 +20,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="投稿"/>
                                 <connections>
-                                    <segue destination="JbL-ME-Bqg" kind="presentation" modalPresentationStyle="fullScreen" id="LOK-kZ-rnt"/>
+                                    <action selector="toPostPage" destination="5Io-fi-ch7" eventType="touchUpInside" id="6Ad-Vt-h1K"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -37,6 +37,7 @@
                     </navigationItem>
                     <connections>
                         <segue destination="1Zv-gJ-0Op" kind="show" identifier="toUserPage" id="CNV-qz-5rc"/>
+                        <segue destination="JbL-ME-Bqg" kind="presentation" identifier="toPostPage" modalPresentationStyle="fullScreen" id="gpB-Xv-4O0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uuG-Ue-l2X" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -114,7 +115,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fdH-PF-b4I" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1848" y="-2107"/>
+            <point key="canvasLocation" x="1848" y="-739"/>
         </scene>
         <!--User Page View Controller-->
         <scene sceneID="aZG-3t-j7W">
@@ -373,11 +374,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YJJ-bP-dHp">
-                                <rect key="frame" x="152" y="231" width="111" height="30"/>
+                                <rect key="frame" x="283" y="736" width="111" height="47"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="投稿"/>
                                 <connections>
-                                    <segue destination="EpQ-Be-k1R" kind="show" id="YUq-vE-bDF"/>
+                                    <action selector="toPostPage" destination="u3I-KQ-Yd3" eventType="touchUpInside" id="xu5-bI-mmM"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -386,10 +387,13 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="vOB-XV-v1q"/>
                     <navigationItem key="navigationItem" id="85X-6c-5df"/>
+                    <connections>
+                        <segue destination="JbL-ME-Bqg" kind="presentation" identifier="toPostPage" modalPresentationStyle="fullScreen" id="TZ1-yd-mgA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aFz-FM-3ve" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="672" y="-14"/>
+            <point key="canvasLocation" x="671.01449275362324" y="-14.0625"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="kF7-Ub-mCy">
@@ -429,4 +433,7 @@
     <resources>
         <image name="female-placeHolder.jpg" width="312" height="312"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="TZ1-yd-mgA"/>
+    </inferredMetricsTieBreakers>
 </document>
