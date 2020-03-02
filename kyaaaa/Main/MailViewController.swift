@@ -9,6 +9,8 @@
 import UIKit
 import LocalAuthentication
 
+
+//女子から男子へ、女子の投稿
 class MailViewController: UIViewController {
     
 

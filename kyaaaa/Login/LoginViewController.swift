@@ -57,7 +57,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             } else {
                 HUD.flash(.success, delay: 1.0)
                 let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-                let rootViewController = storyboard.instantiateViewController(withIdentifier: "RootTabBarController")
+                let rootViewController = storyboard.instantiateViewController(withIdentifier: "First")
                 UIApplication.shared.keyWindow?.rootViewController = rootViewController
                 
                 //ログイン状態の保持

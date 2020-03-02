@@ -26,7 +26,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             // ログイン中だったら
             self.window = window
             let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-            let rootViewController = storyboard.instantiateViewController(withIdentifier: "RootTabBarController")
+            let rootViewController = storyboard.instantiateViewController(withIdentifier: "First")
             self.window?.rootViewController = rootViewController
             self.window?.backgroundColor = UIColor.white
             self.window?.makeKeyAndVisible()

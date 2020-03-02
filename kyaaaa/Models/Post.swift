@@ -22,7 +22,10 @@ struct Post {
     
     var text: String? // 投稿に付加したテキスト
     var favoriteUsers: [String]? // 投稿にいいねしたユーザーId一覧
-    //var comments: [Comment]? // 投稿へのコメント一覧
+    var kyaaaaUsers: [String]? // 投稿にkyaaaaしたユーザーId一覧
+    var isgood: Bool?
+    var iskyaaaa: Bool?
+
     
     // 投稿をDBに保存
     func save(completion: @escaping(Error?) -> ()) {
