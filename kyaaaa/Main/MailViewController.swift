@@ -11,16 +11,21 @@ import LocalAuthentication
 import FirebaseAuth
 import Firebase
 import PKHUD
+import ViewAnimator
 
 
 
 //女子から男子へ、女子の投稿
 class MailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, TimeLineTableViewCellDelegate {
     
+    
+    
     func didTapSorenaButton(tableViewCell: UITableViewCell, button: UIButton) {
+   
         selectedPost = posts[tableViewCell.tag]
         self.selectedPost!.sorena(collection: "Mailposts") { (error) in
             if let error = error {
+                HUD.show(.error)
                 print("error === " + error.localizedDescription)
             } else {
                 self.loadTimeline()
@@ -31,6 +36,7 @@ class MailViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func didTapNaruhodoButton(tableViewCell: UITableViewCell, button: UIButton) {
       
+        print(tableViewCell.tag)
         selectedPost = posts[tableViewCell.tag]
         self.selectedPost!.naruhodo(collection: "Mailposts") { (error) in
             if let error = error {
@@ -44,6 +50,7 @@ class MailViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func didTapKyaaaaButton(tableViewCell: UITableViewCell, button: UIButton) {
         selectedPost = posts[tableViewCell.tag]
        
+        print(selectedPost)
         self.selectedPost!.kyaaaa(collection: "Mailposts") { (error) in
             if let error = error {
                 print("error === " + error.localizedDescription)
@@ -56,15 +63,15 @@ class MailViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func didTapShareButton(tableViewCell: UITableViewCell, button: UIButton) {
         
-        let alertController = UIAlertController(title: "", message: "", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "テキストを共有します", message: "", preferredStyle: .alert)
         let otherShareAction = UIAlertAction(title: "共有", style: UIAlertAction.Style.default) { (action) in
             //ActivityViewController
             self.selectedPost = self.posts[tableViewCell.tag]
-           // let text = self.selectedPost?.user.displayName
-           // let text2 = self.selectedPost?.text
+          
             var dear = self.selectedPost?.age
             var text = self.selectedPost?.text
             var items = ["Dear\(dear)",text] as [Any]
+            print(items)
             // UIActivityViewControllerをインスタンス化
             let activityVc = UIActivityViewController(activityItems: items, applicationActivities: nil)
             // UIAcitivityViewControllerを表示
@@ -118,6 +125,16 @@ class MailViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
     }
     
+//    override func viewDidAppear(_ animated: Bool) {
+//         let fromAnimation = AnimationType.from(direction: .right, offset: 50.0)
+//               let zoomAnimation = AnimationType.zoom(scale: 0.3)
+//               let rotateAnimation = AnimationType.rotate(angle: CGFloat.pi/6)
+//               UIView.animate(views: maleTableView.visibleCells,
+//                              animations: [fromAnimation, zoomAnimation,rotateAnimation],
+//                              duration: 1.2)
+//        maleTableView.reloadData()
+//    }
+    
     override func viewWillAppear(_ animated: Bool) {
         getUserData()
         loadTimeline()
@@ -131,8 +148,25 @@ class MailViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! TimelineTableViewCell
+        //cellで用意したdelegateメソッドをこのViewControllerで書く
+        
         cell.delegate = self
-        cell.userImageView.image = UIImage(named: "male-placeHolder.jpg")
+        cell.tag = indexPath.row
+        if let userImageURL = posts[indexPath.row].userPhotoURL {
+            let url = URL(string: userImageURL)
+            if url != nil {
+                do {
+                    let data = try Data(contentsOf: url!)
+                    cell.userImageView.image = UIImage(data: data)
+                } catch let err {
+                    print("Error : \(err.localizedDescription)")
+                    cell.userImageView.image = UIImage(named: "male-placeHolder.jpg")
+                }
+            }
+        } else {
+            cell.userImageView.image = UIImage(named: "male-placeHolder.jpg")
+        }
+        
         if let age = posts[indexPath.row].age {
             cell.ageLabel.text = age
         } else {
@@ -153,7 +187,7 @@ class MailViewController: UIViewController, UITableViewDataSource, UITableViewDe
         } else {
             cell.kaaaaaCountLabel.text = "0"
         }
-        if let sorenaCount = posts[indexPath.row].kyaaaaUsers?.count {
+        if let sorenaCount = posts[indexPath.row].sorenaUsers?.count {
             cell.sorenaCountLabel.text = String(sorenaCount)
         } else {
             cell.sorenaCountLabel.text = "0"

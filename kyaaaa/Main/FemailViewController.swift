@@ -126,6 +126,7 @@ class FemailViewController: UIViewController, UITableViewDataSource, UITableView
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! TimelineTableViewCell
         cell.delegate = self
+        cell.tag = indexPath.row
         if let age = posts[indexPath.row].age {
             cell.ageLabel.text = age
         } else {
@@ -146,7 +147,7 @@ class FemailViewController: UIViewController, UITableViewDataSource, UITableView
         } else {
             cell.kaaaaaCountLabel.text = "0"
         }
-        if let sorenaCount = posts[indexPath.row].kyaaaaUsers?.count {
+        if let sorenaCount = posts[indexPath.row].sorenaUsers?.count {
             cell.sorenaCountLabel.text = String(sorenaCount)
         } else {
             cell.sorenaCountLabel.text = "0"

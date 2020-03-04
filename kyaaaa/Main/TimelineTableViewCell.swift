@@ -9,6 +9,7 @@
 import UIKit
 
 
+//potocol宣言
 protocol TimeLineTableViewCellDelegate {
     func didTapSorenaButton(tableViewCell: UITableViewCell, button: UIButton)
     func didTapNaruhodoButton(tableViewCell: UITableViewCell, button: UIButton)
@@ -21,6 +22,7 @@ protocol TimeLineTableViewCellDelegate {
 
 class TimelineTableViewCell: UITableViewCell {
     
+    //宣言したprotocolを継承したプロパティを定義
     var delegate: TimeLineTableViewCellDelegate?
     
     @IBOutlet var userImageView: UIImageView!
@@ -41,6 +43,14 @@ class TimelineTableViewCell: UITableViewCell {
         // Initialization code
         userImageView.layer.cornerRadius = userImageView.bounds.width / 2.0
         userImageView.clipsToBounds = true
+//        layer.cornerRadius = 20
+//        layer.masksToBounds = true
+//        layer.shadowOffset = CGSize(width: 0.2, height: 0.2)
+//        //      cell.layer.shadowOffset = CGSizeMake(0, 0)
+//        layer.shadowColor = UIColor.black.cgColor
+//        layer.shadowOpacity = 0.23
+//        layer.shadowRadius = 10
+        
         
     }
 
@@ -50,7 +60,9 @@ class TimelineTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    //sorenaボタンを押されたときにお呼ばれる
     @IBAction func sorenaButton(button: UIButton) {
+        //protocolのメソッドをここで発動、引数にこのtableViewcellとsorenaButtonにする
         self.delegate?.didTapSorenaButton(tableViewCell: self, button: button)
     }
     

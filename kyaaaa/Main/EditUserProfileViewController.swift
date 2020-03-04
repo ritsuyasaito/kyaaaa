@@ -39,6 +39,7 @@ class EditUserProfileViewController: UIViewController, UITextFieldDelegate, UIPi
         userGenderTextField.delegate = self
         userAgeTextField.delegate = self
         userGenderTextField.delegate = self
+        userNameTextField.delegate = self
         
         pickerView1.delegate = self
         pickerView1.dataSource = self
