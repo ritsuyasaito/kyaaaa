@@ -37,11 +37,14 @@ class PostViewController: UIViewController, UITextFieldDelegate, UIPickerViewDel
     var fromGender: String?
     var collection = "MailPosts"
     
+    
+    
     var ageArray = ["中学生","高校生","19~22歳","23~29歳","30~40代","50代〜"]
     var pickerView1: UIPickerView = UIPickerView()
     
     var currentUser = Auth.auth().currentUser
 
+    var userPhotoURL: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -85,6 +88,8 @@ class PostViewController: UIViewController, UITextFieldDelegate, UIPickerViewDel
         } else {
             collection = "Femailposts"
         }
+        
+        loadUserData()
     }
     
     @IBAction func post() {
@@ -94,7 +99,7 @@ class PostViewController: UIViewController, UITextFieldDelegate, UIPickerViewDel
         post.initial = initialTextField.text!
         post.text = postTextView.text!
         post.userId = currentUser?.uid
-        //post.userPhotoURL = currentUser?.photoURL
+        post.userPhotoURL = userPhotoURL
         
         post.save(collection: collection, completion: { (error) in
                DispatchQueue.main.async {
@@ -114,6 +119,25 @@ class PostViewController: UIViewController, UITextFieldDelegate, UIPickerViewDel
         })
         self.dismiss(animated: true, completion: nil)
            
+    }
+    
+    func loadUserData() {
+        // Firestoreのデータベースを取得
+        let db = Firestore.firestore()
+        if currentUser != nil {
+            let docRef = db.collection("users").document(currentUser!.uid)
+            docRef.getDocument { (document, error) in
+                if let document = document, document.exists {
+                    let dataDescription = document.data() as! [String:Any]
+                    
+                    if let imageURL = dataDescription["photoURL"] as! String? {
+                        self.userPhotoURL = imageURL
+                    } else {
+                        self.userPhotoURL = ""
+                    }
+                }
+            }
+        }
     }
     
     @IBAction func back() {

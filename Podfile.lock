@@ -355,11 +355,13 @@ PODS:
   - libwebp/mux (1.1.0):
     - libwebp/demux
   - libwebp/webp (1.1.0)
+  - MXParallaxHeader (1.1.0)
   - nanopb (0.3.9011):
     - nanopb/decode (= 0.3.9011)
     - nanopb/encode (= 0.3.9011)
   - nanopb/decode (0.3.9011)
   - nanopb/encode (0.3.9011)
+  - Pageboy (3.5.0)
   - PKHUD (5.3.0)
   - PromisesObjC (1.2.8)
   - SDWebImage/Core (4.4.8)
@@ -369,6 +371,8 @@ PODS:
   - SwiftMessages (7.0.1):
     - SwiftMessages/App (= 7.0.1)
   - SwiftMessages/App (7.0.1)
+  - Tabman (2.8.0):
+    - Pageboy (~> 3.5.0)
   - ViewAnimator (2.7.0)
 
 DEPENDENCIES:
@@ -389,9 +393,11 @@ DEPENDENCIES:
   - GoogleSignIn
   - JonContextMenu (from `https://github.com/jonSurrey/JonContextMenu.git`, branch `master`)
   - Kingfisher
+  - MXParallaxHeader
   - PKHUD (~> 5.0)
   - SDWebImage/WebP
   - SwiftMessages
+  - Tabman
   - ViewAnimator
 
 SPEC REPOS:
@@ -433,11 +439,14 @@ SPEC REPOS:
     - Kingfisher
     - leveldb-library
     - libwebp
+    - MXParallaxHeader
     - nanopb
+    - Pageboy
     - PKHUD
     - PromisesObjC
     - SDWebImage
     - SwiftMessages
+    - Tabman
     - ViewAnimator
 
 EXTERNAL SOURCES:
@@ -495,13 +504,16 @@ SPEC CHECKSUMS:
   Kingfisher: eb36b7dfcc78d60877051c92c119a2865972961a
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   libwebp: 946cb3063cea9236285f7e9a8505d806d30e07f3
+  MXParallaxHeader: de3c867e10ba46e8f6e20c8ee1f2a910372b3b94
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
+  Pageboy: 3794c578aae5fcce06e90b3ed4a0ad6b807d75bb
   PKHUD: 98f3e4bc904b9c916f1c5bb6d765365b5357291b
   PromisesObjC: c119f3cd559f50b7ae681fa59dc1acd19173b7e6
   SDWebImage: 783af2c3fa36291a250030c4752ee370a9a51d13
   SwiftMessages: b577dc7043be8b299857ab35bb663dbff6483bd0
+  Tabman: f62ad94ee54a7d96e3fbab34f677d9ea4d38ece6
   ViewAnimator: 5af1c6f3b310f012bf081259c43717aa54fbae73
 
-PODFILE CHECKSUM: 7032570d3472d0a6933316bd7e9d8bdd5e7dc4ee
+PODFILE CHECKSUM: d8752799d713f8ab938c8fb86908f7937abf0a89
 
 COCOAPODS: 1.8.4
