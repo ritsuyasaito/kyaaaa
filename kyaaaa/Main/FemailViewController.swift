@@ -11,8 +11,87 @@ import Firebase
 import PKHUD
 import DZNEmptyDataSet
 import LocalAuthentication
+import ViewAnimator
+import BubbleTransition
+import ASExtendedCircularMenu
 
-class FemailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate,TimeLineTableViewCellDelegate {
+class FemailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate,TimeLineTableViewCellDelegate,UIViewControllerTransitioningDelegate,ASCircularButtonDelegate {
+    
+    @IBOutlet var shareButton: ASCircularMenuButton!
+    @IBOutlet var colourPickerButton: ASCircularMenuButton!
+    let colourArray: [UIColor] = [.red , .blue , .green , .yellow , .purple , .gray ,.black , .brown]
+    let shareName: [String] = ["小","中","高","大","30代","40代","50代","60代"]
+    
+    
+    let transition = BubbleTransition()
+    
+    func didClickOnCircularMenuButton(_ menuButton: ASCircularMenuButton, indexForButton: Int, button: UIButton) {
+        
+        if menuButton == colourPickerButton{
+        }
+        if menuButton == shareButton{
+            
+            
+            if indexForButton == 0{
+                print("小学生")
+            }else if indexForButton == 1{
+                print("中学生")
+            }else if indexForButton == 2{
+                print("高校生")
+            }else if indexForButton == 3{
+                print("大学生")
+            }else if indexForButton == 4{
+                
+            }else if indexForButton == 5{
+                
+            }else if indexForButton == 6{
+                
+            }else if indexForButton == 7{
+                
+            }else if indexForButton == 8{
+                
+            }
+            
+        }
+        
+    }
+    
+    func buttonForIndexAt(_ menuButton: ASCircularMenuButton, indexForButton: Int) -> UIButton {
+        
+        let button: UIButton = UIButton()
+        if menuButton == shareButton{
+            //            button.setBackgroundImage(UIImage.init(named: "shareicon.\(indexForButton + 1)"), for: .normal)
+            button.backgroundColor = colourArray[indexForButton]
+            button.setTitle(shareName[indexForButton], for: .normal)
+            
+        }
+        if menuButton == colourPickerButton{
+            button.backgroundColor = colourArray[indexForButton]
+        }
+        return button
+    }
+    
+    
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        transition.transitionMode = .present
+        transition.startingPoint = postButton.center
+        //        transition.bubbleColor = postButton.backgroundColor!
+        return transition
+    }
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        transition.transitionMode = .dismiss
+        transition.startingPoint = postButton.center
+        //        transition.bubbleColor = postButton.backgroundColor!
+        return transition
+    }
+    func buttonShadow(){
+        postButton.layer.shadowColor = UIColor.black.cgColor
+        postButton.layer.shadowOffset = CGSize(width: 3, height: 3)
+        postButton.layer.shadowOpacity = 0.2
+        postButton.layer.masksToBounds = false
+        
+    }
+    
     
     func didTapSorenaButton(tableViewCell: UITableViewCell, button: UIButton) {
         selectedPost = posts[tableViewCell.tag]
@@ -39,13 +118,13 @@ class FemailViewController: UIViewController, UITableViewDataSource, UITableView
     func didTapKyaaaaButton(tableViewCell: UITableViewCell, button: UIButton) {
         selectedPost = posts[tableViewCell.tag]
         
-         self.selectedPost!.kyaaaa(collection: "Femailposts") { (error) in
-             if let error = error {
-                 print("error === " + error.localizedDescription)
-             } else {
-                 self.loadTimeline()
-             }
-         }
+        self.selectedPost!.kyaaaa(collection: "Femailposts") { (error) in
+            if let error = error {
+                print("error === " + error.localizedDescription)
+            } else {
+                self.loadTimeline()
+            }
+        }
     }
     
     func didTapShareButton(tableViewCell: UITableViewCell, button: UIButton) {
@@ -54,8 +133,8 @@ class FemailViewController: UIViewController, UITableViewDataSource, UITableView
         let otherShareAction = UIAlertAction(title: "共有", style: UIAlertAction.Style.default) { (action) in
             //ActivityViewController
             
-           // let text = self.selectedPost?.user.displayName
-           // let text2 = self.selectedPost?.text
+            // let text = self.selectedPost?.user.displayName
+            // let text2 = self.selectedPost?.text
             let dear = self.selectedPost?.age
             let text = self.selectedPost?.text
             let items = ["Dear\(dear)",text] as [Any]
@@ -93,10 +172,11 @@ class FemailViewController: UIViewController, UITableViewDataSource, UITableView
     
     // 下に引っ張って追加読み込みしたい場合に使う、読み込んだ投稿の最後の投稿を保存する変数
     var lastSnapshot: DocumentSnapshot?
-
+    
     override func viewDidLoad() {
     
         super.viewDidLoad()
+
 
         postButton.isEnabled = false
       
@@ -111,9 +191,19 @@ class FemailViewController: UIViewController, UITableViewDataSource, UITableView
         
         FemaleTableView.rowHeight = 400
         
+        buttonShadow()
         
         let nib = UINib(nibName: "TimelineTableViewCell", bundle: Bundle.main)
         FemaleTableView.register(nib, forCellReuseIdentifier: "Cell")
+        
+        
+        configureDynamicCircularMenuButton(button: shareButton, numberOfMenuItems: 8)
+        shareButton.menuButtonSize = .large
+        
+        configureDraggebleCircularMenuButton(button: colourPickerButton, numberOfMenuItems: 8, menuRedius: 70, postion: .center)
+        colourPickerButton.menuButtonSize = .medium
+        colourPickerButton.sholudMenuButtonAnimate = false
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -159,7 +249,7 @@ class FemailViewController: UIViewController, UITableViewDataSource, UITableView
         } else {
             cell.naruhodoCountLabel.text = "0"
         }
-       
+        
         
         return cell
     }
@@ -198,11 +288,11 @@ class FemailViewController: UIViewController, UITableViewDataSource, UITableView
                 }
             }
         }
-
+        
     }
-
     
-
+    
+    
     func loadTimeline(isAdditional: Bool = false) {
         isLoading = true
         Post.getAll(collection: "Femailposts", isAdditional: isAdditional, lastSnapshot: lastSnapshot) { (posts, lastSnapshot, error) in
@@ -210,12 +300,12 @@ class FemailViewController: UIViewController, UITableViewDataSource, UITableView
             self.isLoading = false
             self.lastSnapshot = lastSnapshot
             //self.timelineTableView.headRefreshControl.endRefreshing()
-           // self.timelineTableView.footRefreshControl.endRefreshing()
+            // self.timelineTableView.footRefreshControl.endRefreshing()
             
             if let error = error {
                 print(error)
                 // エラー処理
-               // self.showError(error: error)
+                // self.showError(error: error)
                 HUD.show(.error)
             } else {
                 // 読み込みが成功した場合
@@ -244,7 +334,7 @@ class FemailViewController: UIViewController, UITableViewDataSource, UITableView
     }
     var state: AuthenticationState = .loggedout {
         didSet {
-      
+            
         }
     }
     var context: LAContext = LAContext()
@@ -300,5 +390,5 @@ class FemailViewController: UIViewController, UITableViewDataSource, UITableView
             // 生体認証ができない場合の認証画面表示など
         }
     }
-
+    
 }
