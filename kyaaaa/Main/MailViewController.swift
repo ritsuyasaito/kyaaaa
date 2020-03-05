@@ -198,6 +198,10 @@ class MailViewController: UIViewController, UITableViewDataSource, UITableViewDe
         context.canEvaluatePolicy(.deviceOwnerAuthentication, error: nil)
         state = .loggedout
         
+
+        postButton.isEnabled = false
+
+
         // Do any additional setup after loading the view.
         getUserData()
         

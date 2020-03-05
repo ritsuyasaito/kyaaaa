@@ -174,9 +174,12 @@ class FemailViewController: UIViewController, UITableViewDataSource, UITableView
     var lastSnapshot: DocumentSnapshot?
     
     override func viewDidLoad() {
+    
         super.viewDidLoad()
-        
-        
+
+
+        postButton.isEnabled = false
+      
         // Do any additional setup after loading the view.
         
         // これを実行しないと context.biometryType が有効にならないので一度実行
