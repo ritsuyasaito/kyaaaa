@@ -40,20 +40,20 @@ public protocol ASCircularButtonDelegate {
 
 public extension ASCircularButtonDelegate where Self:UIViewController{
     
-    public func configureCircularMenuButton(button: ASCircularMenuButton, numberOfMenuItems: Int , menuRedius: CGFloat ,postion ofButton: CircularButtonPosition){
+    func configureCircularMenuButton(button: ASCircularMenuButton, numberOfMenuItems: Int , menuRedius: CGFloat ,postion ofButton: CircularButtonPosition){
         button.configureCircularButton(numberOfMenuItems: numberOfMenuItems, menuRedius: menuRedius, postion: ofButton)
         button.parentViewOfMenuButton = self.view
         button.delegate = self
     }
     
-    public func configureDraggebleCircularMenuButton(button: ASCircularMenuButton, numberOfMenuItems: Int , menuRedius: CGFloat ,postion ofButton: CircularButtonPosition){
+    func configureDraggebleCircularMenuButton(button: ASCircularMenuButton, numberOfMenuItems: Int , menuRedius: CGFloat ,postion ofButton: CircularButtonPosition){
         button.configureCircularButton(numberOfMenuItems: numberOfMenuItems, menuRedius: menuRedius, postion: ofButton)
         button.parentViewOfMenuButton = self.view
         button.delegate = self
         button.isDreggable = true
     }
     
-    public func configureDynamicCircularMenuButton(button: ASCircularMenuButton, numberOfMenuItems: Int){
+    func configureDynamicCircularMenuButton(button: ASCircularMenuButton, numberOfMenuItems: Int){
         button.numberOfMenuItems = numberOfMenuItems
         button.setupDynamically()
         button.parentViewOfMenuButton = self.view
