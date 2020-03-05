@@ -18,7 +18,7 @@ import ASExtendedCircularMenu
 
 
 //女子から男子へ、女子の投稿
-class MailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, TimeLineTableViewCellDelegate ,UIViewControllerTransitioningDelegate,ASCircularButtonDelegate{
+class MailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, TimeLineTableViewCellDelegate ,UIViewControllerTransitioningDelegate,ASCircularButtonDelegate,UIGestureRecognizerDelegate{
     
     
     @IBOutlet var shareButton: ASCircularMenuButton!
