@@ -26,6 +26,8 @@ class selfPostViewController: UIViewController, UITableViewDataSource, UITableVi
     var selectedPost: Post?
 
     @IBOutlet var userPosttableView: UITableView!
+    
+    @IBOutlet var label: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +36,6 @@ class selfPostViewController: UIViewController, UITableViewDataSource, UITableVi
         userPosttableView.dataSource = self
         
         userPosttableView.rowHeight = 400
-        
         
         let nib = UINib(nibName: "TimelineTableViewCell", bundle: Bundle.main)
         userPosttableView.register(nib, forCellReuseIdentifier: "Cell")
@@ -48,6 +49,7 @@ class selfPostViewController: UIViewController, UITableViewDataSource, UITableVi
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         posts.count
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -168,7 +170,7 @@ class selfPostViewController: UIViewController, UITableViewDataSource, UITableVi
     
     
     
-    func getUserPost() {
+    func getUserPost(isAdditional: Bool = false) {
         let db = Firestore.firestore()
         if currentUserId != nil {
             let docRef = db.collection("users").document(currentUserId!)
@@ -179,40 +181,67 @@ class selfPostViewController: UIViewController, UITableViewDataSource, UITableVi
                     if dataDescription["gender"] != nil {
                         self.gender = dataDescription["gender"] as! String
                         if self.gender == "男" {
-                            Post.getUserPost(collection: "Mailposts", userId: self.currentUserId!) { (posts, lastSnapshot, error) in
+                            Post.getUserPost(collection: "Mailposts", userId: self.currentUserId!, isAdditional: isAdditional) { (posts, lastSnapshot, error) in
                                 // 読み込み完了
-                                 self.isLoading = false
-                                 self.lastSnapshot = lastSnapshot
-                                 
-                                 if let error = error {
-                                     print(error)
-                                     // エラー処理
-                                    // self.showError(error: error)
-                                     HUD.show(.error)
-                                 } else {
-                                     // 読み込みが成功した場合
-                                    print("成功")
-                                    print(posts)
-                                    self.userPosttableView.reloadData()
-                                 }
+                                self.isLoading = false
+                                self.lastSnapshot = lastSnapshot
+                                
+                                if let error = error {
+                                    print(error)
+                                    // エラー処理
+                                   // self.showError(error: error)
+                                    HUD.show(.error)
+                                } else {
+                                   
+                                   // 読み込みが成功した場合
+                                   if let posts = posts {
+                                       // 追加読み込みなら配列に追加、そうでないなら配列に再代入
+                                       if isAdditional == true {
+                                           self.posts = self.posts + posts
+                                       } else {
+                                           self.posts = posts
+                                           
+                                       }
+                                       print("成功")
+                                       print(posts)
+                                       self.userPosttableView.reloadData()
+                                   }
+                                  
+                                  
+                                }
+                            }
+                            Post.getUserPost(collection: "Mailposts", userId: self.currentUserId!) { (posts, lastSnapshot, error) in
+                                
                             }
                         } else {
-                            Post.getUserPost(collection: "Femailposts", userId: self.currentUserId!) { (posts, lastSnapshot, error) in
+                            Post.getUserPost(collection: "Femailposts", userId: self.currentUserId!, isAdditional: isAdditional) { (posts, lastSnapshot, error) in
                                 // 読み込み完了
-                                 self.isLoading = false
-                                 self.lastSnapshot = lastSnapshot
-                                 
-                                 if let error = error {
-                                     print(error)
-                                     // エラー処理
-                                    // self.showError(error: error)
-                                     HUD.show(.error)
-                                 } else {
-                                     // 読み込みが成功した場合
-                                    print("成功")
-                                    print(posts)
-                                    self.userPosttableView.reloadData()
-                                 }
+                                self.isLoading = false
+                                self.lastSnapshot = lastSnapshot
+                                
+                                if let error = error {
+                                    print(error)
+                                    // エラー処理
+                                   // self.showError(error: error)
+                                    HUD.show(.error)
+                                } else {
+                                   
+                                   // 読み込みが成功した場合
+                                   if let posts = posts {
+                                       // 追加読み込みなら配列に追加、そうでないなら配列に再代入
+                                       if isAdditional == true {
+                                           self.posts = self.posts + posts
+                                       } else {
+                                           self.posts = posts
+                                           
+                                       }
+                                       print("成功")
+                                       print(posts)
+                                       self.userPosttableView.reloadData()
+                                   }
+                                  
+                                  
+                                }
                             }
                         }
                         

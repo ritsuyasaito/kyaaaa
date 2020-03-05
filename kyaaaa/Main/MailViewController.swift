@@ -110,6 +110,8 @@ class MailViewController: UIViewController, UITableViewDataSource, UITableViewDe
         // これを実行しないと context.biometryType が有効にならないので一度実行
         context.canEvaluatePolicy(.deviceOwnerAuthentication, error: nil)
         state = .loggedout
+        
+        postButton.isEnabled = false
 
         // Do any additional setup after loading the view.
         getUserData()

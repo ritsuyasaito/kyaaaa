@@ -95,8 +95,10 @@ class FemailViewController: UIViewController, UITableViewDataSource, UITableView
     var lastSnapshot: DocumentSnapshot?
 
     override func viewDidLoad() {
+    
         super.viewDidLoad()
 
+        postButton.isEnabled = false
       
         // Do any additional setup after loading the view.
         
