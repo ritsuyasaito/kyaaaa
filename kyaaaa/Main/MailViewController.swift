@@ -12,16 +12,103 @@ import FirebaseAuth
 import Firebase
 import PKHUD
 import ViewAnimator
+import BubbleTransition
+import ASExtendedCircularMenu
 
 
 
 //女子から男子へ、女子の投稿
-class MailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, TimeLineTableViewCellDelegate {
+class MailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, TimeLineTableViewCellDelegate ,UIViewControllerTransitioningDelegate,ASCircularButtonDelegate{
+    
+    
+    @IBOutlet var shareButton: ASCircularMenuButton!
+    @IBOutlet var colourPickerButton: ASCircularMenuButton!
+    let colourArray: [UIColor] = [.red , .blue , .green , .yellow , .purple , .gray ,.black , .brown]
+    let shareName: [String] = ["小","中","高","大","30代","40代","50代","60代"]
+  
+    
+    // UILongPressGestureRecognizer宣言
+    var longPressRecognizer = UILongPressGestureRecognizer(target: self, action: "cellLongPressed:")
+
+    
+    
+    func didClickOnCircularMenuButton(_ menuButton: ASCircularMenuButton, indexForButton: Int, button: UIButton) {
+   
+        if menuButton == colourPickerButton{
+        }
+        if menuButton == shareButton{
+            
+          
+            if indexForButton == 0{
+                print("小学生")
+            }else if indexForButton == 1{
+                print("中学生")
+            }else if indexForButton == 2{
+                print("高校生")
+            }else if indexForButton == 3{
+                print("大学生")
+            }else if indexForButton == 4{
+                
+            }else if indexForButton == 5{
+                
+            }else if indexForButton == 6{
+                
+            }else if indexForButton == 7{
+                
+            }else if indexForButton == 8{
+                
+            }
+            
+        }
+        
+    }
+    
+    func buttonForIndexAt(_ menuButton: ASCircularMenuButton, indexForButton: Int) -> UIButton {
+        
+        
+        
+       let button: UIButton = UIButton()
+        if menuButton == shareButton{
+//            button.setBackgroundImage(UIImage.init(named: "shareicon.\(indexForButton + 1)"), for: .normal)
+            button.backgroundColor = colourArray[indexForButton]
+            button.setTitle(shareName[indexForButton], for: .normal)
+           
+        }
+        if menuButton == colourPickerButton{
+            button.backgroundColor = colourArray[indexForButton]
+        }
+        return button
+    }
+    
+    
+    
+    let transition = BubbleTransition()
+    
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        transition.transitionMode = .present
+        transition.startingPoint = postButton.center
+        //        transition.bubbleColor = postButton.backgroundColor!
+        return transition
+    }
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        transition.transitionMode = .dismiss
+        transition.startingPoint = postButton.center
+        //        transition.bubbleColor = postButton.backgroundColor!
+        return transition
+    }
+    func buttonShadow(){
+        postButton.layer.shadowColor = UIColor.black.cgColor
+        postButton.layer.shadowOffset = CGSize(width: 3, height: 3)
+        postButton.layer.shadowOpacity = 0.2
+        postButton.layer.masksToBounds = false
+        
+    }
+    
     
     
     
     func didTapSorenaButton(tableViewCell: UITableViewCell, button: UIButton) {
-   
+        
         selectedPost = posts[tableViewCell.tag]
         self.selectedPost!.sorena(collection: "Mailposts") { (error) in
             if let error = error {
@@ -31,11 +118,11 @@ class MailViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 self.loadTimeline()
             }
         }
-       
+        
     }
     
     func didTapNaruhodoButton(tableViewCell: UITableViewCell, button: UIButton) {
-      
+        
         print(tableViewCell.tag)
         selectedPost = posts[tableViewCell.tag]
         self.selectedPost!.naruhodo(collection: "Mailposts") { (error) in
@@ -49,7 +136,7 @@ class MailViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func didTapKyaaaaButton(tableViewCell: UITableViewCell, button: UIButton) {
         selectedPost = posts[tableViewCell.tag]
-       
+        
         print(selectedPost)
         self.selectedPost!.kyaaaa(collection: "Mailposts") { (error) in
             if let error = error {
@@ -67,7 +154,7 @@ class MailViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let otherShareAction = UIAlertAction(title: "共有", style: UIAlertAction.Style.default) { (action) in
             //ActivityViewController
             self.selectedPost = self.posts[tableViewCell.tag]
-          
+            
             var dear = self.selectedPost?.age
             var text = self.selectedPost?.text
             var items = ["Dear\(dear)",text] as [Any]
@@ -88,12 +175,12 @@ class MailViewController: UIViewController, UITableViewDataSource, UITableViewDe
         present(alertController,animated: true,completion: nil)
     }
     
-
+    
     let currentUser = Auth.auth().currentUser
     var userGender: String = ""
     @IBOutlet var postButton: UIButton!
-  
-   
+    
+    
     @IBOutlet var maleTableView: UITableView!
     
     var posts = [Post]()
@@ -103,14 +190,14 @@ class MailViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     // 下に引っ張って追加読み込みしたい場合に使う、読み込んだ投稿の最後の投稿を保存する変数
     var lastSnapshot: DocumentSnapshot?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // これを実行しないと context.biometryType が有効にならないので一度実行
         context.canEvaluatePolicy(.deviceOwnerAuthentication, error: nil)
         state = .loggedout
-
+        
         // Do any additional setup after loading the view.
         getUserData()
         
@@ -119,21 +206,36 @@ class MailViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         maleTableView.rowHeight = 400
         
+        buttonShadow()
         
         let nib = UINib(nibName: "TimelineTableViewCell", bundle: Bundle.main)
         maleTableView.register(nib, forCellReuseIdentifier: "Cell")
         
+        configureDynamicCircularMenuButton(button: shareButton, numberOfMenuItems: 8)
+        shareButton.menuButtonSize = .large
+        
+        configureDraggebleCircularMenuButton(button: colourPickerButton, numberOfMenuItems: 8, menuRedius: 70, postion: .center)
+        colourPickerButton.menuButtonSize = .medium
+        colourPickerButton.sholudMenuButtonAnimate = false
+        
+        // `UIGestureRecognizerDelegate`を設定するのをお忘れなく
+        longPressRecognizer.delegate = self as! UIGestureRecognizerDelegate
+
+        // tableViewにrecognizerを設定
+        maleTableView.addGestureRecognizer(longPressRecognizer)
+        
+        
     }
     
-//    override func viewDidAppear(_ animated: Bool) {
-//         let fromAnimation = AnimationType.from(direction: .right, offset: 50.0)
-//               let zoomAnimation = AnimationType.zoom(scale: 0.3)
-//               let rotateAnimation = AnimationType.rotate(angle: CGFloat.pi/6)
-//               UIView.animate(views: maleTableView.visibleCells,
-//                              animations: [fromAnimation, zoomAnimation,rotateAnimation],
-//                              duration: 1.2)
-//        maleTableView.reloadData()
-//    }
+    //    override func viewDidAppear(_ animated: Bool) {
+    //         let fromAnimation = AnimationType.from(direction: .right, offset: 50.0)
+    //               let zoomAnimation = AnimationType.zoom(scale: 0.3)
+    //               let rotateAnimation = AnimationType.rotate(angle: CGFloat.pi/6)
+    //               UIView.animate(views: maleTableView.visibleCells,
+    //                              animations: [fromAnimation, zoomAnimation,rotateAnimation],
+    //                              duration: 1.2)
+    //        maleTableView.reloadData()
+    //    }
     
     override func viewWillAppear(_ animated: Bool) {
         getUserData()
@@ -197,7 +299,7 @@ class MailViewController: UIViewController, UITableViewDataSource, UITableViewDe
         } else {
             cell.naruhodoCountLabel.text = "0"
         }
-       
+        
         
         return cell
     }
@@ -223,7 +325,7 @@ class MailViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 }
             }
         }
-
+        
     }
     
     func loadTimeline(isAdditional: Bool = false) {
@@ -233,12 +335,12 @@ class MailViewController: UIViewController, UITableViewDataSource, UITableViewDe
             self.isLoading = false
             self.lastSnapshot = lastSnapshot
             //self.timelineTableView.headRefreshControl.endRefreshing()
-           // self.timelineTableView.footRefreshControl.endRefreshing()
+            // self.timelineTableView.footRefreshControl.endRefreshing()
             
             if let error = error {
                 print(error)
                 // エラー処理
-               // self.showError(error: error)
+                // self.showError(error: error)
                 HUD.show(.error)
             } else {
                 // 読み込みが成功した場合
@@ -260,7 +362,7 @@ class MailViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         
     }
-
+    
     
     
     //   ----------------パスワード要求ー---------------
@@ -270,7 +372,7 @@ class MailViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     var state: AuthenticationState = .loggedout {
         didSet {
-      
+            
         }
     }
     var context: LAContext = LAContext()
@@ -326,7 +428,7 @@ class MailViewController: UIViewController, UITableViewDataSource, UITableViewDe
             // 生体認証ができない場合の認証画面表示など
         }
     }
-
+    
     @IBAction func toPostPage() {
         if userGender == "男" {
             
@@ -339,12 +441,14 @@ class MailViewController: UIViewController, UITableViewDataSource, UITableViewDe
             
         } else if segue.identifier == "toPostPage" {
             let postVC = segue.destination as! PostViewController
+            postVC.transitioningDelegate = self
+            postVC.modalPresentationStyle = .custom
             postVC.fromGender = "男性から"
         }
     }
     
     
-
-   
-
+    
+    
+    
 }
