@@ -36,7 +36,7 @@
 		244E9B6F240F8E14003D6B8A /* UserTabmanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244E9B6E240F8E14003D6B8A /* UserTabmanViewController.swift */; };
 		244E9B71240F9022003D6B8A /* kyaaaaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244E9B70240F9022003D6B8A /* kyaaaaViewController.swift */; };
 		244E9B73240F902F003D6B8A /* selfPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244E9B72240F902F003D6B8A /* selfPostViewController.swift */; };
-		244E9B772410B74B003D6B8A /* TestUserPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244E9B762410B74B003D6B8A /* TestUserPostViewController.swift */; };
+		244E9B792411FAAF003D6B8A /* FemailKyaaaaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244E9B782411FAAF003D6B8A /* FemailKyaaaaViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,7 +70,7 @@
 		244E9B6E240F8E14003D6B8A /* UserTabmanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTabmanViewController.swift; sourceTree = "<group>"; };
 		244E9B70240F9022003D6B8A /* kyaaaaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = kyaaaaViewController.swift; sourceTree = "<group>"; };
 		244E9B72240F902F003D6B8A /* selfPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = selfPostViewController.swift; sourceTree = "<group>"; };
-		244E9B762410B74B003D6B8A /* TestUserPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUserPostViewController.swift; sourceTree = "<group>"; };
+		244E9B782411FAAF003D6B8A /* FemailKyaaaaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FemailKyaaaaViewController.swift; sourceTree = "<group>"; };
 		24F58F720C576286429F4B55 /* Pods-kyaaaa.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kyaaaa.release.xcconfig"; path = "Target Support Files/Pods-kyaaaa/Pods-kyaaaa.release.xcconfig"; sourceTree = "<group>"; };
 		7296136D7E71358EFA1CADB0 /* Pods-kyaaaa.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kyaaaa.debug.xcconfig"; path = "Target Support Files/Pods-kyaaaa/Pods-kyaaaa.debug.xcconfig"; sourceTree = "<group>"; };
 		9AFA8380FB5D76B887643C2B /* Pods_kyaaaa.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_kyaaaa.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -143,9 +143,9 @@
 				240B9C102408E41000FF7FB3 /* MailViewController.swift */,
 				240B9C082407D3E800FF7FB3 /* UserPageViewController.swift */,
 				243A9399240C9D2A001BA23A /* FirstViewController.swift */,
+				244E9B782411FAAF003D6B8A /* FemailKyaaaaViewController.swift */,
 				244E9B70240F9022003D6B8A /* kyaaaaViewController.swift */,
 				244E9B72240F902F003D6B8A /* selfPostViewController.swift */,
-				244E9B762410B74B003D6B8A /* TestUserPostViewController.swift */,
 				244E9B6E240F8E14003D6B8A /* UserTabmanViewController.swift */,
 				243A939B240CA0CF001BA23A /* TimelineTableViewCell.swift */,
 				243A939C240CA0CF001BA23A /* TimelineTableViewCell.xib */,
@@ -334,6 +334,7 @@
 				240B9C022407C3E200FF7FB3 /* SignUpViewController.swift in Sources */,
 				240B9C092407D3E800FF7FB3 /* UserPageViewController.swift in Sources */,
 				240B9C1B240A689800FF7FB3 /* PostViewController.swift in Sources */,
+				244E9B792411FAAF003D6B8A /* FemailKyaaaaViewController.swift in Sources */,
 				244E9B71240F9022003D6B8A /* kyaaaaViewController.swift in Sources */,
 				240B9C1D240B9E8100FF7FB3 /* LoginBaseView2.swift in Sources */,
 				240B9C19240A62B400FF7FB3 /* Post.swift in Sources */,
@@ -342,7 +343,6 @@
 				244E9B6F240F8E14003D6B8A /* UserTabmanViewController.swift in Sources */,
 				244E9B73240F902F003D6B8A /* selfPostViewController.swift in Sources */,
 				240B9BFE2407C3AE00FF7FB3 /* SigninViewController.swift in Sources */,
-				244E9B772410B74B003D6B8A /* TestUserPostViewController.swift in Sources */,
 				240B9C132408F85E00FF7FB3 /* ImageUpLoader.swift in Sources */,
 				240B9C112408E41000FF7FB3 /* MailViewController.swift in Sources */,
 				243A939A240C9D2A001BA23A /* FirstViewController.swift in Sources */,

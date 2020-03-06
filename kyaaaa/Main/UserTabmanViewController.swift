@@ -15,6 +15,7 @@ class UserTabmanViewController: TabmanViewController {
     private lazy var viewControllers: [UIViewController] = {
         [
             storyboard!.instantiateViewController(withIdentifier: "kyaaaaViewController"),
+            storyboard!.instantiateViewController(withIdentifier: "femaleViewController"),
             storyboard!.instantiateViewController(withIdentifier: "selfPostViewController"),
             
         ]
@@ -43,7 +44,7 @@ extension UserTabmanViewController: PageboyViewControllerDataSource, TMBarDataSo
     
     func barItem(for bar: TMBar, at index: Int) -> TMBarItemable {
 
-        let titilename = ["kyaaaa","投稿履歴"]
+        let titilename = ["kyaaaa(男)","kyaaaa(女)","投稿履歴"]
         var items = [TMBarItem]()
 
         for i in titilename {
