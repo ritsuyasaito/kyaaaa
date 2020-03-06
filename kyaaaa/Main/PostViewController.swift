@@ -37,9 +37,9 @@ class PostViewController: UIViewController, UITextFieldDelegate, UIPickerViewDel
     var fromGender: String?
     var collection = "MailPosts"
     
+   
     
-    
-    var ageArray = ["中学生","高校生","19~22歳","23~29歳","30~40代","50代〜"]
+    var ageArray = ["小学生","中学生","高校生","19~22歳","23~29歳","30~39歳","40~49歳", "50歳~"]
     var pickerView1: UIPickerView = UIPickerView()
     
     var currentUser = Auth.auth().currentUser

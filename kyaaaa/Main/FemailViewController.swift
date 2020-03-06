@@ -19,8 +19,9 @@ class FemailViewController: UIViewController, UITableViewDataSource, UITableView
     
     @IBOutlet var shareButton: ASCircularMenuButton!
     @IBOutlet var colourPickerButton: ASCircularMenuButton!
-    let colourArray: [UIColor] = [.red , .blue , .green , .yellow , .purple , .gray ,.black , .brown]
-    let shareName: [String] = ["小","中","高","大","30代","40代","50代","60代"]
+    let colourArray: [UIColor] = [.red , .blue , .green , .yellow , .purple , .gray , .black, .black]
+    let shareName: [String] = ["小","中","高","19~","23~","30~","40~","50~"]
+    var ageNumDictionary: [Int: String] = [0:"小学生",1:"中学生", 2:"高校生", 3:"19~22歳", 4:"23~29歳", 5:"30~39歳", 6:"40~49歳", 7:"50歳~"]
     
     
     let transition = BubbleTransition()
@@ -29,27 +30,13 @@ class FemailViewController: UIViewController, UITableViewDataSource, UITableView
         
         if menuButton == colourPickerButton{
         }
-        if menuButton == shareButton{
-            
-            
-            if indexForButton == 0{
-                print("小学生")
-            }else if indexForButton == 1{
-                print("中学生")
-            }else if indexForButton == 2{
-                print("高校生")
-            }else if indexForButton == 3{
-                print("大学生")
-            }else if indexForButton == 4{
-                
-            }else if indexForButton == 5{
-                
-            }else if indexForButton == 6{
-                
-            }else if indexForButton == 7{
-                
-            }else if indexForButton == 8{
-                
+        
+        if menuButton == shareButton {
+           posts = [Post]()
+            if let age = ageNumDictionary[indexForButton] {
+                loadData(filterAge: age)
+            } else {
+                print("Data取得失敗")
             }
             
         }
@@ -209,6 +196,39 @@ class FemailViewController: UIViewController, UITableViewDataSource, UITableView
     override func viewWillAppear(_ animated: Bool) {
         loadTimeline()
         getUserData()
+    }
+    
+    func loadData(isAdditional: Bool = false, filterAge: String) {
+        isLoading = true
+        Post.getAgeData(age: filterAge, collection: "Femailposts", isAdditional: isAdditional, lastSnapshot: lastSnapshot) { (posts, lastSnapshot, error) in
+            // 読み込み完了
+            self.isLoading = false
+            self.lastSnapshot = lastSnapshot
+            //self.timelineTableView.headRefreshControl.endRefreshing()
+            // self.timelineTableView.footRefreshControl.endRefreshing()
+            
+            if let error = error {
+                print(error)
+                // エラー処理
+                // self.showError(error: error)
+                HUD.show(.error)
+            } else {
+                // 読み込みが成功した場合
+                if let posts = posts {
+                    // 追加読み込みなら配列に追加、そうでないなら配列に再代入
+                    if isAdditional == true {
+                        self.posts = self.posts + posts
+                    } else {
+                        self.posts = posts
+                        
+                    }
+                    print("成功")
+                    print(posts)
+                    self.FemaleTableView.reloadData()
+                }
+            }
+        }
+                
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -23,9 +23,10 @@ class MailViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     @IBOutlet var shareButton: ASCircularMenuButton!
     @IBOutlet var colourPickerButton: ASCircularMenuButton!
-    let colourArray: [UIColor] = [.red , .blue , .green , .yellow , .purple , .gray ,.black , .brown]
-    let shareName: [String] = ["小","中","高","大","30代","40代","50代","60代"]
-  
+    let colourArray: [UIColor] = [.red , .blue , .green , .yellow , .purple , .gray , .black, .black]
+    let shareName: [String] = ["小","中","高","19~","23~","30~","40~","50~"]
+    var ageNumDictionary: [Int: String] = [0:"小学生",1:"中学生", 2:"高校生", 3:"19~22歳", 4:"23~29歳", 5:"30~39歳", 6:"40~49歳", 7:"50歳~"]
+
     
     // UILongPressGestureRecognizer宣言
     var longPressRecognizer = UILongPressGestureRecognizer(target: self, action: "cellLongPressed:")
@@ -36,28 +37,14 @@ class MailViewController: UIViewController, UITableViewDataSource, UITableViewDe
    
         if menuButton == colourPickerButton{
         }
-        if menuButton == shareButton{
-            
-          
-            if indexForButton == 0{
-                print("小学生")
-            }else if indexForButton == 1{
-                print("中学生")
-            }else if indexForButton == 2{
-                print("高校生")
-            }else if indexForButton == 3{
-                print("大学生")
-            }else if indexForButton == 4{
-                
-            }else if indexForButton == 5{
-                
-            }else if indexForButton == 6{
-                
-            }else if indexForButton == 7{
-                
-            }else if indexForButton == 8{
-                
+        if menuButton == shareButton {
+           posts = [Post]()
+            if let age = ageNumDictionary[indexForButton] {
+                loadData(filterAge: age)
+            } else {
+                print("Data取得失敗")
             }
+            
             
         }
         
@@ -65,11 +52,10 @@ class MailViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func buttonForIndexAt(_ menuButton: ASCircularMenuButton, indexForButton: Int) -> UIButton {
         
-        
-        
-       let button: UIButton = UIButton()
+        let button: UIButton = UIButton()
         if menuButton == shareButton{
 //            button.setBackgroundImage(UIImage.init(named: "shareicon.\(indexForButton + 1)"), for: .normal)
+            print(indexForButton)
             button.backgroundColor = colourArray[indexForButton]
             button.setTitle(shareName[indexForButton], for: .normal)
            
@@ -106,6 +92,67 @@ class MailViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     
     
+    let currentUser = Auth.auth().currentUser
+    var userGender: String = ""
+    @IBOutlet var postButton: UIButton!
+    
+    
+    @IBOutlet var maleTableView: UITableView!
+    
+    var posts = [Post]()
+    var selectedPost: Post?
+    // 読み込み中かどうかを判別する変数(読み込み結果が0件の場合DZNEmptyDataSetで空の表示をさせるため)
+    var isLoading: Bool = false
+    
+    // 下に引っ張って追加読み込みしたい場合に使う、読み込んだ投稿の最後の投稿を保存する変数
+    var lastSnapshot: DocumentSnapshot?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // これを実行しないと context.biometryType が有効にならないので一度実行
+        context.canEvaluatePolicy(.deviceOwnerAuthentication, error: nil)
+        state = .loggedout
+        
+
+        postButton.isEnabled = false
+
+
+        // Do any additional setup after loading the view.
+        getUserData()
+        
+        maleTableView.delegate = self
+        maleTableView.dataSource = self
+        
+        maleTableView.rowHeight = 400
+        
+        buttonShadow()
+        
+        let nib = UINib(nibName: "TimelineTableViewCell", bundle: Bundle.main)
+        maleTableView.register(nib, forCellReuseIdentifier: "Cell")
+        
+        configureDynamicCircularMenuButton(button: shareButton, numberOfMenuItems: 8)
+        shareButton.menuButtonSize = .large
+        
+        configureDraggebleCircularMenuButton(button: colourPickerButton, numberOfMenuItems: 8, menuRedius: 70, postion: .center)
+        colourPickerButton.menuButtonSize = .medium
+        colourPickerButton.sholudMenuButtonAnimate = false
+        
+        // `UIGestureRecognizerDelegate`を設定するのをお忘れなく
+        longPressRecognizer.delegate = self as! UIGestureRecognizerDelegate
+
+        // tableViewにrecognizerを設定
+        maleTableView.addGestureRecognizer(longPressRecognizer)
+        
+        loadTimeline()
+    }
+    
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        getUserData()
+        
+    }
     
     func didTapSorenaButton(tableViewCell: UITableViewCell, button: UIButton) {
         
@@ -176,78 +223,6 @@ class MailViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     
-    let currentUser = Auth.auth().currentUser
-    var userGender: String = ""
-    @IBOutlet var postButton: UIButton!
-    
-    
-    @IBOutlet var maleTableView: UITableView!
-    
-    var posts = [Post]()
-    var selectedPost: Post?
-    // 読み込み中かどうかを判別する変数(読み込み結果が0件の場合DZNEmptyDataSetで空の表示をさせるため)
-    var isLoading: Bool = false
-    
-    // 下に引っ張って追加読み込みしたい場合に使う、読み込んだ投稿の最後の投稿を保存する変数
-    var lastSnapshot: DocumentSnapshot?
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        // これを実行しないと context.biometryType が有効にならないので一度実行
-        context.canEvaluatePolicy(.deviceOwnerAuthentication, error: nil)
-        state = .loggedout
-        
-
-        postButton.isEnabled = false
-
-
-        // Do any additional setup after loading the view.
-        getUserData()
-        
-        maleTableView.delegate = self
-        maleTableView.dataSource = self
-        
-        maleTableView.rowHeight = 400
-        
-        buttonShadow()
-        
-        let nib = UINib(nibName: "TimelineTableViewCell", bundle: Bundle.main)
-        maleTableView.register(nib, forCellReuseIdentifier: "Cell")
-        
-        configureDynamicCircularMenuButton(button: shareButton, numberOfMenuItems: 8)
-        shareButton.menuButtonSize = .large
-        
-        configureDraggebleCircularMenuButton(button: colourPickerButton, numberOfMenuItems: 8, menuRedius: 70, postion: .center)
-        colourPickerButton.menuButtonSize = .medium
-        colourPickerButton.sholudMenuButtonAnimate = false
-        
-        // `UIGestureRecognizerDelegate`を設定するのをお忘れなく
-        longPressRecognizer.delegate = self as! UIGestureRecognizerDelegate
-
-        // tableViewにrecognizerを設定
-        maleTableView.addGestureRecognizer(longPressRecognizer)
-        
-        
-    }
-    
-    //    override func viewDidAppear(_ animated: Bool) {
-    //         let fromAnimation = AnimationType.from(direction: .right, offset: 50.0)
-    //               let zoomAnimation = AnimationType.zoom(scale: 0.3)
-    //               let rotateAnimation = AnimationType.rotate(angle: CGFloat.pi/6)
-    //               UIView.animate(views: maleTableView.visibleCells,
-    //                              animations: [fromAnimation, zoomAnimation,rotateAnimation],
-    //                              duration: 1.2)
-    //        maleTableView.reloadData()
-    //    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        getUserData()
-        loadTimeline()
-    }
-    
-    
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return posts.count
     }
@@ -306,6 +281,39 @@ class MailViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         
         return cell
+    }
+    
+    func loadData(isAdditional: Bool = false, filterAge: String) {
+        isLoading = true
+        Post.getAgeData(age: filterAge, collection: "Mailposts", isAdditional: isAdditional, lastSnapshot: lastSnapshot) { (posts, lastSnapshot, error) in
+            // 読み込み完了
+            self.isLoading = false
+            self.lastSnapshot = lastSnapshot
+            //self.timelineTableView.headRefreshControl.endRefreshing()
+            // self.timelineTableView.footRefreshControl.endRefreshing()
+            
+            if let error = error {
+                print(error)
+                // エラー処理
+                // self.showError(error: error)
+                HUD.show(.error)
+            } else {
+                // 読み込みが成功した場合
+                if let posts = posts {
+                    // 追加読み込みなら配列に追加、そうでないなら配列に再代入
+                    if isAdditional == true {
+                        self.posts = self.posts + posts
+                    } else {
+                        self.posts = posts
+                        
+                    }
+                    print("成功")
+                    print(posts)
+                    self.maleTableView.reloadData()
+                }
+            }
+        }
+                
     }
     
     func getUserData() {
