@@ -130,7 +130,69 @@ struct Post {
         }
     }
     
-    // DBから投稿を取得
+    // DBからフィルターがかかった投稿を取得
+    static func getAgeData(age: String, collection: String, isAdditional: Bool = false, lastSnapshot: DocumentSnapshot? = nil, completion: @escaping(_ posts: [Post]?, _ lastSnapshot: DocumentSnapshot?, _ error: Error?) -> ()) {
+        // データベースへの参照を作る
+        let ref = Firestore.firestore().collection(collection)
+        
+        // タイムラインは新しい投稿が上にくるので降順にし、50件ずつ取得するクエリを作成
+        
+        var query = ref.whereField("age", isEqualTo: age)
+        query = query.order(by: "createdAt", descending: true).limit(to: 50)
+        
+         
+        
+        // 下に引っ張って読み込み(追加読み込み)の操作のときは、前回読み込んだ最後の投稿を基準に読み込むクエリを作成
+        if isAdditional == true {
+            guard let lastSnapshot = lastSnapshot else {
+                completion(nil, nil, nil)
+                return
+            }
+            query = query.start(afterDocument: lastSnapshot)
+        }
+        
+        // クエリの読み込み
+        query.getDocuments { (snapshot, error) in
+            if let error = error {
+                // 取得時にエラーが発生した場合errorをcompletionブロックに返す
+                completion(nil, nil, error)
+            } else {
+                // 読み込んだsnapshotのデータをPostクラスの配列に変換
+                if let documents = snapshot?.documents {
+                    var posts = [Post]()
+                    for document in documents {
+                        let data = document.data()
+                        var post = Post()
+                        post.uid = document.documentID
+                        post.userId = data["userId"] as? String
+                        post.createdAt = data["createdAt"] as? String
+                        post.age = data["age"] as? String
+                        post.initial = data["initial"] as? String
+                    
+                        post.text = data["text"] as? String
+                        post.userPhotoURL = data["userPhotoURL"] as? String
+                        
+                        post.naruhodoUsers = data["naruhodoUsers"] as? [String]
+                        post.sorenaUsers = data["sorenaUsers"] as? [String]
+                        post.kyaaaaUsers = data["kyaaaaUsers"] as? [String]
+                        posts.append(post)
+                    }
+                    
+                    // 追加読み込みのため、1度読み込んだらその最後の投稿データを変数に格納しておく
+                    let lastSnapshot = documents.last
+                    
+                    // 処理完了とともにPostクラスの配列と最後の投稿データをcompletionブロックに返す
+                    completion(posts, lastSnapshot, nil)
+                } else {
+                    // エラーもないが取得できるsnapshotがなかった場合
+                    completion(nil, nil, nil)
+                }
+            }
+        }
+    }
+    
+    
+    // DBからUserの投稿を取得
     static func getUserPost(collection: String, userId: String, isAdditional: Bool = false, lastSnapshot: DocumentSnapshot? = nil, completion: @escaping(_ posts: [Post]?, _ lastSnapshot: DocumentSnapshot?, _ error: Error?) -> ()) {
         // データベースへの参照を作る
         let ref = Firestore.firestore().collection(collection)
