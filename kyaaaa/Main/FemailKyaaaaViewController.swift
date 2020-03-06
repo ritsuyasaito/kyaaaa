@@ -1,8 +1,8 @@
 //
-//  kyaaaaViewController.swift
+//  FemailKyaaaaViewController.swift
 //  kyaaaa
 //
-//  Created by 齋藤律哉 on 2020/03/04.
+//  Created by 齋藤律哉 on 2020/03/06.
 //  Copyright © 2020 ritsuya. All rights reserved.
 //
 
@@ -11,8 +11,7 @@ import FirebaseAuth
 import Firebase
 import PKHUD
 
-class kyaaaaViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, TimeLineTableViewCellDelegate {
-    
+class FemailKyaaaaViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, TimeLineTableViewCellDelegate {
     let currentUserId = Auth.auth().currentUser?.uid
     var gender = ""
     
@@ -25,20 +24,19 @@ class kyaaaaViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var posts = [Post]()
     var selectedPost: Post?
     
-    @IBOutlet var kyaaaaDataTableView: UITableView!
+    @IBOutlet var femaleKyaaaaDataTableView: UITableView!
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        kyaaaaDataTableView.dataSource = self
-        kyaaaaDataTableView.delegate = self
+        femaleKyaaaaDataTableView.dataSource = self
+        femaleKyaaaaDataTableView.delegate = self
         
-        kyaaaaDataTableView.rowHeight = 400
+        femaleKyaaaaDataTableView.rowHeight = 400
         
         let nib = UINib(nibName: "TimelineTableViewCell", bundle: Bundle.main)
-        kyaaaaDataTableView.register(nib, forCellReuseIdentifier: "Cell")
-       
+        femaleKyaaaaDataTableView.register(nib, forCellReuseIdentifier: "Cell")
+        
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -106,7 +104,7 @@ class kyaaaaViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         func didTapSorenaButton(tableViewCell: UITableViewCell, button: UIButton) {
             selectedPost = posts[tableViewCell.tag]
-            self.selectedPost!.sorena(collection: "Mailposts") { (error) in
+            self.selectedPost!.sorena(collection: "Femailposts") { (error) in
                 if let error = error {
                     HUD.show(.error)
                     print("error === " + error.localizedDescription)
@@ -118,7 +116,7 @@ class kyaaaaViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         func didTapNaruhodoButton(tableViewCell: UITableViewCell, button: UIButton) {
             selectedPost = posts[tableViewCell.tag]
-            self.selectedPost!.naruhodo(collection: "Mailposts") { (error) in
+            self.selectedPost!.naruhodo(collection: "Femailposts") { (error) in
                 if let error = error {
                     print("error === " + error.localizedDescription)
                 } else {
@@ -129,7 +127,7 @@ class kyaaaaViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         func didTapKyaaaaButton(tableViewCell: UITableViewCell, button: UIButton) {
             selectedPost = posts[tableViewCell.tag]
-             self.selectedPost!.kyaaaa(collection: "Mailposts") { (error) in
+             self.selectedPost!.kyaaaa(collection: "Femailposts") { (error) in
                  if let error = error {
                      print("error === " + error.localizedDescription)
                  } else {
@@ -163,50 +161,43 @@ class kyaaaaViewController: UIViewController, UITableViewDelegate, UITableViewDa
             
             present(alertController,animated: true,completion: nil)
         }
-        
-        
-        
-        
-        func getkyaaaaPost(isAdditional: Bool = false) {
-            let db = Firestore.firestore()
-            if currentUserId != nil {
-                Post.getUserkyaaaPost(collection: "Mailposts", userId: self.currentUserId!, isAdditional: isAdditional, lastSnapshot: self.lastSnapshot) { (posts, lastSnapshot, error) in
-                    // 読み込み完了
-                    self.isLoading = false
-                    self.lastSnapshot = lastSnapshot
-                    
-                    if let error = error {
-                        print(error)
-                        // エラー処理
-                       // self.showError(error: error)
-                        HUD.show(.error)
-                    } else {
-                       // 読み込みが成功した場合
-                       if let posts = posts {
-                           // 追加読み込みなら配列に追加、そうでないなら配列に再代入
-                           if isAdditional == true {
-                               self.posts = self.posts + posts
-                           } else {
-                               self.posts = posts
-                               
-                           }
-                           print("成功")
-                           print(posts)
-                           self.kyaaaaDataTableView.reloadData()
+    
+    func getkyaaaaPost(isAdditional: Bool = false) {
+        let db = Firestore.firestore()
+        if currentUserId != nil {
+            Post.getUserkyaaaPost(collection: "Femailposts", userId: self.currentUserId!, isAdditional: isAdditional, lastSnapshot: self.lastSnapshot) { (posts, lastSnapshot, error) in
+                // 読み込み完了
+                self.isLoading = false
+                self.lastSnapshot = lastSnapshot
+                
+                if let error = error {
+                    print(error)
+                    // エラー処理
+                   // self.showError(error: error)
+                    HUD.show(.error)
+                } else {
+                   // 読み込みが成功した場合
+                   if let posts = posts {
+                       // 追加読み込みなら配列に追加、そうでないなら配列に再代入
+                       if isAdditional == true {
+                           self.posts = self.posts + posts
+                       } else {
+                           self.posts = posts
+                           
                        }
-                    }
+                       print("成功")
+                       print(posts)
+                       self.femaleKyaaaaDataTableView.reloadData()
+                   }
                 }
-                
-            } else {
-                //ログイン画面に移動
-                
             }
+            
+        } else {
+            //ログイン画面に移動
             
         }
         
-
+    }
+        
+        
 }
-
-   
-
-

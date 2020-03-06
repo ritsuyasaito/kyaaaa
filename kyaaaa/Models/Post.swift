@@ -193,7 +193,7 @@ struct Post {
         let ref = Firestore.firestore().collection(collection)
         
         // タイムラインは新しい投稿が上にくるので降順にし、50件ずつ取得するクエリを作成
-        var query = ref.whereField("userId", isEqualTo: userId)
+        var query = ref.whereField("kyaaaaUsers", arrayContains: userId)
         query = query.order(by: "createdAt", descending: true).limit(to: 50)
         
         // 下に引っ張って読み込み(追加読み込み)の操作のときは、前回読み込んだ最後の投稿を基準に読み込むクエリを作成
@@ -209,6 +209,7 @@ struct Post {
             if let error = error {
                 // 取得時にエラーが発生した場合errorをcompletionブロックに返す
                 completion(nil, nil, error)
+                
             } else {
                 // 読み込んだsnapshotのデータをPostクラスの配列に変換
                 if let documents = snapshot?.documents {
