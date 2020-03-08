@@ -224,10 +224,15 @@
 			<key>orderHint</key>
 			<integer>51</integer>
 		</dict>
-		<key>ViewAnimator.xcscheme_^#shared#^_</key>
+		<key>TimelineCards.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>52</integer>
+		</dict>
+		<key>ViewAnimator.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>53</integer>
 		</dict>
 		<key>abseil.xcscheme_^#shared#^_</key>
 		<dict>

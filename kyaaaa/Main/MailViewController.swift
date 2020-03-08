@@ -29,9 +29,31 @@ class MailViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
     
     // UILongPressGestureRecognizer宣言
-    var longPressRecognizer = UILongPressGestureRecognizer(target: self, action: "cellLongPressed:")
+//    var longPressRecognizer = UILongPressGestureRecognizer(target: self, action: cellLongPressed:)
+    @IBOutlet var longPressGesRec: UILongPressGestureRecognizer!
 
-    
+    // UILongPressGestureRecognizerのdelegate：ロングタップを検出する　これだとtableview外しか無理だああ、、
+       @IBAction func longPress(_ sender: UILongPressGestureRecognizer) {
+           // ロングタップ開始
+                  if sender.state == .began {
+                  }
+                  // ロングタップ終了（手を離した）
+                  else if sender.state == .ended {
+                      let alert = UIAlertController(title: nil, message: "報告しますか", preferredStyle: .alert)
+                          var action = UIAlertAction(title: "いいえ", style: .default) { (action) in
+                              alert.dismiss(animated: true, completion: nil)
+                              self.navigationController?.popViewController(animated: true)//元の画面に戻る
+                          }
+                          let action2 = UIAlertAction(title: "はい", style: .default, handler: { (action) in
+                         
+                              
+                              alert.dismiss(animated: true, completion: nil)
+                          })
+                          alert.addAction(action)
+                          alert.addAction(action2)
+                          self.present(alert, animated: true,completion: nil)
+                  }
+       }
     
     func didClickOnCircularMenuButton(_ menuButton: ASCircularMenuButton, indexForButton: Int, button: UIButton) {
    
@@ -139,10 +161,12 @@ class MailViewController: UIViewController, UITableViewDataSource, UITableViewDe
         colourPickerButton.sholudMenuButtonAnimate = false
         
         // `UIGestureRecognizerDelegate`を設定するのをお忘れなく
-        longPressRecognizer.delegate = self as! UIGestureRecognizerDelegate
+//        longPressRecognizer.delegate = self as! UIGestureRecognizerDelegate
+        longPressGesRec.delegate = self
+        maleTableView.addGestureRecognizer(longPressGesRec)
 
         // tableViewにrecognizerを設定
-        maleTableView.addGestureRecognizer(longPressRecognizer)
+//        maleTableView.addGestureRecognizer(longPressRecognizer)
         
         loadTimeline()
     }
@@ -374,6 +398,20 @@ class MailViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         
     }
+    /* 長押しした際に呼ばれるメソッド */
+    func cellLongPressed(recognizer: UILongPressGestureRecognizer) {
+
+            // 押された位置でcellのPathを取得
+        let point = recognizer.location(in: maleTableView)
+        let indexPath = maleTableView.indexPathForRow(at: point)
+
+            if indexPath == nil {
+
+            } else if recognizer.state == UIGestureRecognizer.State.began  {
+                // 長押しされた場合の処理
+                print("長押しされたcellのindexPath:\(indexPath?.row)")
+             }
+        }
     
     
     
