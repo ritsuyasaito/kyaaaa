@@ -54,7 +54,11 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <gestureRecognizers/>
                         <viewLayoutGuide key="safeArea" id="gsB-vQ-Lc4"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="qPG-6k-vsG" appends="YES" id="smf-S5-TDd"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" title="male" id="ja1-I1-cdX">
                         <barButtonItem key="rightBarButtonItem" image="person.crop.circle.fill.badge.exclam" catalog="system" id="f9q-1V-KgR">
@@ -65,6 +69,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="colourPickerButton" destination="mxp-5Q-YrN" id="gjm-6l-Zxu"/>
+                        <outlet property="longPressGesRec" destination="qPG-6k-vsG" id="AXN-Zn-epm"/>
                         <outlet property="maleTableView" destination="Pmh-AQ-6MR" id="hMp-pl-8vZ"/>
                         <outlet property="postButton" destination="9OU-YS-GDa" id="jIq-MV-8YE"/>
                         <outlet property="shareButton" destination="gMW-ny-pwE" id="gxF-T6-CEe"/>
@@ -73,6 +78,12 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uuG-Ue-l2X" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="qPG-6k-vsG">
+                    <connections>
+                        <action selector="longPress:" destination="5Io-fi-ch7" id="891-Zh-jWO"/>
+                        <outlet property="delegate" destination="5Io-fi-ch7" id="jJs-wH-3yh"/>
+                    </connections>
+                </pongPressGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1579.7101449275362" y="-723.21428571428567"/>
         </scene>
@@ -424,6 +435,7 @@
                                 <rect key="frame" x="0.0" y="153" width="414" height="561"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <gestureRecognizers/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="em6-6x-nmz">
                                         <rect key="frame" x="0.0" y="28" width="414" height="44"/>
@@ -432,8 +444,15 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
+                                        <gestureRecognizers/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="4a4-Qa-dqS" appends="YES" id="6mm-gw-cAm"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="4a4-Qa-dqS" appends="YES" id="6Ej-W9-pLG"/>
+                                </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YJJ-bP-dHp">
                                 <rect key="frame" x="283" y="736" width="111" height="47"/>
@@ -459,7 +478,11 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <gestureRecognizers/>
                         <viewLayoutGuide key="safeArea" id="tp7-HO-7Jt"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="4a4-Qa-dqS" appends="YES" id="b0u-4f-JAv"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" title="female" id="85X-6c-5df">
                         <barButtonItem key="rightBarButtonItem" title="Item" image="person.crop.circle.fill.badge.checkmark" catalog="system" id="Afn-3L-gFq">
@@ -471,6 +494,7 @@
                     <connections>
                         <outlet property="FemaleTableView" destination="o77-R4-eND" id="SlU-Bi-tb7"/>
                         <outlet property="colourPickerButton" destination="ICo-mp-ZGp" id="enh-z5-ejQ"/>
+                        <outlet property="longPressGesRec" destination="4a4-Qa-dqS" id="5li-XX-G4g"/>
                         <outlet property="postButton" destination="YJJ-bP-dHp" id="C7Z-JY-hTb"/>
                         <outlet property="shareButton" destination="e78-5L-pEl" id="xHQ-eV-xir"/>
                         <segue destination="JbL-ME-Bqg" kind="presentation" identifier="toPostPage" modalPresentationStyle="fullScreen" id="TZ1-yd-mgA"/>
@@ -478,6 +502,12 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aFz-FM-3ve" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="4a4-Qa-dqS">
+                    <connections>
+                        <action selector="longPress:" destination="u3I-KQ-Yd3" id="kSS-5c-hFB"/>
+                        <outlet property="delegate" destination="u3I-KQ-Yd3" id="jqy-2U-2UF"/>
+                    </connections>
+                </pongPressGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1581.1594202898552" y="-14.0625"/>
         </scene>
@@ -654,7 +684,7 @@
         <image name="person.crop.circle.fill.badge.exclam" catalog="system" width="64" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="FXO-5R-Mru"/>
-        <segue reference="TZ1-yd-mgA"/>
+        <segue reference="CNV-qz-5rc"/>
+        <segue reference="gpB-Xv-4O0"/>
     </inferredMetricsTieBreakers>
 </document>

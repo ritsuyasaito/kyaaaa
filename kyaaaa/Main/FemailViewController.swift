@@ -15,16 +15,42 @@ import ViewAnimator
 import BubbleTransition
 import ASExtendedCircularMenu
 
-class FemailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate,TimeLineTableViewCellDelegate,UIViewControllerTransitioningDelegate,ASCircularButtonDelegate {
+class FemailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate,TimeLineTableViewCellDelegate,UIViewControllerTransitioningDelegate,ASCircularButtonDelegate,UIGestureRecognizerDelegate {
     
     @IBOutlet var shareButton: ASCircularMenuButton!
     @IBOutlet var colourPickerButton: ASCircularMenuButton!
+    
+    @IBOutlet var longPressGesRec: UILongPressGestureRecognizer!
+    
     let colourArray: [UIColor] = [.red , .blue , .green , .yellow , .purple , .gray , .black, .black]
     let shareName: [String] = ["小","中","高","19~","23~","30~","40~","50~"]
     var ageNumDictionary: [Int: String] = [0:"小学生",1:"中学生", 2:"高校生", 3:"19~22歳", 4:"23~29歳", 5:"30~39歳", 6:"40~49歳", 7:"50歳~"]
     
     
     let transition = BubbleTransition()
+    
+    // UILongPressGestureRecognizerのdelegate：ロングタップを検出する
+    @IBAction func longPress(_ sender: UILongPressGestureRecognizer) {
+        // ロングタップ開始
+        if sender.state == .began {
+        }
+        // ロングタップ終了（手を離した）
+        else if sender.state == .ended {
+            let alert = UIAlertController(title: nil, message: "報告しますか", preferredStyle: .alert)
+                var action = UIAlertAction(title: "いいえ", style: .default) { (action) in
+                    alert.dismiss(animated: true, completion: nil)
+                    self.navigationController?.popViewController(animated: true)//元の画面に戻る
+                }
+                let action2 = UIAlertAction(title: "はい", style: .default, handler: { (action) in
+               
+                    
+                    alert.dismiss(animated: true, completion: nil)
+                })
+                alert.addAction(action)
+                alert.addAction(action2)
+                self.present(alert, animated: true,completion: nil)
+        }
+    }
     
     func didClickOnCircularMenuButton(_ menuButton: ASCircularMenuButton, indexForButton: Int, button: UIButton) {
         
@@ -190,6 +216,9 @@ class FemailViewController: UIViewController, UITableViewDataSource, UITableView
         configureDraggebleCircularMenuButton(button: colourPickerButton, numberOfMenuItems: 8, menuRedius: 70, postion: .center)
         colourPickerButton.menuButtonSize = .medium
         colourPickerButton.sholudMenuButtonAnimate = false
+        
+        longPressGesRec.delegate = self
+        FemaleTableView.addGestureRecognizer(longPressGesRec)
         
     }
     
