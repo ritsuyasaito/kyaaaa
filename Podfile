@@ -30,6 +30,7 @@ target 'kyaaaa' do
   pod 'ASExtendedCircularMenu', :git => 'https://github.com/anshul18895/ASExtendedCircularMenu'
   pod 'Tabman'
   pod 'MXParallaxHeader'
+  pod 'TimelineCards'
   
 
 end

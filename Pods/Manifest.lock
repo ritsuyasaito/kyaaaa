@@ -373,6 +373,7 @@ PODS:
   - SwiftMessages/App (7.0.1)
   - Tabman (2.8.0):
     - Pageboy (~> 3.5.0)
+  - TimelineCards (1.0.5)
   - ViewAnimator (2.7.0)
 
 DEPENDENCIES:
@@ -398,6 +399,7 @@ DEPENDENCIES:
   - SDWebImage/WebP
   - SwiftMessages
   - Tabman
+  - TimelineCards
   - ViewAnimator
 
 SPEC REPOS:
@@ -447,6 +449,7 @@ SPEC REPOS:
     - SDWebImage
     - SwiftMessages
     - Tabman
+    - TimelineCards
     - ViewAnimator
 
 EXTERNAL SOURCES:
@@ -512,8 +515,9 @@ SPEC CHECKSUMS:
   SDWebImage: 783af2c3fa36291a250030c4752ee370a9a51d13
   SwiftMessages: b577dc7043be8b299857ab35bb663dbff6483bd0
   Tabman: f62ad94ee54a7d96e3fbab34f677d9ea4d38ece6
+  TimelineCards: 8f3377fbe40ae587b5ad9e6d29dd7e6d2654e418
   ViewAnimator: 5af1c6f3b310f012bf081259c43717aa54fbae73
 
-PODFILE CHECKSUM: d8752799d713f8ab938c8fb86908f7937abf0a89
+PODFILE CHECKSUM: c78d45f0392bd0ffcc45a97e2487637079a3e7d7
 
 COCOAPODS: 1.8.4

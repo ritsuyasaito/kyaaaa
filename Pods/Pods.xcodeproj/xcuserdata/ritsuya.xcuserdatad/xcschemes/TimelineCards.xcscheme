@@ -14,9 +14,9 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "73CDC3D182DB953135F62609681B443D"
-               BuildableName = "abseil.framework"
-               BlueprintName = "abseil"
+               BlueprintIdentifier = "807F4A4F86C0F95D8B937410A67836EA"
+               BuildableName = "TimelineCards.framework"
+               BlueprintName = "TimelineCards"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
