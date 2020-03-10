@@ -171,6 +171,7 @@ PODS:
     - BoringSSL-GRPC/Interface (= 0.0.3)
   - BoringSSL-GRPC/Interface (0.0.3)
   - BubbleTransition (3.0.2)
+  - DOFavoriteButton (0.0.4)
   - DZNEmptyDataSet (1.8.1)
   - FacebookCore (0.9.0):
     - FBSDKCoreKit (~> 5.0)
@@ -341,6 +342,9 @@ PODS:
   - GTMSessionFetcher/Core (1.3.1)
   - GTMSessionFetcher/Full (1.3.1):
     - GTMSessionFetcher/Core (= 1.3.1)
+  - Hue (5.0.0)
+  - IBAnimatable (6.0.0)
+  - IQKeyboardManagerSwift (6.3.0)
   - JonContextMenu (1.0.0)
   - Kingfisher (5.10.1):
     - Kingfisher/Core (= 5.10.1)
@@ -364,6 +368,8 @@ PODS:
   - Pageboy (3.5.0)
   - PKHUD (5.3.0)
   - PromisesObjC (1.2.8)
+  - RAMAnimatedTabBarController (5.1.0)
+  - SCLAlertView (0.8)
   - SDWebImage/Core (4.4.8)
   - SDWebImage/WebP (4.4.8):
     - libwebp (< 2.0, >= 0.5)
@@ -374,11 +380,13 @@ PODS:
   - Tabman (2.8.0):
     - Pageboy (~> 3.5.0)
   - TimelineCards (1.0.5)
+  - VegaScrollFlowLayout (1.1)
   - ViewAnimator (2.7.0)
 
 DEPENDENCIES:
   - ASExtendedCircularMenu (from `https://github.com/anshul18895/ASExtendedCircularMenu`)
   - BubbleTransition (~> 3.0.0)
+  - DOFavoriteButton
   - DZNEmptyDataSet
   - FacebookCore
   - FacebookLogin
@@ -392,14 +400,20 @@ DEPENDENCIES:
   - Firebase/Firestore
   - Firebase/Storage
   - GoogleSignIn
+  - Hue
+  - IBAnimatable
+  - IQKeyboardManagerSwift (= 6.3.0)
   - JonContextMenu (from `https://github.com/jonSurrey/JonContextMenu.git`, branch `master`)
   - Kingfisher
   - MXParallaxHeader
   - PKHUD (~> 5.0)
+  - RAMAnimatedTabBarController
+  - SCLAlertView
   - SDWebImage/WebP
   - SwiftMessages
   - Tabman
   - TimelineCards
+  - VegaScrollFlowLayout
   - ViewAnimator
 
 SPEC REPOS:
@@ -408,6 +422,7 @@ SPEC REPOS:
     - AppAuth
     - BoringSSL-GRPC
     - BubbleTransition
+    - DOFavoriteButton
     - DZNEmptyDataSet
     - FacebookCore
     - FacebookLogin
@@ -438,6 +453,9 @@ SPEC REPOS:
     - gRPC-Core
     - GTMAppAuth
     - GTMSessionFetcher
+    - Hue
+    - IBAnimatable
+    - IQKeyboardManagerSwift
     - Kingfisher
     - leveldb-library
     - libwebp
@@ -446,10 +464,13 @@ SPEC REPOS:
     - Pageboy
     - PKHUD
     - PromisesObjC
+    - RAMAnimatedTabBarController
+    - SCLAlertView
     - SDWebImage
     - SwiftMessages
     - Tabman
     - TimelineCards
+    - VegaScrollFlowLayout
     - ViewAnimator
 
 EXTERNAL SOURCES:
@@ -473,6 +494,7 @@ SPEC CHECKSUMS:
   ASExtendedCircularMenu: c6012cee87d7686981c2f0d184a461ae41c5dac0
   BoringSSL-GRPC: db8764df3204ccea016e1c8dd15d9a9ad63ff318
   BubbleTransition: 6bdf7d8af460b5c3696beb0adbf4bcb17176ee11
+  DOFavoriteButton: 866e15af173d2dd5233971a1f657a5f31d2491d5
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
   FacebookCore: ba86524b66cfa86d0f8e65d08faa8504a9f732dd
   FacebookLogin: 6cee9fd6e1fe976fe8f7eec199e27b28b14f5d63
@@ -503,6 +525,9 @@ SPEC CHECKSUMS:
   gRPC-Core: c9aef9a261a1247e881b18059b84d597293c9947
   GTMAppAuth: 4deac854479704f348309e7b66189e604cf5e01e
   GTMSessionFetcher: cea130bbfe5a7edc8d06d3f0d17288c32ffe9925
+  Hue: c129cb67be7d093a82bbbc30ce8a96757bf6f37a
+  IBAnimatable: d49f9fee0c401b5b08d31b77256b77fb067e0e92
+  IQKeyboardManagerSwift: a8228c257614af98743b4cd8584637025f36358f
   JonContextMenu: 21767ef04db36981fc802e7402781198b7741823
   Kingfisher: eb36b7dfcc78d60877051c92c119a2865972961a
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
@@ -512,12 +537,15 @@ SPEC CHECKSUMS:
   Pageboy: 3794c578aae5fcce06e90b3ed4a0ad6b807d75bb
   PKHUD: 98f3e4bc904b9c916f1c5bb6d765365b5357291b
   PromisesObjC: c119f3cd559f50b7ae681fa59dc1acd19173b7e6
+  RAMAnimatedTabBarController: b5c821298071fded801532216ad8a24394f89859
+  SCLAlertView: 6a77bb2edfc65e04dbe57725546cb4107a506b85
   SDWebImage: 783af2c3fa36291a250030c4752ee370a9a51d13
   SwiftMessages: b577dc7043be8b299857ab35bb663dbff6483bd0
   Tabman: f62ad94ee54a7d96e3fbab34f677d9ea4d38ece6
   TimelineCards: 8f3377fbe40ae587b5ad9e6d29dd7e6d2654e418
+  VegaScrollFlowLayout: 9158061f29179147755f937c2b21693fc5dbbac3
   ViewAnimator: 5af1c6f3b310f012bf081259c43717aa54fbae73
 
-PODFILE CHECKSUM: c78d45f0392bd0ffcc45a97e2487637079a3e7d7
+PODFILE CHECKSUM: e3203dcaee6209bf4be0ab4d4f96371ed6be7940
 
 COCOAPODS: 1.8.4

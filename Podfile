@@ -31,6 +31,13 @@ target 'kyaaaa' do
   pod 'Tabman'
   pod 'MXParallaxHeader'
   pod 'TimelineCards'
+  pod 'SCLAlertView'
+  pod 'DOFavoriteButton'
+  pod 'IQKeyboardManagerSwift', '6.3.0'
+  pod 'IBAnimatable'
+  pod 'RAMAnimatedTabBarController'
+  pod 'VegaScrollFlowLayout'
+  pod 'Hue'
   
 
 end
