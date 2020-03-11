@@ -426,10 +426,10 @@
             </objects>
             <point key="canvasLocation" x="-1542" y="-309"/>
         </scene>
-        <!--Animated Tab Bar Controller-->
+        <!--Tab Bar Controller-->
         <scene sceneID="v8E-Bu-djX">
             <objects>
-                <tabBarController storyboardIdentifier="First" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="0Ew-UM-NGl" customClass="RAMAnimatedTabBarController" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="First" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="0Ew-UM-NGl" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="gSZ-ZY-NAl"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="JKr-kd-c5h">
@@ -540,8 +540,8 @@
         <!--female-->
         <scene sceneID="Cvu-gU-xJT">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Yn4-Pa-dAM" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="female" selectedImage="tabbar-user-icons.png" id="vOB-XV-v1q" customClass="RAMAnimatedTabBarItem" customModule="RAMAnimatedTabBarController"/>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Yn4-Pa-dAM" customClass="NavigationViewController" customModule="kyaaaa" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="female" selectedImage="tabbar-user-icons.png" id="vOB-XV-v1q"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="geF-B0-5kr">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -559,8 +559,8 @@
         <!--male-->
         <scene sceneID="zVX-SP-SUx">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ekz-BW-9On" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="male" selectedImage="tabbar-user-icons.png" id="hHl-cP-wj5" customClass="RAMAnimatedTabBarItem" customModule="RAMAnimatedTabBarController"/>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ekz-BW-9On" customClass="NavigationViewController" customModule="kyaaaa" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="male" selectedImage="tabbar-user-icons.png" id="hHl-cP-wj5"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="2NG-Wb-DmG">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
