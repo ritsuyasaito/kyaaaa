@@ -14,6 +14,7 @@ import LocalAuthentication
 import ViewAnimator
 import BubbleTransition
 import ASExtendedCircularMenu
+import SCLAlertView
 
 class FemailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate,TimeLineTableViewCellDelegate,UIViewControllerTransitioningDelegate,ASCircularButtonDelegate,UIGestureRecognizerDelegate {
     
@@ -36,6 +37,20 @@ class FemailViewController: UIViewController, UITableViewDataSource, UITableView
         }
         // ロングタップ終了（手を離した）
         else if sender.state == .ended {
+                  let appearance = SCLAlertView.SCLAppearance(
+                                    showCloseButton: false
+                                )
+                                let alert = SCLAlertView(appearance: appearance)
+                                alert.addButton("はい") {
+                                    
+                           
+                                }
+                                alert.addButton("いいえ") {
+                                    print("cancel")
+                                }
+            //                    alert.showInfo("", subTitle: "報告しますか?")
+                                 alert.showWarning("", subTitle: "報告しますか?")
+            /*
             let alert = UIAlertController(title: nil, message: "報告しますか", preferredStyle: .alert)
                 var action = UIAlertAction(title: "いいえ", style: .default) { (action) in
                     alert.dismiss(animated: true, completion: nil)
@@ -49,6 +64,7 @@ class FemailViewController: UIViewController, UITableViewDataSource, UITableView
                 alert.addAction(action)
                 alert.addAction(action2)
                 self.present(alert, animated: true,completion: nil)
+ */
         }
     }
     
@@ -142,6 +158,30 @@ class FemailViewController: UIViewController, UITableViewDataSource, UITableView
     
     func didTapShareButton(tableViewCell: UITableViewCell, button: UIButton) {
         selectedPost = posts[tableViewCell.tag]
+        
+        let appearance = SCLAlertView.SCLAppearance(
+                               showCloseButton: false
+                           )
+                           let alert = SCLAlertView(appearance: appearance)
+                           alert.addButton("共有") {
+                               //ActivityViewController
+                                        self.selectedPost = self.posts[tableViewCell.tag]
+                                        
+                                        var dear = self.selectedPost?.age
+                                        var text = self.selectedPost?.text
+                                        var items = ["Dear\(dear)",text] as [Any]
+                                        print(items)
+                                        // UIActivityViewControllerをインスタンス化
+                                        let activityVc = UIActivityViewController(activityItems: items, applicationActivities: nil)
+                                        // UIAcitivityViewControllerを表示
+                                        self.present(activityVc, animated: true, completion: nil)
+                      
+                           }
+                           alert.addButton("キャンセル") {
+                               print("cancel")
+                           }
+                           alert.showInfo("", subTitle: "テキストを共有します")
+        /*
         let alertController = UIAlertController(title: "", message: "", preferredStyle: .alert)
         let otherShareAction = UIAlertAction(title: "共有", style: UIAlertAction.Style.default) { (action) in
             //ActivityViewController
@@ -165,7 +205,7 @@ class FemailViewController: UIViewController, UITableViewDataSource, UITableView
         alertController.addAction(cancelAction)
         
         present(alertController,animated: true,completion: nil)
-        
+        */
         
     }
     

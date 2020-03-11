@@ -15,7 +15,6 @@ import ViewAnimator
 import BubbleTransition
 import ASExtendedCircularMenu
 import SCLAlertView
-import VegaScrollFlowLayout
 import DZNEmptyDataSet
 
 public protocol Animation {
@@ -169,7 +168,7 @@ class MailViewController: UIViewController, UITableViewDataSource, UITableViewDe
         context.canEvaluatePolicy(.deviceOwnerAuthentication, error: nil)
         state = .loggedout
         
-        let layout = VegaScrollFlowLayout()
+
        
 
         postButton.isEnabled = false
@@ -491,6 +490,7 @@ class MailViewController: UIViewController, UITableViewDataSource, UITableViewDe
             } else if recognizer.state == UIGestureRecognizer.State.began  {
                 // 長押しされた場合の処理
                 print("長押しされたcellのindexPath:\(indexPath?.row)")
+                
              }
         }
     
