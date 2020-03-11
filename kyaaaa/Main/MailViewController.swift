@@ -15,7 +15,7 @@ import ViewAnimator
 import BubbleTransition
 import ASExtendedCircularMenu
 import SCLAlertView
-import VegaScrollFlowLayout
+//import VegaScrollFlowLayout
 import DZNEmptyDataSet
 
 public protocol Animation {
@@ -56,6 +56,10 @@ class MailViewController: UIViewController, UITableViewDataSource, UITableViewDe
                   }
                   // ロングタップ終了（手を離した）
                   else if sender.state == .ended {
+                    
+                    // 押された位置でcellのPathを取得
+                        
+             
                     
                     let appearance = SCLAlertView.SCLAppearance(
                         showCloseButton: false
@@ -151,6 +155,7 @@ class MailViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var userGender: String = ""
     @IBOutlet var postButton: UIButton!
     
+    var userBlockIds = [String]()
     
     @IBOutlet var maleTableView: UITableView!
     
@@ -169,7 +174,7 @@ class MailViewController: UIViewController, UITableViewDataSource, UITableViewDe
         context.canEvaluatePolicy(.deviceOwnerAuthentication, error: nil)
         state = .loggedout
         
-        let layout = VegaScrollFlowLayout()
+      
        
 
         postButton.isEnabled = false
@@ -273,6 +278,27 @@ class MailViewController: UIViewController, UITableViewDataSource, UITableViewDe
                                   self.present(activityVc, animated: true, completion: nil)
                 
                      }
+                     alert.addButton("ブロック") {
+                        
+                        if let blockUserId = self.posts[tableViewCell.tag].userId {
+                            self.blockUser(selfUserId: self.currentUser!.uid, blockUserId: blockUserId) { (error) in
+                                if error != nil {
+                                    print(error)
+                                    HUD.flash(.error, delay: 1.0)
+                                } else {
+                                    HUD.flash(.success, delay: 1.0)
+                                    self.loadTimeline()
+                                }
+                            
+                            }
+                        } else {
+                            return
+                        }
+                        
+                      }
+                     
+        
+        
                      alert.addButton("キャンセル") {
                          print("cancel")
                      }
@@ -390,7 +416,7 @@ class MailViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func loadData(isAdditional: Bool = false, filterAge: String) {
         isLoading = true
-        Post.getAgeData(age: filterAge, collection: "Mailposts", isAdditional: isAdditional, lastSnapshot: lastSnapshot) { (posts, lastSnapshot, error) in
+        Post.getAgeData(blockIds: userBlockIds,age: filterAge, collection: "Mailposts", isAdditional: isAdditional, lastSnapshot: lastSnapshot) { (posts, lastSnapshot, error) in
             // 読み込み完了
             self.isLoading = false
             self.lastSnapshot = lastSnapshot
@@ -427,8 +453,18 @@ class MailViewController: UIViewController, UITableViewDataSource, UITableViewDe
         if currentUser != nil {
             let docRef = db.collection("users").document(currentUser!.uid)
             docRef.getDocument { (document, error) in
+                self.userBlockIds = []
                 if let document = document, document.exists {
                     let dataDescription = document.data() as! [String:Any]
+                    
+                    if dataDescription["blockId"] != nil {
+                        for i in dataDescription["blockId"] as! [String] {
+                            self.userBlockIds.append(i)
+                        }
+                       
+                    } else {
+                        self.userBlockIds = []
+                    }
                     
                     if dataDescription["gender"] != nil {
                         self.userGender = dataDescription["gender"] as! String
@@ -447,7 +483,7 @@ class MailViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func loadTimeline(isAdditional: Bool = false) {
         isLoading = true
-        Post.getAll(collection: "Mailposts", isAdditional: isAdditional, lastSnapshot: lastSnapshot) { (posts, lastSnapshot, error) in
+        Post.getAll(blockIds: userBlockIds, collection: "Mailposts", isAdditional: isAdditional, lastSnapshot: lastSnapshot) { (posts, lastSnapshot, error) in
             // 読み込み完了
             self.isLoading = false
             self.lastSnapshot = lastSnapshot
@@ -492,7 +528,14 @@ class MailViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 // 長押しされた場合の処理
                 print("長押しされたcellのindexPath:\(indexPath?.row)")
              }
+    }
+    
+    func blockUser(selfUserId: String, blockUserId: String, completion: @escaping(Error?) -> ()) {
+        let db = Firestore.firestore()
+        db.document("users/\(selfUserId)").updateData(["blockId": FieldValue.arrayUnion([blockUserId])]) { (error) in
+            completion(error)
         }
+    }
     
     
     

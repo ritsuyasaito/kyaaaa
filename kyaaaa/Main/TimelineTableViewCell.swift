@@ -16,6 +16,7 @@ protocol TimeLineTableViewCellDelegate {
     func didTapKyaaaaButton(tableViewCell: UITableViewCell, button: UIButton)
     func didTapShareButton(tableViewCell: UITableViewCell, button: UIButton)
     
+    
 }
 
 

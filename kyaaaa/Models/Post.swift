@@ -72,7 +72,7 @@ struct Post {
 
     
     // DBから投稿を取得
-    static func getAll(collection: String, isAdditional: Bool = false, lastSnapshot: DocumentSnapshot? = nil, completion: @escaping(_ posts: [Post]?, _ lastSnapshot: DocumentSnapshot?, _ error: Error?) -> ()) {
+    static func getAll(blockIds:[String], collection: String, isAdditional: Bool = false, lastSnapshot: DocumentSnapshot? = nil, completion: @escaping(_ posts: [Post]?, _ lastSnapshot: DocumentSnapshot?, _ error: Error?) -> ()) {
         // データベースへの参照を作る
         let ref = Firestore.firestore().collection(collection)
         
@@ -114,7 +114,9 @@ struct Post {
                         post.naruhodoUsers = data["naruhodoUsers"] as? [String]
                         post.sorenaUsers = data["sorenaUsers"] as? [String]
                         post.kyaaaaUsers = data["kyaaaaUsers"] as? [String]
-                        posts.append(post)
+                        if blockIds.firstIndex(of: post.userId) == nil {
+                            posts.append(post)
+                        }
                     }
                     
                     // 追加読み込みのため、1度読み込んだらその最後の投稿データを変数に格納しておく
@@ -131,16 +133,17 @@ struct Post {
     }
     
     // DBからフィルターがかかった投稿を取得
-    static func getAgeData(age: String, collection: String, isAdditional: Bool = false, lastSnapshot: DocumentSnapshot? = nil, completion: @escaping(_ posts: [Post]?, _ lastSnapshot: DocumentSnapshot?, _ error: Error?) -> ()) {
+    static func getAgeData(blockIds:[String], age: String, collection: String, isAdditional: Bool = false, lastSnapshot: DocumentSnapshot? = nil, completion: @escaping(_ posts: [Post]?, _ lastSnapshot: DocumentSnapshot?, _ error: Error?) -> ()) {
         // データベースへの参照を作る
         let ref = Firestore.firestore().collection(collection)
         
         // タイムラインは新しい投稿が上にくるので降順にし、50件ずつ取得するクエリを作成
         
         var query = ref.whereField("age", isEqualTo: age)
-        query = query.order(by: "createdAt", descending: true).limit(to: 50)
         
-         
+        query = query.order(by: "createdAt", descending: true).limit(to: 50)
+       
+        
         
         // 下に引っ張って読み込み(追加読み込み)の操作のときは、前回読み込んだ最後の投稿を基準に読み込むクエリを作成
         if isAdditional == true {
@@ -159,8 +162,10 @@ struct Post {
             } else {
                 // 読み込んだsnapshotのデータをPostクラスの配列に変換
                 if let documents = snapshot?.documents {
+                   
                     var posts = [Post]()
                     for document in documents {
+                        
                         let data = document.data()
                         var post = Post()
                         post.uid = document.documentID
@@ -168,14 +173,20 @@ struct Post {
                         post.createdAt = data["createdAt"] as? String
                         post.age = data["age"] as? String
                         post.initial = data["initial"] as? String
-                    
+                        
                         post.text = data["text"] as? String
                         post.userPhotoURL = data["userPhotoURL"] as? String
-                        
+                            
                         post.naruhodoUsers = data["naruhodoUsers"] as? [String]
                         post.sorenaUsers = data["sorenaUsers"] as? [String]
                         post.kyaaaaUsers = data["kyaaaaUsers"] as? [String]
-                        posts.append(post)
+                        
+                        if blockIds.firstIndex(of: post.userId) == nil {
+                            posts.append(post)
+                        }
+                       
+                        
+                        
                     }
                     
                     // 追加読み込みのため、1度読み込んだらその最後の投稿データを変数に格納しておく
@@ -250,12 +261,13 @@ struct Post {
     }
     
     // DBから投稿を取得
-    static func getUserkyaaaPost(collection: String, userId: String, isAdditional: Bool = false, lastSnapshot: DocumentSnapshot? = nil, completion: @escaping(_ posts: [Post]?, _ lastSnapshot: DocumentSnapshot?, _ error: Error?) -> ()) {
+    static func getUserkyaaaPost( collection: String, userId: String, isAdditional: Bool = false, lastSnapshot: DocumentSnapshot? = nil, completion: @escaping(_ posts: [Post]?, _ lastSnapshot: DocumentSnapshot?, _ error: Error?) -> ()) {
         // データベースへの参照を作る
         let ref = Firestore.firestore().collection(collection)
         
         // タイムラインは新しい投稿が上にくるので降順にし、50件ずつ取得するクエリを作成
         var query = ref.whereField("kyaaaaUsers", arrayContains: userId)
+    
         query = query.order(by: "createdAt", descending: true).limit(to: 50)
         
         // 下に引っ張って読み込み(追加読み込み)の操作のときは、前回読み込んだ最後の投稿を基準に読み込むクエリを作成
@@ -374,6 +386,8 @@ struct Post {
         }
         
     }
+    
+    
     
 }
 
