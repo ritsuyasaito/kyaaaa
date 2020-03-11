@@ -15,6 +15,11 @@ import ViewAnimator
 import BubbleTransition
 import ASExtendedCircularMenu
 import SCLAlertView
+import TransitionButton
+
+//public protocol Animation {
+//    var initialTransform: CGAffineTransform { get }
+//}
 
 class FemailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate,TimeLineTableViewCellDelegate,UIViewControllerTransitioningDelegate,ASCircularButtonDelegate,UIGestureRecognizerDelegate {
     
@@ -35,36 +40,36 @@ class FemailViewController: UIViewController, UITableViewDataSource, UITableView
         // ロングタップ開始
         if sender.state == .began {
         }
-        // ロングタップ終了（手を離した）
+            // ロングタップ終了（手を離した）
         else if sender.state == .ended {
-                  let appearance = SCLAlertView.SCLAppearance(
-                                    showCloseButton: false
-                                )
-                                let alert = SCLAlertView(appearance: appearance)
-                                alert.addButton("はい") {
-                                    
-                           
-                                }
-                                alert.addButton("いいえ") {
-                                    print("cancel")
-                                }
+            let appearance = SCLAlertView.SCLAppearance(
+                showCloseButton: false
+            )
+            let alert = SCLAlertView(appearance: appearance)
+            alert.addButton("はい") {
+                
+                
+            }
+            alert.addButton("いいえ") {
+                print("cancel")
+            }
             //                    alert.showInfo("", subTitle: "報告しますか?")
-                                 alert.showWarning("", subTitle: "報告しますか?")
+            alert.showWarning("", subTitle: "報告しますか?")
             /*
-            let alert = UIAlertController(title: nil, message: "報告しますか", preferredStyle: .alert)
-                var action = UIAlertAction(title: "いいえ", style: .default) { (action) in
-                    alert.dismiss(animated: true, completion: nil)
-                    self.navigationController?.popViewController(animated: true)//元の画面に戻る
-                }
-                let action2 = UIAlertAction(title: "はい", style: .default, handler: { (action) in
-               
-                    
-                    alert.dismiss(animated: true, completion: nil)
-                })
-                alert.addAction(action)
-                alert.addAction(action2)
-                self.present(alert, animated: true,completion: nil)
- */
+             let alert = UIAlertController(title: nil, message: "報告しますか", preferredStyle: .alert)
+             var action = UIAlertAction(title: "いいえ", style: .default) { (action) in
+             alert.dismiss(animated: true, completion: nil)
+             self.navigationController?.popViewController(animated: true)//元の画面に戻る
+             }
+             let action2 = UIAlertAction(title: "はい", style: .default, handler: { (action) in
+             
+             
+             alert.dismiss(animated: true, completion: nil)
+             })
+             alert.addAction(action)
+             alert.addAction(action2)
+             self.present(alert, animated: true,completion: nil)
+             */
         }
     }
     
@@ -74,7 +79,7 @@ class FemailViewController: UIViewController, UITableViewDataSource, UITableView
         }
         
         if menuButton == shareButton {
-           posts = [Post]()
+            posts = [Post]()
             if let age = ageNumDictionary[indexForButton] {
                 loadData(filterAge: age)
             } else {
@@ -159,23 +164,23 @@ class FemailViewController: UIViewController, UITableViewDataSource, UITableView
     func didTapShareButton(tableViewCell: UITableViewCell, button: UIButton) {
         
         let appearance = SCLAlertView.SCLAppearance(
-                         showCloseButton: false
-                     )
+            showCloseButton: false
+        )
         
-         let alert = SCLAlertView(appearance: appearance)
+        let alert = SCLAlertView(appearance: appearance)
         alert.addButton("共有") {
-                         //ActivityViewController
-          self.selectedPost = self.posts[tableViewCell.tag]
-                                  
-          var dear = self.selectedPost?.age
-          var text = self.selectedPost?.text
-          var items = ["Dear\(dear)",text] as [Any]
-          print(items)
-                                  // UIActivityViewControllerをインスタンス化
-          let activityVc = UIActivityViewController(activityItems: items, applicationActivities: nil)
-                                  // UIAcitivityViewControllerを表示
-          self.present(activityVc, animated: true, completion: nil)
-                
+            //ActivityViewController
+            self.selectedPost = self.posts[tableViewCell.tag]
+            
+            var dear = self.selectedPost?.age
+            var text = self.selectedPost?.text
+            var items = ["Dear\(dear)",text] as [Any]
+            print(items)
+            // UIActivityViewControllerをインスタンス化
+            let activityVc = UIActivityViewController(activityItems: items, applicationActivities: nil)
+            // UIAcitivityViewControllerを表示
+            self.present(activityVc, animated: true, completion: nil)
+            
         }
         
         if self.posts[tableViewCell.tag].userId == currentUser?.uid {
@@ -193,27 +198,27 @@ class FemailViewController: UIViewController, UITableViewDataSource, UITableView
                 } else {
                     return
                 }
-            
+                
             }
         } else {
             alert.addButton("ブロック") {
-                            
-              if let blockUserId = self.posts[tableViewCell.tag].userId {
-                self.blockUser(selfUserId: self.currentUser!.uid, blockUserId: blockUserId) { (error) in
-                    if error != nil {
-                        print(error)
-                        HUD.flash(.error, delay: 1.0)
-                    } else {
-                        HUD.flash(.success, delay: 1.0)
-                        self.loadTimeline()
+                
+                if let blockUserId = self.posts[tableViewCell.tag].userId {
+                    self.blockUser(selfUserId: self.currentUser!.uid, blockUserId: blockUserId) { (error) in
+                        if error != nil {
+                            print(error)
+                            HUD.flash(.error, delay: 1.0)
+                        } else {
+                            HUD.flash(.success, delay: 1.0)
+                            self.loadTimeline()
+                        }
+                        
+                        
                     }
-                                    
-                                
+                } else {
+                    return
                 }
-              } else {
-                  return
-              }
-              
+                
             }
         }
         
@@ -222,9 +227,9 @@ class FemailViewController: UIViewController, UITableViewDataSource, UITableView
             print("cancel")
         }
         alert.showInfo("", subTitle: "テキストを共有します")
-                        
         
-
+        
+        
     }
     
     var userBlockIds = [String]()
@@ -247,14 +252,13 @@ class FemailViewController: UIViewController, UITableViewDataSource, UITableView
     var lastSnapshot: DocumentSnapshot?
     
     override func viewDidLoad() {
-    
-        super.viewDidLoad()
-
-
-        postButton.isEnabled = false
-      
-        // Do any additional setup after loading the view.
         
+        super.viewDidLoad()
+        
+        
+        postButton.isEnabled = false
+        
+        FemaleTableView.backgroundColor = UIColor.clear
         // これを実行しないと context.biometryType が有効にならないので一度実行
         context.canEvaluatePolicy(.deviceOwnerAuthentication, error: nil)
         state = .loggedout
@@ -262,8 +266,9 @@ class FemailViewController: UIViewController, UITableViewDataSource, UITableView
         FemaleTableView.dataSource = self
         FemaleTableView.dataSource = self
         
-        FemaleTableView.rowHeight = 400
-        
+        //        FemaleTableView.rowHeight = 400
+        FemaleTableView.estimatedRowHeight = 10000
+        FemaleTableView.rowHeight = UITableView.automaticDimension
         buttonShadow()
         
         let nib = UINib(nibName: "TimelineTableViewCell", bundle: Bundle.main)
@@ -280,6 +285,14 @@ class FemailViewController: UIViewController, UITableViewDataSource, UITableView
         longPressGesRec.delegate = self
         FemaleTableView.addGestureRecognizer(longPressGesRec)
         
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        let fromAnimation = AnimationType.from(direction: .right, offset: 30.0)
+        let zoomAnimation = AnimationType.zoom(scale: 0.7)
+        //           let rotateAnimation = AnimationType.rotate(angle: CGFloat.pi/6)
+        UIView.animate(views: FemaleTableView.visibleCells,
+                       animations: [fromAnimation, zoomAnimation],
+                       duration: 0.5)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -317,7 +330,7 @@ class FemailViewController: UIViewController, UITableViewDataSource, UITableView
                 }
             }
         }
-                
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -328,27 +341,28 @@ class FemailViewController: UIViewController, UITableViewDataSource, UITableView
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! TimelineTableViewCell
         
         switch posts[indexPath.row].age {
-                case "小学生":
-                    cell.baseView.backgroundColor = UIColor.red
-                case "中学生":
-                    cell.baseView.backgroundColor = UIColor.orange
-                case "高校生":
-                    cell.baseView.backgroundColor = UIColor.systemGreen
-                case "19~":
-                    cell.baseView.backgroundColor = UIColor.blue
-                case "23~":
-                    cell.baseView.backgroundColor = UIColor.gray
-                case "30~":
-                    cell.baseView.backgroundColor = UIColor.purple
-                case "40~":
-                    cell.baseView.backgroundColor = UIColor.systemPink
-                case "50~":
-                    cell.baseView.backgroundColor = UIColor.magenta
-                    
-                default:
-        //            cell.baseView.backgroundColor = UIColor.orange
-                    cell.baseView.backgroundColor = UIColor(red: 146/255, green: 84/255, blue: 255/255, alpha: 1.0)
-                }
+        case "小学生":
+            cell.baseView.backgroundColor = UIColor.red
+//            cell.baseView.backgroundColor = UIColor(red: 150, green: 35, blue: 122, alpha: 0.1)
+        case "中学生":
+            cell.baseView.backgroundColor = UIColor.orange
+        case "高校生":
+            cell.baseView.backgroundColor = UIColor.systemGreen
+        case "19~22歳":
+            cell.baseView.backgroundColor = UIColor.blue
+        case "23~29歳":
+            cell.baseView.backgroundColor = UIColor.gray
+        case "30~39歳":
+            cell.baseView.backgroundColor = UIColor.purple
+        case "40~49歳":
+            cell.baseView.backgroundColor = UIColor.systemPink
+        case "50歳~":
+            cell.baseView.backgroundColor = UIColor.magenta
+            
+        default:
+            //            cell.baseView.backgroundColor = UIColor.orange
+            cell.baseView.backgroundColor = UIColor(red: 146/255, green: 84/255, blue: 255/255, alpha: 1.0)
+        }
         
         cell.delegate = self
         cell.tag = indexPath.row
@@ -413,7 +427,7 @@ class FemailViewController: UIViewController, UITableViewDataSource, UITableView
                         for i in dataDescription["blockId"] as! [String] {
                             self.userBlockIds.append(i)
                         }
-                       
+                        
                     } else {
                         self.userBlockIds = []
                     }

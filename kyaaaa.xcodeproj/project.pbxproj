@@ -40,6 +40,7 @@
 		2A0833762417EB4B0012E81E /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0833752417EB4B0012E81E /* TabBarViewController.swift */; };
 		2A0833782417EC5A0012E81E /* 2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A0833772417EC5A0012E81E /* 2@2x.png */; };
 		2A08337A2417ED070012E81E /* tabbar-user-icons@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A0833792417ED070012E81E /* tabbar-user-icons@2x.png */; };
+		2A687280241915A7004B7432 /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A68727F241915A7004B7432 /* NavigationViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -78,6 +79,7 @@
 		2A0833752417EB4B0012E81E /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		2A0833772417EC5A0012E81E /* 2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "2@2x.png"; sourceTree = "<group>"; };
 		2A0833792417ED070012E81E /* tabbar-user-icons@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar-user-icons@2x.png"; sourceTree = "<group>"; };
+		2A68727F241915A7004B7432 /* NavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewController.swift; sourceTree = "<group>"; };
 		7296136D7E71358EFA1CADB0 /* Pods-kyaaaa.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kyaaaa.debug.xcconfig"; path = "Target Support Files/Pods-kyaaaa/Pods-kyaaaa.debug.xcconfig"; sourceTree = "<group>"; };
 		9AFA8380FB5D76B887643C2B /* Pods_kyaaaa.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_kyaaaa.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -147,6 +149,7 @@
 			children = (
 				240B9C062407C5C200FF7FB3 /* Main.storyboard */,
 				2A0833752417EB4B0012E81E /* TabBarViewController.swift */,
+				2A68727F241915A7004B7432 /* NavigationViewController.swift */,
 				240B9C102408E41000FF7FB3 /* MailViewController.swift */,
 				240B9C082407D3E800FF7FB3 /* UserPageViewController.swift */,
 				243A9399240C9D2A001BA23A /* FirstViewController.swift */,
@@ -345,6 +348,7 @@
 				240B9C022407C3E200FF7FB3 /* SignUpViewController.swift in Sources */,
 				2A0833762417EB4B0012E81E /* TabBarViewController.swift in Sources */,
 				240B9C092407D3E800FF7FB3 /* UserPageViewController.swift in Sources */,
+				2A687280241915A7004B7432 /* NavigationViewController.swift in Sources */,
 				240B9C1B240A689800FF7FB3 /* PostViewController.swift in Sources */,
 				244E9B792411FAAF003D6B8A /* FemailKyaaaaViewController.swift in Sources */,
 				244E9B71240F9022003D6B8A /* kyaaaaViewController.swift in Sources */,
