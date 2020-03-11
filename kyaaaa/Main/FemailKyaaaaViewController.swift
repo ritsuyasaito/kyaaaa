@@ -12,10 +12,11 @@ import Firebase
 import PKHUD
 import SCLAlertView
 
+
 class FemailKyaaaaViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, TimeLineTableViewCellDelegate {
     let currentUserId = Auth.auth().currentUser?.uid
     var gender = ""
-    
+    var userBlockIds = [String]()
     // 読み込み中かどうかを判別する変数(読み込み結果が0件の場合DZNEmptyDataSetで空の表示をさせるため)
     var isLoading: Bool = false
     
@@ -24,7 +25,7 @@ class FemailKyaaaaViewController: UIViewController, UITableViewDelegate, UITable
     
     var posts = [Post]()
     var selectedPost: Post?
-    var userBlockIds = [String]()
+   
     let currentUser = Auth.auth().currentUser
     
     @IBOutlet var femaleKyaaaaDataTableView: UITableView!
@@ -104,67 +105,115 @@ class FemailKyaaaaViewController: UIViewController, UITableViewDelegate, UITable
             
              
              return cell
-        }
-        
-        func didTapSorenaButton(tableViewCell: UITableViewCell, button: UIButton) {
-            selectedPost = posts[tableViewCell.tag]
-            self.selectedPost!.sorena(collection: "Femailposts") { (error) in
-                if let error = error {
-                    HUD.show(.error)
-                    print("error === " + error.localizedDescription)
-                } else {
-                    self.getkyaaaaPost()
-                }
+    }
+    func didTapSorenaButton(tableViewCell: UITableViewCell, button: UIButton) {
+        selectedPost = posts[tableViewCell.tag]
+        self.selectedPost!.sorena(collection: "Femailposts") { (error) in
+            if let error = error {
+                HUD.show(.error)
+                print("error === " + error.localizedDescription)
+            } else {
+                self.getkyaaaaPost()
             }
         }
-        
-        func didTapNaruhodoButton(tableViewCell: UITableViewCell, button: UIButton) {
-            selectedPost = posts[tableViewCell.tag]
-            self.selectedPost!.naruhodo(collection: "Femailposts") { (error) in
-                if let error = error {
-                    print("error === " + error.localizedDescription)
-                } else {
-                    self.getkyaaaaPost()
-                }
+    }
+    
+    func didTapNaruhodoButton(tableViewCell: UITableViewCell, button: UIButton) {
+        selectedPost = posts[tableViewCell.tag]
+        self.selectedPost!.naruhodo(collection: "Femailposts") { (error) in
+            if let error = error {
+                print("error === " + error.localizedDescription)
+            } else {
+                self.getkyaaaaPost()
             }
         }
+    }
         
-        func didTapKyaaaaButton(tableViewCell: UITableViewCell, button: UIButton) {
-            selectedPost = posts[tableViewCell.tag]
-             self.selectedPost!.kyaaaa(collection: "Femailposts") { (error) in
-                 if let error = error {
-                     print("error === " + error.localizedDescription)
-                 } else {
-                     self.getkyaaaaPost()
-                 }
+    func didTapKyaaaaButton(tableViewCell: UITableViewCell, button: UIButton) {
+        selectedPost = posts[tableViewCell.tag]
+         self.selectedPost!.kyaaaa(collection: "Femailposts") { (error) in
+             if let error = error {
+                 print("error === " + error.localizedDescription)
+             } else {
+                 self.getkyaaaaPost()
              }
+         }
+    }
+    
+    func didTapShareButton(tableViewCell: UITableViewCell, button: UIButton) {
+       let appearance = SCLAlertView.SCLAppearance(
+                        showCloseButton: false
+                    )
+       
+        let alert = SCLAlertView(appearance: appearance)
+       alert.addButton("共有") {
+                        //ActivityViewController
+         self.selectedPost = self.posts[tableViewCell.tag]
+                                 
+         var dear = self.selectedPost?.age
+         var text = self.selectedPost?.text
+         var items = ["Dear\(dear)",text] as [Any]
+         print(items)
+                                 // UIActivityViewControllerをインスタンス化
+         let activityVc = UIActivityViewController(activityItems: items, applicationActivities: nil)
+                                 // UIAcitivityViewControllerを表示
+         self.present(activityVc, animated: true, completion: nil)
+               
+       }
+       
+       if self.posts[tableViewCell.tag].userId == currentUser?.uid {
+           alert.addButton("削除する") {
+               if let deletePostId = self.posts[tableViewCell.tag].uid {
+                   self.deletePost(selfPostId: deletePostId) { (error) in
+                       if error != nil {
+                           print(error)
+                           HUD.flash(.error, delay: 1.0)
+                       } else {
+                           HUD.flash(.success, delay: 1.0)
+                           self.getkyaaaaPost()
+                       }
+                   }
+               } else {
+                   return
+               }
+           
+           }
+       } else {
+           alert.addButton("ブロック") {
+                           
+             if let blockUserId = self.posts[tableViewCell.tag].userId {
+               self.blockUser(selfUserId: self.currentUser!.uid, blockUserId: blockUserId) { (error) in
+                   if error != nil {
+                       print(error)
+                       HUD.flash(.error, delay: 1.0)
+                   } else {
+                       HUD.flash(.success, delay: 1.0)
+                       self.getkyaaaaPost()
+                   }
+                                   
+                               
+               }
+             } else {
+                 return
+             }
+             
+           }
+       }
+       
+       
+       alert.addButton("キャンセル") {
+           print("cancel")
+       }
+       alert.showInfo("", subTitle: "テキストを共有します")
+    }
+    
+    func blockUser(selfUserId: String, blockUserId: String, completion: @escaping(Error?) -> ()) {
+        let db = Firestore.firestore()
+        db.document("users/\(selfUserId)").updateData(["blockId": FieldValue.arrayUnion([blockUserId])]) { (error) in
+            completion(error)
         }
+    }
         
-        func didTapShareButton(tableViewCell: UITableViewCell, button: UIButton) {
-            let alertController = UIAlertController(title: "テキストを共有します", message: "", preferredStyle: .alert)
-            let otherShareAction = UIAlertAction(title: "共有", style: UIAlertAction.Style.default) { (action) in
-                //ActivityViewController
-                self.selectedPost = self.posts[tableViewCell.tag]
-              
-                var dear = self.selectedPost?.age
-                var text = self.selectedPost?.text
-                var items = ["Dear\(dear)",text] as [Any]
-                print(items)
-                // UIActivityViewControllerをインスタンス化
-                let activityVc = UIActivityViewController(activityItems: items, applicationActivities: nil)
-                // UIAcitivityViewControllerを表示
-                self.present(activityVc, animated: true, completion: nil)
-                
-            }
-            let cancelAction = UIAlertAction(title: "キャンセル", style: .cancel) { (action) in
-                
-            }
-            
-            alertController.addAction(otherShareAction)
-            alertController.addAction(cancelAction)
-            
-            present(alertController,animated: true,completion: nil)
-        }
     
     func getUserData() {
         // Firestoreのデータベースを取得
@@ -191,6 +240,8 @@ class FemailKyaaaaViewController: UIViewController, UITableViewDelegate, UITable
         }
         
     }
+    
+    
     
     func getkyaaaaPost(isAdditional: Bool = false) {
         let db = Firestore.firestore()
@@ -228,6 +279,20 @@ class FemailKyaaaaViewController: UIViewController, UITableViewDelegate, UITable
         }
         
     }
-        
-        
+    
+    func deletePost(selfPostId: String, completion: @escaping(Error?) -> ()) {
+        let db = Firestore.firestore()
+        db.collection("Femailposts").document(selfPostId).delete() { err in
+            if let err = err {
+                print("Error removing document: \(err)")
+                HUD.flash(.error, delay: 0.5)
+            } else {
+                print("Document successfully removed!")
+                self.getkyaaaaPost()
+                HUD.flash(.success, delay: 0.5)
+            }
+        }
+    }
+    
+     
 }

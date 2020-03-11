@@ -16,7 +16,7 @@ class kyaaaaViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     let currentUserId = Auth.auth().currentUser?.uid
     var gender = ""
-     var userBlockIds = [String]()
+    var userBlockIds = [String]()
     let currentUser = Auth.auth().currentUser
     
     // 読み込み中かどうかを判別する変数(読み込み結果が0件の場合DZNEmptyDataSetで空の表示をさせるため)
@@ -143,74 +143,71 @@ class kyaaaaViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
         
         func didTapShareButton(tableViewCell: UITableViewCell, button: UIButton) {
-            /*
-            let alertController = UIAlertController(title: "テキストを共有します", message: "", preferredStyle: .alert)
-            let otherShareAction = UIAlertAction(title: "共有", style: UIAlertAction.Style.default) { (action) in
-                //ActivityViewController
-                self.selectedPost = self.posts[tableViewCell.tag]
-              
-                var dear = self.selectedPost?.age
-                var text = self.selectedPost?.text
-                var items = ["Dear\(dear)",text] as [Any]
-                print(items)
-                // UIActivityViewControllerをインスタンス化
-                let activityVc = UIActivityViewController(activityItems: items, applicationActivities: nil)
-                // UIAcitivityViewControllerを表示
-                self.present(activityVc, animated: true, completion: nil)
-                
-            }
-            let cancelAction = UIAlertAction(title: "キャンセル", style: .cancel) { (action) in
-                
+            let appearance = SCLAlertView.SCLAppearance(
+                             showCloseButton: false
+                         )
+            
+             let alert = SCLAlertView(appearance: appearance)
+            alert.addButton("共有") {
+                             //ActivityViewController
+              self.selectedPost = self.posts[tableViewCell.tag]
+                                      
+              var dear = self.selectedPost?.age
+              var text = self.selectedPost?.text
+              var items = ["Dear\(dear)",text] as [Any]
+              print(items)
+                                      // UIActivityViewControllerをインスタンス化
+              let activityVc = UIActivityViewController(activityItems: items, applicationActivities: nil)
+                                      // UIAcitivityViewControllerを表示
+              self.present(activityVc, animated: true, completion: nil)
+                    
             }
             
-            alertController.addAction(otherShareAction)
-            alertController.addAction(cancelAction)
+            if self.posts[tableViewCell.tag].userId == currentUser?.uid {
+                alert.addButton("削除する") {
+                    if let deletePostId = self.posts[tableViewCell.tag].uid {
+                        self.deletePost(selfPostId: deletePostId) { (error) in
+                            if error != nil {
+                                print(error)
+                                HUD.flash(.error, delay: 1.0)
+                            } else {
+                                HUD.flash(.success, delay: 1.0)
+                                self.getkyaaaaPost()
+                            }
+                        }
+                    } else {
+                        return
+                    }
+                
+                }
+            } else {
+                alert.addButton("ブロック") {
+                                
+                  if let blockUserId = self.posts[tableViewCell.tag].userId {
+                    self.blockUser(selfUserId: self.currentUser!.uid, blockUserId: blockUserId) { (error) in
+                        if error != nil {
+                            print(error)
+                            HUD.flash(.error, delay: 1.0)
+                        } else {
+                            HUD.flash(.success, delay: 1.0)
+                            self.getkyaaaaPost()
+                        }
+                                        
+                                    
+                    }
+                  } else {
+                      return
+                  }
+                  
+                }
+            }
             
-            present(alertController,animated: true,completion: nil)
-            */
-             let appearance = SCLAlertView.SCLAppearance(
-                              showCloseButton: false
-                          )
-                          let alert = SCLAlertView(appearance: appearance)
-                          alert.addButton("共有") {
-                              //ActivityViewController
-                                       self.selectedPost = self.posts[tableViewCell.tag]
-                                       
-                                       var dear = self.selectedPost?.age
-                                       var text = self.selectedPost?.text
-                                       var items = ["Dear\(dear)",text] as [Any]
-                                       print(items)
-                                       // UIActivityViewControllerをインスタンス化
-                                       let activityVc = UIActivityViewController(activityItems: items, applicationActivities: nil)
-                                       // UIAcitivityViewControllerを表示
-                                       self.present(activityVc, animated: true, completion: nil)
-                     
-                          }
-                          alert.addButton("ブロック") {
-                             
-                             if let blockUserId = self.posts[tableViewCell.tag].userId {
-                                self.blockUser(selfUserId: self.currentUserId!, blockUserId: blockUserId) { (error) in
-                                     if error != nil {
-                                         print(error)
-                                         HUD.flash(.error, delay: 1.0)
-                                     } else {
-                                         HUD.flash(.success, delay: 1.0)
-                                         self.getkyaaaaPost()
-                                     }
-                                 
-                                 }
-                             } else {
-                                 return
-                             }
-                             
-                           }
-                          
-             
-                          alert.addButton("キャンセル") {
-                              print("cancel")
-                          }
-                          alert.showInfo("", subTitle: "テキストを共有します")
-        
+            
+            alert.addButton("キャンセル") {
+                print("cancel")
+            }
+            alert.showInfo("", subTitle: "テキストを共有します")
+
         
     }
     func blockUser(selfUserId: String, blockUserId: String, completion: @escaping(Error?) -> ()) {
@@ -285,6 +282,22 @@ class kyaaaaViewController: UIViewController, UITableViewDelegate, UITableViewDa
             }
             
         }
+    
+    func deletePost(selfPostId: String, completion: @escaping(Error?) -> ()) {
+        let db = Firestore.firestore()
+        db.collection("Mailposts").document(selfPostId).delete() { err in
+            if let err = err {
+                print("Error removing document: \(err)")
+                HUD.flash(.error, delay: 0.5)
+            } else {
+                print("Document successfully removed!")
+                self.getkyaaaaPost()
+                HUD.flash(.success, delay: 0.5)
+            }
+        }
+    }
+    
+    
         
 
 }
