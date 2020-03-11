@@ -9,6 +9,7 @@
 import UIKit
 import FirebaseAuth
 import Firebase
+import BubbleTransition
 
 
 class PostViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
