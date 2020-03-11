@@ -14,9 +14,9 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "807F4A4F86C0F95D8B937410A67836EA"
-               BuildableName = "TimelineCards.framework"
-               BlueprintName = "TimelineCards"
+               BlueprintIdentifier = "DFF525D65A0B4D154F5421D1024BF72F"
+               BuildableName = "SwiftReorder.framework"
+               BlueprintName = "SwiftReorder"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

@@ -30,13 +30,15 @@ target 'kyaaaa' do
   pod 'ASExtendedCircularMenu', :git => 'https://github.com/anshul18895/ASExtendedCircularMenu'
   pod 'Tabman'
   pod 'MXParallaxHeader'
-  pod 'TimelineCards'
+
   pod 'SCLAlertView'
   pod 'IQKeyboardManagerSwift', '6.3.0'
   pod 'IBAnimatable'
   pod 'RAMAnimatedTabBarController'
-  pod 'VegaScrollFlowLayout'
+  
   pod 'Hue'
+  pod 'SwiftReorder', '~> 6.0'
+  pod 'TransitionButton'
   
 
 end
