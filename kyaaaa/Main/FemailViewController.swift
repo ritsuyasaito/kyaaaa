@@ -157,59 +157,79 @@ class FemailViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func didTapShareButton(tableViewCell: UITableViewCell, button: UIButton) {
-        selectedPost = posts[tableViewCell.tag]
         
         let appearance = SCLAlertView.SCLAppearance(
-                               showCloseButton: false
-                           )
-                           let alert = SCLAlertView(appearance: appearance)
-                           alert.addButton("共有") {
-                               //ActivityViewController
-                                        self.selectedPost = self.posts[tableViewCell.tag]
-                                        
-                                        var dear = self.selectedPost?.age
-                                        var text = self.selectedPost?.text
-                                        var items = ["Dear\(dear)",text] as [Any]
-                                        print(items)
-                                        // UIActivityViewControllerをインスタンス化
-                                        let activityVc = UIActivityViewController(activityItems: items, applicationActivities: nil)
-                                        // UIAcitivityViewControllerを表示
-                                        self.present(activityVc, animated: true, completion: nil)
-                      
-                           }
-                           alert.addButton("キャンセル") {
-                               print("cancel")
-                           }
-                           alert.showInfo("", subTitle: "テキストを共有します")
-        /*
-        let alertController = UIAlertController(title: "", message: "", preferredStyle: .alert)
-        let otherShareAction = UIAlertAction(title: "共有", style: UIAlertAction.Style.default) { (action) in
-            //ActivityViewController
-            
-            // let text = self.selectedPost?.user.displayName
-            // let text2 = self.selectedPost?.text
-            let dear = self.selectedPost?.age
-            let text = self.selectedPost?.text
-            let items = ["Dear\(dear)",text] as [Any]
-            // UIActivityViewControllerをインスタンス化
-            let activityVc = UIActivityViewController(activityItems: items, applicationActivities: nil)
-            // UIAcitivityViewControllerを表示
-            self.present(activityVc, animated: true, completion: nil)
-            
-        }
-        let cancelAction = UIAlertAction(title: "キャンセル", style: .cancel) { (action) in
-            
+                         showCloseButton: false
+                     )
+        
+         let alert = SCLAlertView(appearance: appearance)
+        alert.addButton("共有") {
+                         //ActivityViewController
+          self.selectedPost = self.posts[tableViewCell.tag]
+                                  
+          var dear = self.selectedPost?.age
+          var text = self.selectedPost?.text
+          var items = ["Dear\(dear)",text] as [Any]
+          print(items)
+                                  // UIActivityViewControllerをインスタンス化
+          let activityVc = UIActivityViewController(activityItems: items, applicationActivities: nil)
+                                  // UIAcitivityViewControllerを表示
+          self.present(activityVc, animated: true, completion: nil)
+                
         }
         
-        alertController.addAction(otherShareAction)
-        alertController.addAction(cancelAction)
+        if self.posts[tableViewCell.tag].userId == currentUser?.uid {
+            alert.addButton("削除する") {
+                if let deletePostId = self.posts[tableViewCell.tag].uid {
+                    self.deletePost(selfPostId: deletePostId) { (error) in
+                        if error != nil {
+                            print(error)
+                            HUD.flash(.error, delay: 1.0)
+                        } else {
+                            HUD.flash(.success, delay: 1.0)
+                            self.loadTimeline()
+                        }
+                    }
+                } else {
+                    return
+                }
+            
+            }
+        } else {
+            alert.addButton("ブロック") {
+                            
+              if let blockUserId = self.posts[tableViewCell.tag].userId {
+                self.blockUser(selfUserId: self.currentUser!.uid, blockUserId: blockUserId) { (error) in
+                    if error != nil {
+                        print(error)
+                        HUD.flash(.error, delay: 1.0)
+                    } else {
+                        HUD.flash(.success, delay: 1.0)
+                        self.loadTimeline()
+                    }
+                                    
+                                
+                }
+              } else {
+                  return
+              }
+              
+            }
+        }
         
-        present(alertController,animated: true,completion: nil)
-        */
         
+        alert.addButton("キャンセル") {
+            print("cancel")
+        }
+        alert.showInfo("", subTitle: "テキストを共有します")
+                        
+        
+
     }
     
     var userBlockIds = [String]()
+    
+    
     
     var posts = [Post]()
     var selectedPost: Post?
@@ -366,7 +386,10 @@ class FemailViewController: UIViewController, UITableViewDataSource, UITableView
                     let dataDescription = document.data() as! [String:Any]
                     
                     if dataDescription["blockId"] != nil {
-                        self.userBlockIds = dataDescription["gender"] as! [String]
+                        for i in dataDescription["blockId"] as! [String] {
+                            self.userBlockIds.append(i)
+                        }
+                       
                     } else {
                         self.userBlockIds = []
                     }
@@ -420,7 +443,28 @@ class FemailViewController: UIViewController, UITableViewDataSource, UITableView
                 }
             }
         }
-        
+    }
+    
+    func blockUser(selfUserId: String, blockUserId: String, completion: @escaping(Error?) -> ()) {
+        let db = Firestore.firestore()
+        db.document("users/\(selfUserId)").updateData(["blockId": FieldValue.arrayUnion([blockUserId])]) { (error) in
+            completion(error)
+        }
+    }
+    
+    
+    func deletePost(selfPostId: String, completion: @escaping(Error?) -> ()) {
+        let db = Firestore.firestore()
+        db.collection("Femailposts").document(selfPostId).delete() { err in
+            if let err = err {
+                print("Error removing document: \(err)")
+                HUD.flash(.error, delay: 0.5)
+            } else {
+                print("Document successfully removed!")
+                self.loadTimeline()
+                HUD.flash(.success, delay: 0.5)
+            }
+        }
     }
     
     //   ----------------パスワード要求ー---------------

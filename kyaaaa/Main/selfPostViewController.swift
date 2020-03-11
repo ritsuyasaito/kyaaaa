@@ -10,11 +10,13 @@ import UIKit
 import FirebaseAuth
 import Firebase
 import PKHUD
+import SCLAlertView
 
 class selfPostViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, TimeLineTableViewCellDelegate {
     
     let currentUserId = Auth.auth().currentUser?.uid
     var gender = ""
+    var collect = ""
     
     // 読み込み中かどうかを判別する変数(読み込み結果が0件の場合DZNEmptyDataSetで空の表示をさせるため)
     var isLoading: Bool = false
@@ -142,29 +144,51 @@ class selfPostViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func didTapShareButton(tableViewCell: UITableViewCell, button: UIButton) {
-        let alertController = UIAlertController(title: "テキストを共有します", message: "", preferredStyle: .alert)
-        let otherShareAction = UIAlertAction(title: "共有", style: UIAlertAction.Style.default) { (action) in
-            //ActivityViewController
-            self.selectedPost = self.posts[tableViewCell.tag]
-          
-            var dear = self.selectedPost?.age
-            var text = self.selectedPost?.text
-            var items = ["Dear\(dear)",text] as [Any]
-            print(items)
-            // UIActivityViewControllerをインスタンス化
-            let activityVc = UIActivityViewController(activityItems: items, applicationActivities: nil)
-            // UIAcitivityViewControllerを表示
-            self.present(activityVc, animated: true, completion: nil)
-            
-        }
-        let cancelAction = UIAlertAction(title: "キャンセル", style: .cancel) { (action) in
-            
-        }
+        let appearance = SCLAlertView.SCLAppearance(
+                         showCloseButton: false
+                     )
+                     let alert = SCLAlertView(appearance: appearance)
+                     alert.addButton("共有") {
+                         //ActivityViewController
+                                  self.selectedPost = self.posts[tableViewCell.tag]
+                                  
+                                  var dear = self.selectedPost?.age
+                                  var text = self.selectedPost?.text
+                                  var items = ["Dear\(dear)",text] as [Any]
+                                  print(items)
+                                  // UIActivityViewControllerをインスタンス化
+                                  let activityVc = UIActivityViewController(activityItems: items, applicationActivities: nil)
+                                  // UIAcitivityViewControllerを表示
+                                  self.present(activityVc, animated: true, completion: nil)
+                
+                     }
+                     alert.addButton("削除する") {
+                        if let selectedId = self.posts[tableViewCell.tag].uid {
+                            let db = Firestore.firestore()
+                            db.collection(self.collect).document(selectedId).delete() { err in
+                                if let err = err {
+                                    print("Error removing document: \(err)")
+                                    HUD.flash(.error, delay: 0.5)
+                                } else {
+                                    print("Document successfully removed!")
+                                    self.getUserPost()
+                                    HUD.flash(.success, delay: 0.5)
+                                }
+                            }
+                        }
+
+                        
+                      }
+                     
         
-        alertController.addAction(otherShareAction)
-        alertController.addAction(cancelAction)
         
-        present(alertController,animated: true,completion: nil)
+                     alert.addButton("キャンセル") {
+                         print("cancel")
+                     }
+                     alert.showInfo("", subTitle: "テキストを共有します")
+        
+        
+        
     }
     
     
@@ -181,6 +205,7 @@ class selfPostViewController: UIViewController, UITableViewDataSource, UITableVi
                     if dataDescription["gender"] != nil {
                         self.gender = dataDescription["gender"] as! String
                         if self.gender == "男" {
+                            self.collect = "Mailposts"
                             Post.getUserPost(collection: "Mailposts", userId: self.currentUserId!, isAdditional: isAdditional) { (posts, lastSnapshot, error) in
                                 // 読み込み完了
                                 self.isLoading = false
@@ -214,6 +239,7 @@ class selfPostViewController: UIViewController, UITableViewDataSource, UITableVi
                                 
                             }
                         } else {
+                            self.collect = "Femailposts"
                             Post.getUserPost(collection: "Femailposts", userId: self.currentUserId!, isAdditional: isAdditional) { (posts, lastSnapshot, error) in
                                 // 読み込み完了
                                 self.isLoading = false
