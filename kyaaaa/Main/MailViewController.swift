@@ -318,13 +318,23 @@ class MailViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! TimelineTableViewCell
         //cellで用意したdelegateメソッドをこのViewControllerで書く
 //        cell.layer.cornerRadius = 8
-        cell.contentView.layer.cornerRadius = 8
-        cell.layer.masksToBounds = false
-        cell.layer.shadowOffset = CGSize(width: 0.2, height: 0.2)
-//              cell.layer.shadowOffset = CGSizeMake(0, 0)
-        cell.layer.shadowColor = UIColor.black.cgColor
-        cell.layer.shadowOpacity = 0.23
-        cell.layer.shadowRadius = 4
+//        cell.contentView.layer.cornerRadius = 8
+//        cell.layer.masksToBounds = false
+//        cell.layer.shadowOffset = CGSize(width: 0.2, height: 0.2)
+////              cell.layer.shadowOffset = CGSizeMake(0, 0)
+//        cell.layer.shadowColor = UIColor.black.cgColor
+//        cell.layer.shadowOpacity = 0.23
+//        cell.layer.shadowRadius = 4
+        
+        switch posts[indexPath.row].age {
+        case "小学生":
+            cell.baseView.backgroundColor = UIColor.systemPink
+        case "中学生":
+            cell.baseView.backgroundColor = UIColor.purple
+        default:
+//            cell.baseView.backgroundColor = UIColor.orange
+            cell.baseView.backgroundColor = UIColor(red: 146/255, green: 84/255, blue: 255/255, alpha: 1.0)
+        }
         
         cell.delegate = self
         cell.tag = indexPath.row

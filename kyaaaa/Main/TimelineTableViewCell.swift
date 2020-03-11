@@ -35,6 +35,7 @@ class TimelineTableViewCell: UITableViewCell {
     @IBOutlet var naruhodoCountLabel: UILabel!
     @IBOutlet var kyaaaaButton: UIButton!
     @IBOutlet var kaaaaaCountLabel: UILabel!
+    @IBOutlet var baseView: UIView!
     
     
 
@@ -51,6 +52,13 @@ class TimelineTableViewCell: UITableViewCell {
 //        layer.shadowOpacity = 0.23
 //        layer.shadowRadius = 10
         
+        
+        baseView.layer.cornerRadius = 8.0
+        baseView.layer.shadowColor = UIColor.black.cgColor
+        baseView.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
+        baseView.layer.shadowOpacity = 0.2
+        baseView.layer.shadowRadius = 4.0
+        baseView.layer.masksToBounds = false
         
     }
 
