@@ -209,7 +209,7 @@ class FemailViewController: UIViewController, UITableViewDataSource, UITableView
         
     }
     
-    
+    var userBlockIds = [String]()
     
     var posts = [Post]()
     var selectedPost: Post?
@@ -269,7 +269,7 @@ class FemailViewController: UIViewController, UITableViewDataSource, UITableView
     
     func loadData(isAdditional: Bool = false, filterAge: String) {
         isLoading = true
-        Post.getAgeData(age: filterAge, collection: "Femailposts", isAdditional: isAdditional, lastSnapshot: lastSnapshot) { (posts, lastSnapshot, error) in
+        Post.getAgeData(blockIds: userBlockIds,age: filterAge, collection: "Femailposts", isAdditional: isAdditional, lastSnapshot: lastSnapshot) { (posts, lastSnapshot, error) in
             // 読み込み完了
             self.isLoading = false
             self.lastSnapshot = lastSnapshot
@@ -365,6 +365,13 @@ class FemailViewController: UIViewController, UITableViewDataSource, UITableView
                 if let document = document, document.exists {
                     let dataDescription = document.data() as! [String:Any]
                     
+                    if dataDescription["blockId"] != nil {
+                        self.userBlockIds = dataDescription["gender"] as! [String]
+                    } else {
+                        self.userBlockIds = []
+                    }
+                    
+                    
                     if dataDescription["gender"] != nil {
                         self.userGender = dataDescription["gender"] as! String
                         if self.userGender == "女" {
@@ -384,7 +391,7 @@ class FemailViewController: UIViewController, UITableViewDataSource, UITableView
     
     func loadTimeline(isAdditional: Bool = false) {
         isLoading = true
-        Post.getAll(collection: "Femailposts", isAdditional: isAdditional, lastSnapshot: lastSnapshot) { (posts, lastSnapshot, error) in
+        Post.getAll(blockIds: userBlockIds, collection: "Femailposts", isAdditional: isAdditional, lastSnapshot: lastSnapshot) { (posts, lastSnapshot, error) in
             // 読み込み完了
             self.isLoading = false
             self.lastSnapshot = lastSnapshot
