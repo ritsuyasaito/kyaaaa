@@ -24,6 +24,11 @@
 			<key>orderHint</key>
 			<integer>5</integer>
 		</dict>
+		<key>DOFavoriteButton.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>6</integer>
+		</dict>
 		<key>DZNEmptyDataSet.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
@@ -164,75 +169,105 @@
 			<key>orderHint</key>
 			<integer>31</integer>
 		</dict>
-		<key>JonContextMenu.xcscheme_^#shared#^_</key>
+		<key>Hue.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>37</integer>
 		</dict>
-		<key>Kingfisher.xcscheme_^#shared#^_</key>
+		<key>IBAnimatable.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>38</integer>
 		</dict>
-		<key>MXParallaxHeader.xcscheme_^#shared#^_</key>
+		<key>IQKeyboardManagerSwift.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>39</integer>
+		</dict>
+		<key>JonContextMenu.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>40</integer>
+		</dict>
+		<key>Kingfisher.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>41</integer>
 		</dict>
-		<key>PKHUD-PKHUDResources.xcscheme_^#shared#^_</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>45</integer>
-		</dict>
-		<key>PKHUD.xcscheme_^#shared#^_</key>
+		<key>MXParallaxHeader.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>44</integer>
 		</dict>
-		<key>Pageboy.xcscheme_^#shared#^_</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>43</integer>
-		</dict>
-		<key>Pods-kyaaaa.xcscheme_^#shared#^_</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>46</integer>
-		</dict>
-		<key>PromisesObjC.xcscheme_^#shared#^_</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>47</integer>
-		</dict>
-		<key>SDWebImage.xcscheme_^#shared#^_</key>
+		<key>PKHUD-PKHUDResources.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>48</integer>
 		</dict>
-		<key>SwiftMessages-SwiftMessages.xcscheme_^#shared#^_</key>
+		<key>PKHUD.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>50</integer>
+			<integer>47</integer>
 		</dict>
-		<key>SwiftMessages.xcscheme_^#shared#^_</key>
+		<key>Pageboy.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>46</integer>
+		</dict>
+		<key>Pods-kyaaaa.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>49</integer>
 		</dict>
-		<key>Tabman.xcscheme_^#shared#^_</key>
+		<key>PromisesObjC.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>50</integer>
+		</dict>
+		<key>RAMAnimatedTabBarController.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>51</integer>
 		</dict>
-		<key>TimelineCards.xcscheme_^#shared#^_</key>
+		<key>SCLAlertView.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>52</integer>
 		</dict>
-		<key>ViewAnimator.xcscheme_^#shared#^_</key>
+		<key>SDWebImage.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>53</integer>
+		</dict>
+		<key>SwiftMessages-SwiftMessages.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>55</integer>
+		</dict>
+		<key>SwiftMessages.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>54</integer>
+		</dict>
+		<key>Tabman.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>56</integer>
+		</dict>
+		<key>TimelineCards.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>57</integer>
+		</dict>
+		<key>VegaScrollFlowLayout.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>58</integer>
+		</dict>
+		<key>ViewAnimator.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>59</integer>
 		</dict>
 		<key>abseil.xcscheme_^#shared#^_</key>
 		<dict>
@@ -257,17 +292,17 @@
 		<key>leveldb-library.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>39</integer>
+			<integer>42</integer>
 		</dict>
 		<key>libwebp.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>40</integer>
+			<integer>43</integer>
 		</dict>
 		<key>nanopb.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>42</integer>
+			<integer>45</integer>
 		</dict>
 	</dict>
 </dict>
