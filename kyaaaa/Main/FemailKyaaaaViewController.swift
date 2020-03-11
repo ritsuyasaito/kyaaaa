@@ -24,6 +24,8 @@ class FemailKyaaaaViewController: UIViewController, UITableViewDelegate, UITable
     
     var posts = [Post]()
     var selectedPost: Post?
+    var userBlockIds = [String]()
+    let currentUser = Auth.auth().currentUser
     
     @IBOutlet var femaleKyaaaaDataTableView: UITableView!
 
@@ -42,6 +44,7 @@ class FemailKyaaaaViewController: UIViewController, UITableViewDelegate, UITable
     
     override func viewWillAppear(_ animated: Bool) {
         getkyaaaaPost()
+        getUserData()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -163,10 +166,36 @@ class FemailKyaaaaViewController: UIViewController, UITableViewDelegate, UITable
             present(alertController,animated: true,completion: nil)
         }
     
+    func getUserData() {
+        // Firestoreのデータベースを取得
+        let db = Firestore.firestore()
+        if currentUser != nil {
+            let docRef = db.collection("users").document(currentUserId!)
+            docRef.getDocument { (document, error) in
+                self.userBlockIds = []
+                if let document = document, document.exists {
+                    let dataDescription = document.data() as! [String:Any]
+                    
+                    if dataDescription["blockId"] != nil {
+                        for i in dataDescription["blockId"] as! [String] {
+                            self.userBlockIds.append(i)
+                        }
+                       
+                    } else {
+                        self.userBlockIds = []
+                    }
+                    
+                   
+                }
+            }
+        }
+        
+    }
+    
     func getkyaaaaPost(isAdditional: Bool = false) {
         let db = Firestore.firestore()
         if currentUserId != nil {
-            Post.getUserkyaaaPost(collection: "Femailposts", userId: self.currentUserId!, isAdditional: isAdditional, lastSnapshot: self.lastSnapshot) { (posts, lastSnapshot, error) in
+            Post.getUserkyaaaPost(blockIds: userBlockIds,collection: "Femailposts", userId: self.currentUserId!, isAdditional: isAdditional, lastSnapshot: self.lastSnapshot) { (posts, lastSnapshot, error) in
                 // 読み込み完了
                 self.isLoading = false
                 self.lastSnapshot = lastSnapshot

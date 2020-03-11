@@ -10,11 +10,14 @@ import UIKit
 import FirebaseAuth
 import Firebase
 import PKHUD
+import SCLAlertView
 
 class kyaaaaViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, TimeLineTableViewCellDelegate {
     
     let currentUserId = Auth.auth().currentUser?.uid
     var gender = ""
+     var userBlockIds = [String]()
+    let currentUser = Auth.auth().currentUser
     
     // 読み込み中かどうかを判別する変数(読み込み結果が0件の場合DZNEmptyDataSetで空の表示をさせるため)
     var isLoading: Bool = false
@@ -43,6 +46,7 @@ class kyaaaaViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     override func viewWillAppear(_ animated: Bool) {
         getkyaaaaPost()
+        getUserData()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -139,6 +143,7 @@ class kyaaaaViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
         
         func didTapShareButton(tableViewCell: UITableViewCell, button: UIButton) {
+            /*
             let alertController = UIAlertController(title: "テキストを共有します", message: "", preferredStyle: .alert)
             let otherShareAction = UIAlertAction(title: "共有", style: UIAlertAction.Style.default) { (action) in
                 //ActivityViewController
@@ -162,15 +167,91 @@ class kyaaaaViewController: UIViewController, UITableViewDelegate, UITableViewDa
             alertController.addAction(cancelAction)
             
             present(alertController,animated: true,completion: nil)
+            */
+             let appearance = SCLAlertView.SCLAppearance(
+                              showCloseButton: false
+                          )
+                          let alert = SCLAlertView(appearance: appearance)
+                          alert.addButton("共有") {
+                              //ActivityViewController
+                                       self.selectedPost = self.posts[tableViewCell.tag]
+                                       
+                                       var dear = self.selectedPost?.age
+                                       var text = self.selectedPost?.text
+                                       var items = ["Dear\(dear)",text] as [Any]
+                                       print(items)
+                                       // UIActivityViewControllerをインスタンス化
+                                       let activityVc = UIActivityViewController(activityItems: items, applicationActivities: nil)
+                                       // UIAcitivityViewControllerを表示
+                                       self.present(activityVc, animated: true, completion: nil)
+                     
+                          }
+                          alert.addButton("ブロック") {
+                             
+                             if let blockUserId = self.posts[tableViewCell.tag].userId {
+                                self.blockUser(selfUserId: self.currentUserId!, blockUserId: blockUserId) { (error) in
+                                     if error != nil {
+                                         print(error)
+                                         HUD.flash(.error, delay: 1.0)
+                                     } else {
+                                         HUD.flash(.success, delay: 1.0)
+                                         self.getkyaaaaPost()
+                                     }
+                                 
+                                 }
+                             } else {
+                                 return
+                             }
+                             
+                           }
+                          
+             
+                          alert.addButton("キャンセル") {
+                              print("cancel")
+                          }
+                          alert.showInfo("", subTitle: "テキストを共有します")
+        
+        
+    }
+    func blockUser(selfUserId: String, blockUserId: String, completion: @escaping(Error?) -> ()) {
+        let db = Firestore.firestore()
+        db.document("users/\(selfUserId)").updateData(["blockId": FieldValue.arrayUnion([blockUserId])]) { (error) in
+            completion(error)
+        }
+    }
+    func getUserData() {
+        // Firestoreのデータベースを取得
+        let db = Firestore.firestore()
+        if currentUser != nil {
+            let docRef = db.collection("users").document(currentUserId!)
+            docRef.getDocument { (document, error) in
+                self.userBlockIds = []
+                if let document = document, document.exists {
+                    let dataDescription = document.data() as! [String:Any]
+                    
+                    if dataDescription["blockId"] != nil {
+                        for i in dataDescription["blockId"] as! [String] {
+                            self.userBlockIds.append(i)
+                        }
+                       
+                    } else {
+                        self.userBlockIds = []
+                    }
+                    
+                   
+                }
+            }
         }
         
-        
-        
+    }
+    
+//    self.userBlockIds = []
         
         func getkyaaaaPost(isAdditional: Bool = false) {
             let db = Firestore.firestore()
             if currentUserId != nil {
-                Post.getUserkyaaaPost(collection: "Mailposts", userId: self.currentUserId!, isAdditional: isAdditional, lastSnapshot: self.lastSnapshot) { (posts, lastSnapshot, error) in
+                Post.getUserkyaaaPost(blockIds: userBlockIds,collection: "Mailposts", userId: self.currentUserId!, isAdditional: isAdditional, lastSnapshot: self.lastSnapshot) { (posts, lastSnapshot, error) in
+                    
                     // 読み込み完了
                     self.isLoading = false
                     self.lastSnapshot = lastSnapshot
@@ -181,6 +262,7 @@ class kyaaaaViewController: UIViewController, UITableViewDelegate, UITableViewDa
                        // self.showError(error: error)
                         HUD.show(.error)
                     } else {
+                        
                        // 読み込みが成功した場合
                        if let posts = posts {
                            // 追加読み込みなら配列に追加、そうでないなら配列に再代入
