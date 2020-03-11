@@ -260,75 +260,74 @@ class MailViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func didTapShareButton(tableViewCell: UITableViewCell, button: UIButton) {
+        
         let appearance = SCLAlertView.SCLAppearance(
                          showCloseButton: false
                      )
-                     let alert = SCLAlertView(appearance: appearance)
-                     alert.addButton("共有") {
+        
+         let alert = SCLAlertView(appearance: appearance)
+        alert.addButton("共有") {
                          //ActivityViewController
-                                  self.selectedPost = self.posts[tableViewCell.tag]
+          self.selectedPost = self.posts[tableViewCell.tag]
                                   
-                                  var dear = self.selectedPost?.age
-                                  var text = self.selectedPost?.text
-                                  var items = ["Dear\(dear)",text] as [Any]
-                                  print(items)
+          var dear = self.selectedPost?.age
+          var text = self.selectedPost?.text
+          var items = ["Dear\(dear)",text] as [Any]
+          print(items)
                                   // UIActivityViewControllerをインスタンス化
-                                  let activityVc = UIActivityViewController(activityItems: items, applicationActivities: nil)
+          let activityVc = UIActivityViewController(activityItems: items, applicationActivities: nil)
                                   // UIAcitivityViewControllerを表示
-                                  self.present(activityVc, animated: true, completion: nil)
+          self.present(activityVc, animated: true, completion: nil)
                 
-                     }
-                     alert.addButton("ブロック") {
-                        
-                        if let blockUserId = self.posts[tableViewCell.tag].userId {
-                            self.blockUser(selfUserId: self.currentUser!.uid, blockUserId: blockUserId) { (error) in
-                                if error != nil {
-                                    print(error)
-                                    HUD.flash(.error, delay: 1.0)
-                                } else {
-                                    HUD.flash(.success, delay: 1.0)
-                                    self.loadTimeline()
-                                }
-                            
-                            }
+        }
+        
+        if self.posts[tableViewCell.tag].userId == currentUser?.uid {
+            alert.addButton("削除する") {
+                if let deletePostId = self.posts[tableViewCell.tag].uid {
+                    self.deletePost(selfPostId: deletePostId) { (error) in
+                        if error != nil {
+                            print(error)
+                            HUD.flash(.error, delay: 1.0)
                         } else {
-                            return
+                            HUD.flash(.success, delay: 1.0)
+                            self.loadTimeline()
                         }
+                    }
+                } else {
+                    return
+                }
+            
+            }
+        } else {
+            alert.addButton("ブロック") {
+                            
+              if let blockUserId = self.posts[tableViewCell.tag].userId {
+                self.blockUser(selfUserId: self.currentUser!.uid, blockUserId: blockUserId) { (error) in
+                    if error != nil {
+                        print(error)
+                        HUD.flash(.error, delay: 1.0)
+                    } else {
+                        HUD.flash(.success, delay: 1.0)
+                        self.loadTimeline()
+                    }
+                                    
+                                
+                }
+              } else {
+                  return
+              }
+              
+            }
+        }
+        
+        
+        alert.addButton("キャンセル") {
+            print("cancel")
+        }
+        alert.showInfo("", subTitle: "テキストを共有します")
                         
-                      }
-                     
         
-        
-                     alert.addButton("キャンセル") {
-                         print("cancel")
-                     }
-                     alert.showInfo("", subTitle: "テキストを共有します")
-        
-        /*
-        let alertController = UIAlertController(title: "テキストを共有します", message: "", preferredStyle: .alert)
-        let otherShareAction = UIAlertAction(title: "共有", style: UIAlertAction.Style.default) { (action) in
-            //ActivityViewController
-            self.selectedPost = self.posts[tableViewCell.tag]
-            
-            var dear = self.selectedPost?.age
-            var text = self.selectedPost?.text
-            var items = ["Dear\(dear)",text] as [Any]
-            print(items)
-            // UIActivityViewControllerをインスタンス化
-            let activityVc = UIActivityViewController(activityItems: items, applicationActivities: nil)
-            // UIAcitivityViewControllerを表示
-            self.present(activityVc, animated: true, completion: nil)
-            
-        }
-        let cancelAction = UIAlertAction(title: "キャンセル", style: .cancel) { (action) in
-            
-        }
-        
-        alertController.addAction(otherShareAction)
-        alertController.addAction(cancelAction)
-        
-        present(alertController,animated: true,completion: nil)
- */
+
     }
     
     
@@ -550,6 +549,22 @@ class MailViewController: UIViewController, UITableViewDataSource, UITableViewDe
             completion(error)
         }
     }
+    
+    func deletePost(selfPostId: String, completion: @escaping(Error?) -> ()) {
+        let db = Firestore.firestore()
+        db.collection("Mailposts").document(selfPostId).delete() { err in
+            if let err = err {
+                print("Error removing document: \(err)")
+                HUD.flash(.error, delay: 0.5)
+            } else {
+                print("Document successfully removed!")
+                self.loadTimeline()
+                HUD.flash(.success, delay: 0.5)
+            }
+        }
+    }
+    
+
     
     
     
