@@ -376,10 +376,10 @@ PODS:
   - SwiftMessages (7.0.1):
     - SwiftMessages/App (= 7.0.1)
   - SwiftMessages/App (7.0.1)
+  - SwiftReorder (6.0.2)
   - Tabman (2.8.0):
     - Pageboy (~> 3.5.0)
-  - TimelineCards (1.0.5)
-  - VegaScrollFlowLayout (1.1)
+  - TransitionButton (0.5.2)
   - ViewAnimator (2.7.0)
 
 DEPENDENCIES:
@@ -409,9 +409,9 @@ DEPENDENCIES:
   - SCLAlertView
   - SDWebImage/WebP
   - SwiftMessages
+  - SwiftReorder (~> 6.0)
   - Tabman
-  - TimelineCards
-  - VegaScrollFlowLayout
+  - TransitionButton
   - ViewAnimator
 
 SPEC REPOS:
@@ -465,9 +465,9 @@ SPEC REPOS:
     - SCLAlertView
     - SDWebImage
     - SwiftMessages
+    - SwiftReorder
     - Tabman
-    - TimelineCards
-    - VegaScrollFlowLayout
+    - TransitionButton
     - ViewAnimator
 
 EXTERNAL SOURCES:
@@ -537,11 +537,11 @@ SPEC CHECKSUMS:
   SCLAlertView: 6a77bb2edfc65e04dbe57725546cb4107a506b85
   SDWebImage: 783af2c3fa36291a250030c4752ee370a9a51d13
   SwiftMessages: b577dc7043be8b299857ab35bb663dbff6483bd0
+  SwiftReorder: 60ef1faf6446cf68f9a647cb975530db8efd6620
   Tabman: f62ad94ee54a7d96e3fbab34f677d9ea4d38ece6
-  TimelineCards: 8f3377fbe40ae587b5ad9e6d29dd7e6d2654e418
-  VegaScrollFlowLayout: 9158061f29179147755f937c2b21693fc5dbbac3
+  TransitionButton: fb271583d9c9e4bb116b97103047e5157653f233
   ViewAnimator: 5af1c6f3b310f012bf081259c43717aa54fbae73
 
-PODFILE CHECKSUM: db5f10ea4d776cadc66d821636fb89de8ba5e836
+PODFILE CHECKSUM: 0ac7d03345c8a586d9eb569f5e3f8284f0824572
 
 COCOAPODS: 1.8.4

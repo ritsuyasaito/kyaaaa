@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double TimelineCardsVersionNumber;
-FOUNDATION_EXPORT const unsigned char TimelineCardsVersionString[];
+FOUNDATION_EXPORT double TransitionButtonVersionNumber;
+FOUNDATION_EXPORT const unsigned char TransitionButtonVersionString[];
 

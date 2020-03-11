@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double VegaScrollFlowLayoutVersionNumber;
-FOUNDATION_EXPORT const unsigned char VegaScrollFlowLayoutVersionString[];
+FOUNDATION_EXPORT double SwiftReorderVersionNumber;
+FOUNDATION_EXPORT const unsigned char SwiftReorderVersionString[];
 

@@ -14,9 +14,9 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "6738B61255F4E5F64DBC885C2955BE0F"
-               BuildableName = "VegaScrollFlowLayout.framework"
-               BlueprintName = "VegaScrollFlowLayout"
+               BlueprintIdentifier = "E30FF5B0268E3027AF18D788DB9BB7E7"
+               BuildableName = "TransitionButton.framework"
+               BlueprintName = "TransitionButton"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
