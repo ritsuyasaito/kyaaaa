@@ -12,16 +12,17 @@ import PKHUD
 import SwiftMessages
 import Firebase
 import FirebaseAuth
-
+import TransitionButton
 
 class EditUserProfileViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
-    
-    
-    
+        
     @IBOutlet var uesrImageView: UIImageView!
     @IBOutlet var userNameTextField: UITextField!
     @IBOutlet var userAgeTextField: UITextField!
     @IBOutlet var userGenderTextField: UITextField!
+    
+    @IBOutlet var button: TransitionButton!
+    @IBOutlet var logoutButton: TransitionButton!
     
     var pickerView1: UIPickerView = UIPickerView()
     var pickerView2: UIPickerView = UIPickerView()
@@ -29,13 +30,33 @@ class EditUserProfileViewController: UIViewController, UITextFieldDelegate, UIPi
     var genderArray = ["男","女"]
     var ageArray = ["中学生","高校生","19~22歳","23~29歳","30~40代","50代〜"]
     
-  
     let currentUser = Auth.auth().currentUser
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        button.backgroundColor = .systemPurple
+        button.setTitle("保存", for: .normal)
+        //        button.cornerRadius = 50
+        button.layer.cornerRadius = button.layer.bounds.width / 17
+        button.spinnerColor = .white
+        button.titleLabel?.shadowOffset = CGSize(width: 1.0, height: 1.0)
+        button.setTitleShadowColor(UIColor.black, for: UIControl.State.normal)
+        button.layer.shadowColor = UIColor.black.cgColor
+        button.layer.shadowOffset = CGSize(width: 3, height: 3)
+        button.layer.shadowOpacity = 0.2
+        //        button.addTarget(self, action: #selector(buttonAction(_:)), for: .touchUpInside)
+        
+        logoutButton.backgroundColor = .lightGray
+        logoutButton.setTitle("ログアウト", for: .normal)
+        logoutButton.layer.cornerRadius = button.layer.bounds.width / 17
+        logoutButton.spinnerColor = .white
+        logoutButton.titleLabel?.shadowOffset = CGSize(width: 1.0, height: 1.0)
+        logoutButton.setTitleShadowColor(UIColor.black, for: UIControl.State.normal)
+        logoutButton.layer.shadowColor = UIColor.black.cgColor
+        logoutButton.layer.shadowOffset = CGSize(width: 3, height: 3)
+        logoutButton.layer.shadowOpacity = 0.2
+        
         userGenderTextField.delegate = self
         userAgeTextField.delegate = self
         userGenderTextField.delegate = self
@@ -52,7 +73,7 @@ class EditUserProfileViewController: UIViewController, UITextFieldDelegate, UIPi
         let doneItem1 = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(EditUserProfileViewController.done1))
         let cancelItem1 = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(EditUserProfileViewController.cancel1))
         toolbar1.setItems([cancelItem1, doneItem1], animated: true)
-    
+        
         
         self.userGenderTextField.inputView = pickerView1
         self.userGenderTextField.inputAccessoryView = toolbar1
@@ -64,7 +85,6 @@ class EditUserProfileViewController: UIViewController, UITextFieldDelegate, UIPi
         
         self.userAgeTextField.inputView = pickerView2
         self.userAgeTextField.inputAccessoryView = toolbar2
-        
         
     }
     
@@ -95,7 +115,7 @@ class EditUserProfileViewController: UIViewController, UITextFieldDelegate, UIPi
             return ""
         }
     }
-
+    
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if pickerView == pickerView1 {
             self.userGenderTextField.text = genderArray[row]
@@ -103,7 +123,7 @@ class EditUserProfileViewController: UIViewController, UITextFieldDelegate, UIPi
             self.userAgeTextField.text = ageArray[row]
         }
     }
-
+    
     @objc func cancel1() {
         self.userGenderTextField.endEditing(true)
     }
@@ -111,7 +131,7 @@ class EditUserProfileViewController: UIViewController, UITextFieldDelegate, UIPi
     @objc func cancel2() {
         self.userAgeTextField.endEditing(true)
     }
-
+    
     @objc func done1() {
         self.userGenderTextField.endEditing(true)
     }
@@ -119,7 +139,7 @@ class EditUserProfileViewController: UIViewController, UITextFieldDelegate, UIPi
     @objc func done2() {
         self.userAgeTextField.endEditing(true)
     }
-
+    
     func CGRectMake(_ x: CGFloat, _ y: CGFloat, _ width: CGFloat, _ height: CGFloat) -> CGRect {
         return CGRect(x: x, y: y, width: width, height: height)
     }
@@ -164,7 +184,8 @@ class EditUserProfileViewController: UIViewController, UITextFieldDelegate, UIPi
     
     
     
-    @IBAction func saveProfile() {
+    @IBAction func saveProfile(_ button: TransitionButton) {
+        button.startAnimation()
         
         guard let data = uesrImageView.image?.pngData() else { return }
         
@@ -192,27 +213,47 @@ class EditUserProfileViewController: UIViewController, UITextFieldDelegate, UIPi
                     user.age = self.userAgeTextField.text
                     user.gender = self.userGenderTextField.text
                     user.editProfile(completion: { (error) in
-                           DispatchQueue.main.async {
+                        DispatchQueue.main.async {
                             HUD.show(.progress )
-                    //           SVProgressHUD.dismiss()
-                               if let error = error {
+                            //           SVProgressHUD.dismiss()
+                            if let error = error {
                                 HUD.flash(.error, delay: 1.0)
-                               } else {
-                                HUD.flash(.success, delay: 0.5)
+                            } else {
+                                HUD.flash(.success, delay: 0.2)
                                 self.navigationController?.popViewController(animated: true)
                                 self.dismiss(animated: true, completion: nil)
-                               }
-                           }
+                            }
+                        }
                         
                         self.dismiss(animated: true, completion: nil)
                     })
-                       
+                    
                 } else {
                     print("画像を変更してください")
                 }
                 
             }
         }
+        let qualityOfServiceClass = DispatchQoS.QoSClass.background
+        let backgroundQueue = DispatchQueue.global(qos: qualityOfServiceClass)
+        backgroundQueue.async(execute: {
+            
+            sleep(3) // 3: Do your networking task or background work here.
+            
+            DispatchQueue.main.async(execute: { () -> Void in
+                // 4: Stop the animation, here you have three options for the `animationStyle` property:
+                // .expand: useful when the task has been compeletd successfully and you want to expand the button and transit to another view controller in the completion callback
+                // .shake: when you want to reflect to the user that the task did not complete successfly
+                // .normal
+                button.stopAnimation(animationStyle: .normal, completion: {
+                    //                    self.performSegue(withIdentifier: "toName", sender: nil)
+                    self.navigationController?.popViewController(animated: true)
+                    self.dismiss(animated: true, completion: nil)
+                    
+                    
+                })
+            })
+        })
         
         
     }
@@ -221,45 +262,67 @@ class EditUserProfileViewController: UIViewController, UITextFieldDelegate, UIPi
         self.dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func logout() {
-               // SVProgressHUD.show()
-                 
-                UserModel.logout { (error)  in
-                    HUD.show(.progress)
+    @IBAction func logout(_ button: TransitionButton) {
+        // SVProgressHUD.show()
+         logoutButton.startAnimation()
+        
+        UserModel.logout { (error)  in
+            HUD.show(.progress)
+            
+            if let error = error {
+                HUD.show(.error)
+                print(error)
+            } else {
+                // ログイン画面に移動
+                //                    let storyboard = UIStoryboard(name: "Login", bundle: Bundle.main)
+                //                    let rootViewController = storyboard.instantiateViewController(withIdentifier: "RootNavigationController")
+                //                    UIApplication.shared.keyWindow?.rootViewController = rootViewController
+                //
+                //                    // ログイン状態の保持
+                //                    let ud = UserDefaults.standard
+                //                    ud.set(false, forKey: "isLogin")
+                //                    ud.synchronize()
                 
-                    if let error = error {
-                        HUD.show(.error)
-                        print(error)
-                    } else {
-                        // ログイン画面に移動
-    //                    let storyboard = UIStoryboard(name: "Login", bundle: Bundle.main)
-    //                    let rootViewController = storyboard.instantiateViewController(withIdentifier: "RootNavigationController")
-    //                    UIApplication.shared.keyWindow?.rootViewController = rootViewController
-    //
-    //                    // ログイン状態の保持
-    //                    let ud = UserDefaults.standard
-    //                    ud.set(false, forKey: "isLogin")
-    //                    ud.synchronize()
-                       
-                    }
-                }
-            PKHUD.sharedHUD.contentView = PKHUDSuccessView()
-            PKHUD.sharedHUD.show()
-            PKHUD.sharedHUD.hide(afterDelay: 2.0) { success in
-                // Completion Handler
-                let storyboard = UIStoryboard(name: "Login", bundle: Bundle.main)
-                let rootViewController = storyboard.instantiateViewController(withIdentifier: "RootNavigationController")
-                UIApplication.shared.keyWindow?.rootViewController = rootViewController
-                
-                // ログイン状態の保持
-                let ud = UserDefaults.standard
-                ud.set(false, forKey: "isLogin")
-                ud.synchronize()
             }
-            
-                
-            
         }
+        PKHUD.sharedHUD.contentView = PKHUDSuccessView()
+        PKHUD.sharedHUD.show()
+        PKHUD.sharedHUD.hide(afterDelay: 2.0) { success in
+            // Completion Handler
+            let storyboard = UIStoryboard(name: "Login", bundle: Bundle.main)
+            let rootViewController = storyboard.instantiateViewController(withIdentifier: "RootNavigationController")
+            UIApplication.shared.keyWindow?.rootViewController = rootViewController
+            
+            // ログイン状態の保持
+            let ud = UserDefaults.standard
+            ud.set(false, forKey: "isLogin")
+            ud.synchronize()
+        }
+        
+        let qualityOfServiceClass = DispatchQoS.QoSClass.background
+               let backgroundQueue = DispatchQueue.global(qos: qualityOfServiceClass)
+               backgroundQueue.async(execute: {
+                   
+                   sleep(3) // 3: Do your networking task or background work here.
+                   
+                   DispatchQueue.main.async(execute: { () -> Void in
+                       // 4: Stop the animation, here you have three options for the `animationStyle` property:
+                       // .expand: useful when the task has been compeletd successfully and you want to expand the button and transit to another view controller in the completion callback
+                       // .shake: when you want to reflect to the user that the task did not complete successfly
+                       // .normal
+                    self.logoutButton.stopAnimation(animationStyle: .normal, completion: {
+                           //                    self.performSegue(withIdentifier: "toName", sender: nil)
+                           self.navigationController?.popViewController(animated: true)
+                           self.dismiss(animated: true, completion: nil)
+                           
+                           
+                       })
+                   })
+               })
+               
+        
+        
+    }
     
     func getUserData() {
         // Firestoreのデータベースを取得
@@ -305,9 +368,9 @@ class EditUserProfileViewController: UIViewController, UITextFieldDelegate, UIPi
         }
         
     }
-
-   
-
+    
+    
+    
 }
 
 extension EditUserProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
