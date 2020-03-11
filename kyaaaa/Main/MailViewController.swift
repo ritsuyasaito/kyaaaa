@@ -14,8 +14,13 @@ import PKHUD
 import ViewAnimator
 import BubbleTransition
 import ASExtendedCircularMenu
+import SCLAlertView
+import VegaScrollFlowLayout
+import DZNEmptyDataSet
 
-
+public protocol Animation {
+    var initialTransform: CGAffineTransform { get }
+}
 
 //女子から男子へ、女子の投稿
 class MailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, TimeLineTableViewCellDelegate ,UIViewControllerTransitioningDelegate,ASCircularButtonDelegate,UIGestureRecognizerDelegate{
@@ -32,6 +37,18 @@ class MailViewController: UIViewController, UITableViewDataSource, UITableViewDe
 //    var longPressRecognizer = UILongPressGestureRecognizer(target: self, action: cellLongPressed:)
     @IBOutlet var longPressGesRec: UILongPressGestureRecognizer!
 
+    
+    override func viewDidAppear(_ animated: Bool) {
+        animation2()
+//        let fromAnimation = AnimationType.from(direction: .right, offset: 50.0)
+//               let zoomAnimation = AnimationType.zoom(scale: 0.3)
+//               let rotateAnimation = AnimationType.rotate(angle: CGFloat.pi/6)
+//               UIView.animate(views: maleTableView.visibleCells,
+//                              animations: [fromAnimation, zoomAnimation,rotateAnimation],
+//                              duration: 1.2)
+    }
+    
+    
     // UILongPressGestureRecognizerのdelegate：ロングタップを検出する　これだとtableview外しか無理だああ、、
        @IBAction func longPress(_ sender: UILongPressGestureRecognizer) {
            // ロングタップ開始
@@ -39,6 +56,21 @@ class MailViewController: UIViewController, UITableViewDataSource, UITableViewDe
                   }
                   // ロングタップ終了（手を離した）
                   else if sender.state == .ended {
+                    
+                    let appearance = SCLAlertView.SCLAppearance(
+                        showCloseButton: false
+                    )
+                    let alert = SCLAlertView(appearance: appearance)
+                    alert.addButton("はい") {
+                        
+               
+                    }
+                    alert.addButton("いいえ") {
+                        print("cancel")
+                    }
+//                    alert.showInfo("", subTitle: "報告しますか?")
+                     alert.showWarning("", subTitle: "報告しますか?")
+                    /*
                       let alert = UIAlertController(title: nil, message: "報告しますか", preferredStyle: .alert)
                           var action = UIAlertAction(title: "いいえ", style: .default) { (action) in
                               alert.dismiss(animated: true, completion: nil)
@@ -52,6 +84,7 @@ class MailViewController: UIViewController, UITableViewDataSource, UITableViewDe
                           alert.addAction(action)
                           alert.addAction(action2)
                           self.present(alert, animated: true,completion: nil)
+ */
                   }
        }
     
@@ -136,6 +169,8 @@ class MailViewController: UIViewController, UITableViewDataSource, UITableViewDe
         context.canEvaluatePolicy(.deviceOwnerAuthentication, error: nil)
         state = .loggedout
         
+        let layout = VegaScrollFlowLayout()
+       
 
         postButton.isEnabled = false
 
@@ -220,7 +255,30 @@ class MailViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func didTapShareButton(tableViewCell: UITableViewCell, button: UIButton) {
+        let appearance = SCLAlertView.SCLAppearance(
+                         showCloseButton: false
+                     )
+                     let alert = SCLAlertView(appearance: appearance)
+                     alert.addButton("共有") {
+                         //ActivityViewController
+                                  self.selectedPost = self.posts[tableViewCell.tag]
+                                  
+                                  var dear = self.selectedPost?.age
+                                  var text = self.selectedPost?.text
+                                  var items = ["Dear\(dear)",text] as [Any]
+                                  print(items)
+                                  // UIActivityViewControllerをインスタンス化
+                                  let activityVc = UIActivityViewController(activityItems: items, applicationActivities: nil)
+                                  // UIAcitivityViewControllerを表示
+                                  self.present(activityVc, animated: true, completion: nil)
+                
+                     }
+                     alert.addButton("キャンセル") {
+                         print("cancel")
+                     }
+                     alert.showInfo("", subTitle: "テキストを共有します")
         
+        /*
         let alertController = UIAlertController(title: "テキストを共有します", message: "", preferredStyle: .alert)
         let otherShareAction = UIAlertAction(title: "共有", style: UIAlertAction.Style.default) { (action) in
             //ActivityViewController
@@ -244,6 +302,7 @@ class MailViewController: UIViewController, UITableViewDataSource, UITableViewDe
         alertController.addAction(cancelAction)
         
         present(alertController,animated: true,completion: nil)
+ */
     }
     
     
@@ -252,8 +311,20 @@ class MailViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        if let spacer = tableView.reorder.spacerCell(for: indexPath) {
+//            return spacer
+//        }
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! TimelineTableViewCell
         //cellで用意したdelegateメソッドをこのViewControllerで書く
+//        cell.layer.cornerRadius = 8
+        cell.contentView.layer.cornerRadius = 8
+        cell.layer.masksToBounds = false
+        cell.layer.shadowOffset = CGSize(width: 0.2, height: 0.2)
+//              cell.layer.shadowOffset = CGSizeMake(0, 0)
+        cell.layer.shadowColor = UIColor.black.cgColor
+        cell.layer.shadowOpacity = 0.23
+        cell.layer.shadowRadius = 4
         
         cell.delegate = self
         cell.tag = indexPath.row
@@ -496,6 +567,24 @@ class MailViewController: UIViewController, UITableViewDataSource, UITableViewDe
             postVC.fromGender = "男性から"
         }
     }
+    func animation2(){
+        
+               let fromAnimation = AnimationType.from(direction: .right, offset: 30.0)
+               let zoomAnimation = AnimationType.zoom(scale: 0.7)
+    //           let rotateAnimation = AnimationType.rotate(angle: CGFloat.pi/6)
+               UIView.animate(views: maleTableView.visibleCells,
+                              animations: [fromAnimation, zoomAnimation],
+                              duration: 0.5)
+    
+        
+//        let fromAnimation = AnimationType.from(direction: .right, offset: 50.0)
+//        let zoomAnimation = AnimationType.zoom(scale: 0.3)
+//        let rotateAnimation = AnimationType.rotate(angle: CGFloat.pi/6)
+//        UIView.animate(views: maleTableView.visibleCells,
+//                       animations: [fromAnimation, zoomAnimation,rotateAnimation],
+//                       duration: 1.2)
+           }
+    
     
     
     

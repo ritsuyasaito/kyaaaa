@@ -403,10 +403,10 @@
             </objects>
             <point key="canvasLocation" x="-1542" y="-309"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Animated Tab Bar Controller-->
         <scene sceneID="v8E-Bu-djX">
             <objects>
-                <tabBarController storyboardIdentifier="First" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="0Ew-UM-NGl" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="First" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="0Ew-UM-NGl" customClass="RAMAnimatedTabBarController" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="gSZ-ZY-NAl"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="JKr-kd-c5h">
@@ -515,7 +515,7 @@
         <scene sceneID="Cvu-gU-xJT">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Yn4-Pa-dAM" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="female" id="vOB-XV-v1q"/>
+                    <tabBarItem key="tabBarItem" title="female" selectedImage="tabbar-user-icons.png" id="vOB-XV-v1q" customClass="RAMAnimatedTabBarItem" customModule="RAMAnimatedTabBarController"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="geF-B0-5kr">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -534,7 +534,7 @@
         <scene sceneID="zVX-SP-SUx">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ekz-BW-9On" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="male" id="hHl-cP-wj5"/>
+                    <tabBarItem key="tabBarItem" title="male" selectedImage="tabbar-user-icons.png" id="hHl-cP-wj5" customClass="RAMAnimatedTabBarItem" customModule="RAMAnimatedTabBarController"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="2NG-Wb-DmG">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -682,6 +682,7 @@
         <image name="female-placeHolder.jpg" width="312" height="312"/>
         <image name="person.crop.circle.fill.badge.checkmark" catalog="system" width="64" height="50"/>
         <image name="person.crop.circle.fill.badge.exclam" catalog="system" width="64" height="50"/>
+        <image name="tabbar-user-icons.png" width="48" height="48"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="CNV-qz-5rc"/>

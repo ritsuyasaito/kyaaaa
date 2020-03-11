@@ -37,6 +37,9 @@
 		244E9B71240F9022003D6B8A /* kyaaaaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244E9B70240F9022003D6B8A /* kyaaaaViewController.swift */; };
 		244E9B73240F902F003D6B8A /* selfPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244E9B72240F902F003D6B8A /* selfPostViewController.swift */; };
 		244E9B792411FAAF003D6B8A /* FemailKyaaaaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244E9B782411FAAF003D6B8A /* FemailKyaaaaViewController.swift */; };
+		2A0833762417EB4B0012E81E /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0833752417EB4B0012E81E /* TabBarViewController.swift */; };
+		2A0833782417EC5A0012E81E /* 2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A0833772417EC5A0012E81E /* 2@2x.png */; };
+		2A08337A2417ED070012E81E /* tabbar-user-icons@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A0833792417ED070012E81E /* tabbar-user-icons@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +75,9 @@
 		244E9B72240F902F003D6B8A /* selfPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = selfPostViewController.swift; sourceTree = "<group>"; };
 		244E9B782411FAAF003D6B8A /* FemailKyaaaaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FemailKyaaaaViewController.swift; sourceTree = "<group>"; };
 		24F58F720C576286429F4B55 /* Pods-kyaaaa.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kyaaaa.release.xcconfig"; path = "Target Support Files/Pods-kyaaaa/Pods-kyaaaa.release.xcconfig"; sourceTree = "<group>"; };
+		2A0833752417EB4B0012E81E /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		2A0833772417EC5A0012E81E /* 2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "2@2x.png"; sourceTree = "<group>"; };
+		2A0833792417ED070012E81E /* tabbar-user-icons@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar-user-icons@2x.png"; sourceTree = "<group>"; };
 		7296136D7E71358EFA1CADB0 /* Pods-kyaaaa.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kyaaaa.debug.xcconfig"; path = "Target Support Files/Pods-kyaaaa/Pods-kyaaaa.debug.xcconfig"; sourceTree = "<group>"; };
 		9AFA8380FB5D76B887643C2B /* Pods_kyaaaa.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_kyaaaa.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -140,6 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				240B9C062407C5C200FF7FB3 /* Main.storyboard */,
+				2A0833752417EB4B0012E81E /* TabBarViewController.swift */,
 				240B9C102408E41000FF7FB3 /* MailViewController.swift */,
 				240B9C082407D3E800FF7FB3 /* UserPageViewController.swift */,
 				243A9399240C9D2A001BA23A /* FirstViewController.swift */,
@@ -169,6 +176,8 @@
 		240B9C0B2408E0EF00FF7FB3 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				2A0833792417ED070012E81E /* tabbar-user-icons@2x.png */,
+				2A0833772417EC5A0012E81E /* 2@2x.png */,
 				240B9C0C2408E1B700FF7FB3 /* female-placeHolder.jpg */,
 				240B9C0E2408E1C000FF7FB3 /* male-placeHolder.jpg */,
 			);
@@ -253,6 +262,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A0833782417EC5A0012E81E /* 2@2x.png in Resources */,
 				240B9C0F2408E1C000FF7FB3 /* male-placeHolder.jpg in Resources */,
 				240B9BC42403788E00FF7FB3 /* LaunchScreen.storyboard in Resources */,
 				240B9C072407C5C200FF7FB3 /* Main.storyboard in Resources */,
@@ -260,6 +270,7 @@
 				243A939E240CA0CF001BA23A /* TimelineTableViewCell.xib in Resources */,
 				240B9BBF2403788B00FF7FB3 /* Login.storyboard in Resources */,
 				240B9BD02403791F00FF7FB3 /* GoogleService-Info.plist in Resources */,
+				2A08337A2417ED070012E81E /* tabbar-user-icons@2x.png in Resources */,
 				240B9C0D2408E1B700FF7FB3 /* female-placeHolder.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -332,6 +343,7 @@
 			files = (
 				240B9C002407C3C100FF7FB3 /* LoginViewController.swift in Sources */,
 				240B9C022407C3E200FF7FB3 /* SignUpViewController.swift in Sources */,
+				2A0833762417EB4B0012E81E /* TabBarViewController.swift in Sources */,
 				240B9C092407D3E800FF7FB3 /* UserPageViewController.swift in Sources */,
 				240B9C1B240A689800FF7FB3 /* PostViewController.swift in Sources */,
 				244E9B792411FAAF003D6B8A /* FemailKyaaaaViewController.swift in Sources */,
