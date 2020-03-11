@@ -261,7 +261,7 @@ struct Post {
     }
     
     // DBから投稿を取得
-    static func getUserkyaaaPost( collection: String, userId: String, isAdditional: Bool = false, lastSnapshot: DocumentSnapshot? = nil, completion: @escaping(_ posts: [Post]?, _ lastSnapshot: DocumentSnapshot?, _ error: Error?) -> ()) {
+    static func getUserkyaaaPost(blockIds:[String], collection: String, userId: String, isAdditional: Bool = false, lastSnapshot: DocumentSnapshot? = nil, completion: @escaping(_ posts: [Post]?, _ lastSnapshot: DocumentSnapshot?, _ error: Error?) -> ()) {
         // データベースへの参照を作る
         let ref = Firestore.firestore().collection(collection)
         

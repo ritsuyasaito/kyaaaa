@@ -190,7 +190,9 @@ class selfPostViewController: UIViewController, UITableViewDataSource, UITableVi
                                     print(error)
                                     // エラー処理
                                    // self.showError(error: error)
-                                    HUD.show(.error)
+//                                    HUD.show(.error)
+//                                    HUD.show(.error, delay: 1.0)
+                                    HUD.flash(.error, delay: 1.0)
                                 } else {
                                    
                                    // 読み込みが成功した場合

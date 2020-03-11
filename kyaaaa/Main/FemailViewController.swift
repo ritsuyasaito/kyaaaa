@@ -23,7 +23,7 @@ class FemailViewController: UIViewController, UITableViewDataSource, UITableView
     
     @IBOutlet var longPressGesRec: UILongPressGestureRecognizer!
     
-    let colourArray: [UIColor] = [.red , .blue , .green , .yellow , .purple , .gray , .black, .black]
+    let colourArray: [UIColor] = [.red , .orange , .systemGreen , .blue , .gray , .purple , .systemPink, .magenta]
     let shareName: [String] = ["小","中","高","19~","23~","30~","40~","50~"]
     var ageNumDictionary: [Int: String] = [0:"小学生",1:"中学生", 2:"高校生", 3:"19~22歳", 4:"23~29歳", 5:"30~39歳", 6:"40~49歳", 7:"50歳~"]
     
@@ -306,6 +306,30 @@ class FemailViewController: UIViewController, UITableViewDataSource, UITableView
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! TimelineTableViewCell
+        
+        switch posts[indexPath.row].age {
+                case "小学生":
+                    cell.baseView.backgroundColor = UIColor.red
+                case "中学生":
+                    cell.baseView.backgroundColor = UIColor.orange
+                case "高校生":
+                    cell.baseView.backgroundColor = UIColor.systemGreen
+                case "19~":
+                    cell.baseView.backgroundColor = UIColor.blue
+                case "23~":
+                    cell.baseView.backgroundColor = UIColor.gray
+                case "30~":
+                    cell.baseView.backgroundColor = UIColor.purple
+                case "40~":
+                    cell.baseView.backgroundColor = UIColor.systemPink
+                case "50~":
+                    cell.baseView.backgroundColor = UIColor.magenta
+                    
+                default:
+        //            cell.baseView.backgroundColor = UIColor.orange
+                    cell.baseView.backgroundColor = UIColor(red: 146/255, green: 84/255, blue: 255/255, alpha: 1.0)
+                }
+        
         cell.delegate = self
         cell.tag = indexPath.row
         if let age = posts[indexPath.row].age {
