@@ -28,6 +28,7 @@ ${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework
 ${BUILT_PRODUCTS_DIR}/SwiftMessages/SwiftMessages.framework
 ${BUILT_PRODUCTS_DIR}/SwiftReorder/SwiftReorder.framework
 ${BUILT_PRODUCTS_DIR}/Tabman/Tabman.framework
+${BUILT_PRODUCTS_DIR}/TextFieldEffects/TextFieldEffects.framework
 ${BUILT_PRODUCTS_DIR}/TransitionButton/TransitionButton.framework
 ${BUILT_PRODUCTS_DIR}/ViewAnimator/ViewAnimator.framework
 ${BUILT_PRODUCTS_DIR}/abseil/absl.framework

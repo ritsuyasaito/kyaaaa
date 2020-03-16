@@ -37,6 +37,7 @@
 		244E9B71240F9022003D6B8A /* kyaaaaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244E9B70240F9022003D6B8A /* kyaaaaViewController.swift */; };
 		244E9B73240F902F003D6B8A /* selfPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244E9B72240F902F003D6B8A /* selfPostViewController.swift */; };
 		244E9B792411FAAF003D6B8A /* FemailKyaaaaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244E9B782411FAAF003D6B8A /* FemailKyaaaaViewController.swift */; };
+		244E9B80241F4B07003D6B8A /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244E9B7F241F4B07003D6B8A /* CustomButton.swift */; };
 		2A0833762417EB4B0012E81E /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0833752417EB4B0012E81E /* TabBarViewController.swift */; };
 		2A0833782417EC5A0012E81E /* 2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A0833772417EC5A0012E81E /* 2@2x.png */; };
 		2A08337A2417ED070012E81E /* tabbar-user-icons@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A0833792417ED070012E81E /* tabbar-user-icons@2x.png */; };
@@ -75,6 +76,7 @@
 		244E9B70240F9022003D6B8A /* kyaaaaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = kyaaaaViewController.swift; sourceTree = "<group>"; };
 		244E9B72240F902F003D6B8A /* selfPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = selfPostViewController.swift; sourceTree = "<group>"; };
 		244E9B782411FAAF003D6B8A /* FemailKyaaaaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FemailKyaaaaViewController.swift; sourceTree = "<group>"; };
+		244E9B7F241F4B07003D6B8A /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		24F58F720C576286429F4B55 /* Pods-kyaaaa.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kyaaaa.release.xcconfig"; path = "Target Support Files/Pods-kyaaaa/Pods-kyaaaa.release.xcconfig"; sourceTree = "<group>"; };
 		2A0833752417EB4B0012E81E /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		2A0833772417EC5A0012E81E /* 2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "2@2x.png"; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 				240B9BB72403788B00FF7FB3 /* AppDelegate.swift */,
 				240B9BB92403788B00FF7FB3 /* SceneDelegate.swift */,
 				240B9BBB2403788B00FF7FB3 /* ViewController.swift */,
+				244E9B7E241F4AEE003D6B8A /* Custom */,
 				240B9C052407C58200FF7FB3 /* Models */,
 				240B9C042407C57600FF7FB3 /* Main */,
 				240B9C032407C55600FF7FB3 /* Login */,
@@ -185,6 +188,14 @@
 				240B9C0E2408E1C000FF7FB3 /* male-placeHolder.jpg */,
 			);
 			path = Images;
+			sourceTree = "<group>";
+		};
+		244E9B7E241F4AEE003D6B8A /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				244E9B7F241F4B07003D6B8A /* CustomButton.swift */,
+			);
+			path = Custom;
 			sourceTree = "<group>";
 		};
 		273256CFED16C4B375E90B39 /* Pods */ = {
@@ -364,6 +375,7 @@
 				243A939A240C9D2A001BA23A /* FirstViewController.swift in Sources */,
 				240B9BB82403788B00FF7FB3 /* AppDelegate.swift in Sources */,
 				243A9398240BDBF6001BA23A /* FemailViewController.swift in Sources */,
+				244E9B80241F4B07003D6B8A /* CustomButton.swift in Sources */,
 				243A939D240CA0CF001BA23A /* TimelineTableViewCell.swift in Sources */,
 				240B9BF82404E01000FF7FB3 /* UserModel.swift in Sources */,
 				240B9BBA2403788B00FF7FB3 /* SceneDelegate.swift in Sources */,

@@ -379,6 +379,7 @@ PODS:
   - SwiftReorder (6.0.2)
   - Tabman (2.8.0):
     - Pageboy (~> 3.5.0)
+  - TextFieldEffects (1.6.0)
   - TransitionButton (0.5.2)
   - ViewAnimator (2.7.0)
 
@@ -411,6 +412,7 @@ DEPENDENCIES:
   - SwiftMessages
   - SwiftReorder (~> 6.0)
   - Tabman
+  - TextFieldEffects
   - TransitionButton
   - ViewAnimator
 
@@ -467,6 +469,7 @@ SPEC REPOS:
     - SwiftMessages
     - SwiftReorder
     - Tabman
+    - TextFieldEffects
     - TransitionButton
     - ViewAnimator
 
@@ -539,9 +542,10 @@ SPEC CHECKSUMS:
   SwiftMessages: b577dc7043be8b299857ab35bb663dbff6483bd0
   SwiftReorder: 60ef1faf6446cf68f9a647cb975530db8efd6620
   Tabman: f62ad94ee54a7d96e3fbab34f677d9ea4d38ece6
+  TextFieldEffects: 529b8aff706fb40f82c41c780c0777941a893796
   TransitionButton: fb271583d9c9e4bb116b97103047e5157653f233
   ViewAnimator: 5af1c6f3b310f012bf081259c43717aa54fbae73
 
-PODFILE CHECKSUM: 0ac7d03345c8a586d9eb569f5e3f8284f0824572
+PODFILE CHECKSUM: 6a43e0d1a7aa45df5f2896bbc5211b2f0beddb68
 
 COCOAPODS: 1.8.4

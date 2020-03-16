@@ -39,6 +39,7 @@ target 'kyaaaa' do
   pod 'Hue'
   pod 'SwiftReorder', '~> 6.0'
   pod 'TransitionButton'
+  pod 'TextFieldEffects'
   
 
 end

@@ -29,7 +29,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         emailTextField.delegate = self
         passwordTextField.delegate = self
         
-        
+       
         
     }
     
@@ -43,6 +43,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         guard let password = passwordTextField.text else { return }
         
         
+        
+        
         UserModel.login(email: email, password: password) { (error) in
             //SVProgressHUD.dismiss()
             if let error = error {
@@ -51,8 +53,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 let view = MessageView.viewFromNib(layout: .messageView)
                 view.configureTheme(.error)
                 view.button?.isHidden = true
-                view.titleLabel?.text = "Error"
-                view.bodyLabel?.text = error.localizedDescription
+                view.titleLabel?.text = "エラー"
+                view.bodyLabel?.text = "有効でないメールアドレスか、パスワードが異なります。"
                 SwiftMessages.show(view: view)
             } else {
                 HUD.flash(.success, delay: 1.0)
