@@ -40,11 +40,11 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                   let view = MessageView.viewFromNib(layout: .messageView)
                   view.configureTheme(.error)
                   view.button?.isHidden = true
-                  view.titleLabel?.text = "Error"
-                  view.bodyLabel?.text = error.localizedDescription
+                  view.titleLabel?.text = "エラー"
+                  view.bodyLabel?.text = "アドレスを確認してください。または、パスワードを6文字以上で複雑化してください。"
                   SwiftMessages.show(view: view)
                 } else {
-                    HUD.show(.success)
+                    HUD.flash(.success, delay: 1.0)
                     
                     let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
                     let rootViewController = storyboard.instantiateViewController(withIdentifier: "First")

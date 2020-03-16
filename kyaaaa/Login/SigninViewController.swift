@@ -38,6 +38,19 @@ class SigninViewController: UIViewController, LoginButtonDelegate{
         //許可するもの
         fbLoginButton.permissions = ["public_profile, email"]
         view.addSubview(fbLoginButton)
+        
+        // 半透明の指定（デフォルト値）
+        self.navigationController?.navigationBar.isTranslucent = true
+        // 空の背景画像設定
+        self.navigationController!.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        // ナビゲーションバーの影画像（境界線の画像）を空に設定
+        self.navigationController!.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.tintColor = UIColor.orange
+        
+        self.navigationController?.navigationBar.titleTextAttributes = [
+            // 文字の色
+            .foregroundColor: UIColor.red
+        ]
 
 
     }

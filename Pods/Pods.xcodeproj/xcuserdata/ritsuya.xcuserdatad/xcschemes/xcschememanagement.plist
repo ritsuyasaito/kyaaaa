@@ -354,19 +354,26 @@
 			<key>orderHint</key>
 			<integer>56</integer>
 		</dict>
-		<key>TransitionButton.xcscheme</key>
+		<key>TextFieldEffects.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>57</integer>
 		</dict>
-		<key>ViewAnimator.xcscheme</key>
+		<key>TransitionButton.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>58</integer>
+		</dict>
+		<key>ViewAnimator.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>59</integer>
 		</dict>
 		<key>abseil.xcscheme</key>
 		<dict>
