@@ -71,6 +71,12 @@ class FemailKyaaaaViewController: UIViewController, UITableViewDelegate, UITable
              } else {
                  cell.userImageView.image = UIImage(named: "male-placeHolder.jpg")
              }
+        
+             if let userName = posts[indexPath.row].userName {
+               cell.fromNameLabel.text = userName
+             } else {
+               cell.fromNameLabel.text = "NoData"
+             }
              
              if let age = posts[indexPath.row].age {
                  cell.ageLabel.text = age

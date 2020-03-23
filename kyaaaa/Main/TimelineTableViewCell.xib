@@ -251,6 +251,7 @@
             <connections>
                 <outlet property="ageLabel" destination="CzG-U4-EFz" id="7W7-Zd-Ac0"/>
                 <outlet property="baseView" destination="1ek-VK-pIj" id="cd6-ZZ-JsT"/>
+                <outlet property="fromNameLabel" destination="bHj-Rf-Wml" id="bTg-J3-EPT"/>
                 <outlet property="initialLabel" destination="M94-zW-tge" id="4oS-42-C0E"/>
                 <outlet property="kaaaaaCountLabel" destination="uyi-Ue-tQc" id="8a8-aG-yn9"/>
                 <outlet property="kyaaaaButton" destination="27k-V3-Loz" id="Mip-BM-oEK"/>

@@ -46,6 +46,8 @@ class PostViewController: UIViewController, UITextFieldDelegate, UIPickerViewDel
     var currentUser = Auth.auth().currentUser
 
     var userPhotoURL: String?
+    var userName: String?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -100,6 +102,7 @@ class PostViewController: UIViewController, UITextFieldDelegate, UIPickerViewDel
         post.initial = initialTextField.text!
         post.text = postTextView.text!
         post.userId = currentUser?.uid
+        post.userName = userName
         post.userPhotoURL = userPhotoURL
         
         post.save(collection: collection, completion: { (error) in
@@ -130,8 +133,13 @@ class PostViewController: UIViewController, UITextFieldDelegate, UIPickerViewDel
             docRef.getDocument { (document, error) in
                 if let document = document, document.exists {
                     let dataDescription = document.data() as! [String:Any]
+                    if let userName = dataDescription["displayName"] as! String? {
+                        self.userName = userName
+                    } else {
+                        self.userName = "NoData"
+                    }
                     
-                    if let imageURL = dataDescription["photoURL"] as! String? {
+                    if let imageURL = dataDescription["userPhotoURL"] as! String? {
                         self.userPhotoURL = imageURL
                     } else {
                         self.userPhotoURL = ""
