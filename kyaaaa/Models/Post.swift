@@ -17,6 +17,7 @@ struct Post {
     var createdAt: String! // 投稿した日時
     
     var userPhotoURL: String?
+    var userName: String?
     var age: String?
     var initial: String?
     
@@ -45,6 +46,10 @@ struct Post {
         guard let initial = self.initial else {
             return
         }
+        guard let userName = self.userName else {
+            
+            return
+        }
         guard let userPhotoURL = self.userPhotoURL else {
             
             return
@@ -60,7 +65,9 @@ struct Post {
             "age" : age,
             "initial" : initial,
             "userId": userId,
+            "userName": userName,
             "userPhotoURL": userPhotoURL,
+            
             //"user": user,
             "createdAt": String(Date().timeIntervalSince1970)
         ]) { error in
@@ -109,6 +116,7 @@ struct Post {
                         post.initial = data["initial"] as? String
                     
                         post.text = data["text"] as? String
+                        post.userName = data["userName"] as? String
                         post.userPhotoURL = data["userPhotoURL"] as? String
                         
                         post.naruhodoUsers = data["naruhodoUsers"] as? [String]
@@ -175,6 +183,7 @@ struct Post {
                         post.initial = data["initial"] as? String
                         
                         post.text = data["text"] as? String
+                        post.userName = data["userName"] as? String
                         post.userPhotoURL = data["userPhotoURL"] as? String
                             
                         post.naruhodoUsers = data["naruhodoUsers"] as? [String]
@@ -239,6 +248,7 @@ struct Post {
                         post.initial = data["initial"] as? String
                     
                         post.text = data["text"] as? String
+                        post.userName = data["userName"] as? String
                         post.userPhotoURL = data["userPhotoURL"] as? String
                         
                         post.naruhodoUsers = data["naruhodoUsers"] as? [String]
@@ -298,6 +308,7 @@ struct Post {
                         post.initial = data["initial"] as? String
                     
                         post.text = data["text"] as? String
+                        post.userName = data["userName"] as? String
                         post.userPhotoURL = data["userPhotoURL"] as? String
                         
                         post.naruhodoUsers = data["naruhodoUsers"] as? [String]

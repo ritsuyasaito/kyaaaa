@@ -218,6 +218,7 @@ class MailViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     override func viewWillAppear(_ animated: Bool) {
         getUserData()
+        loadTimeline()
         
     }
     
@@ -398,6 +399,11 @@ class MailViewController: UIViewController, UITableViewDataSource, UITableViewDe
             }
         } else {
             cell.userImageView.image = UIImage(named: "male-placeHolder.jpg")
+        }
+        if let userName = posts[indexPath.row].userName {
+            cell.fromNameLabel.text = userName
+        } else {
+            cell.fromNameLabel.text = "NoData"
         }
         
         if let age = posts[indexPath.row].age {

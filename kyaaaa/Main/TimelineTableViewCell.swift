@@ -29,6 +29,7 @@ class TimelineTableViewCell: UITableViewCell {
     @IBOutlet var userImageView: UIImageView!
     @IBOutlet var ageLabel: UILabel!
     @IBOutlet var initialLabel: UILabel!
+    @IBOutlet var fromNameLabel: UILabel!
     @IBOutlet var textView: UITextView!
     @IBOutlet var sorenaButton: UIButton!
     @IBOutlet var sorenaCountLabel: UILabel!

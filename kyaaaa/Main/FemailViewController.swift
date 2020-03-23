@@ -362,6 +362,29 @@ class FemailViewController: UIViewController, UITableViewDataSource, UITableView
         
         cell.delegate = self
         cell.tag = indexPath.row
+        
+        if let userImageURL = posts[indexPath.row].userPhotoURL {
+            let url = URL(string: userImageURL)
+            if url != nil {
+                do {
+                    let data = try Data(contentsOf: url!)
+                    cell.userImageView.image = UIImage(data: data)
+                } catch let err {
+                    print("Error : \(err.localizedDescription)")
+                    cell.userImageView.image = UIImage(named: "male-placeHolder.jpg")
+                }
+            }
+        } else {
+            cell.userImageView.image = UIImage(named: "male-placeHolder.jpg")
+        }
+        
+        
+        if let userName = posts[indexPath.row].userName {
+            cell.fromNameLabel.text = userName
+        } else {
+            cell.fromNameLabel.text = ""
+        }
+        
         if let age = posts[indexPath.row].age {
             cell.ageLabel.text = age
         } else {
