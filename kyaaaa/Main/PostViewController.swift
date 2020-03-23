@@ -40,7 +40,7 @@ class PostViewController: UIViewController, UITextFieldDelegate, UIPickerViewDel
     
    
     
-    var ageArray = ["小学生","中学生","高校生","大学生","社会人"]
+    var ageArray = ["","小学生","中学生","高校生","大学生","社会人"]
     var pickerView1: UIPickerView = UIPickerView()
     
     var currentUser = Auth.auth().currentUser
