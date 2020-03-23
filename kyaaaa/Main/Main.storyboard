@@ -521,7 +521,7 @@
                         <outlet property="FemaleTableView" destination="o77-R4-eND" id="SlU-Bi-tb7"/>
                         <outlet property="colourPickerButton" destination="ICo-mp-ZGp" id="enh-z5-ejQ"/>
                         <outlet property="longPressGesRec" destination="4a4-Qa-dqS" id="5li-XX-G4g"/>
-                        <outlet property="postButton" destination="YJJ-bP-dHp" id="C7Z-JY-hTb"/>
+                        <outlet property="postButton" destination="YJJ-bP-dHp" id="7cI-DD-Fj1"/>
                         <outlet property="shareButton" destination="e78-5L-pEl" id="xHQ-eV-xir"/>
                         <segue destination="JbL-ME-Bqg" kind="presentation" identifier="toPostPage" modalPresentationStyle="fullScreen" id="TZ1-yd-mgA"/>
                         <segue destination="1Zv-gJ-0Op" kind="show" identifier="toUserPage" id="FXO-5R-Mru"/>
@@ -588,7 +588,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="808-gO-YiW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3649" y="-668"/>
+            <point key="canvasLocation" x="3647.826086956522" y="-668.63839285714278"/>
         </scene>
         <!--Femail Kyaaaa View Controller-->
         <scene sceneID="UeX-aa-cAS">
@@ -711,7 +711,7 @@
         <image name="tabbar-user-icons.png" width="48" height="48"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="CNV-qz-5rc"/>
-        <segue reference="gpB-Xv-4O0"/>
+        <segue reference="FXO-5R-Mru"/>
+        <segue reference="TZ1-yd-mgA"/>
     </inferredMetricsTieBreakers>
 </document>

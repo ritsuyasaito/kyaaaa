@@ -27,8 +27,8 @@ class EditUserProfileViewController: UIViewController, UITextFieldDelegate, UIPi
     var pickerView1: UIPickerView = UIPickerView()
     var pickerView2: UIPickerView = UIPickerView()
     
-    var genderArray = ["男","女"]
-    var ageArray = ["中学生","高校生","19~22歳","23~29歳","30~40代","50代〜"]
+    var genderArray = ["","男","女"]
+    var ageArray = ["","中学生","高校生","19~22歳","23~29歳","30~40代","50代〜"]
     
     let currentUser = Auth.auth().currentUser
     
