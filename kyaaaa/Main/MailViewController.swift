@@ -28,9 +28,9 @@ class MailViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     @IBOutlet var shareButton: ASCircularMenuButton!
     @IBOutlet var colourPickerButton: ASCircularMenuButton!
-    let colourArray: [UIColor] = [.red , .orange , .systemGreen , .blue , .gray , .purple , .systemPink, .magenta]
-    let shareName: [String] = ["小","中","高","19~","23~","30~","40~","50~"]
-    var ageNumDictionary: [Int: String] = [0:"小学生",1:"中学生", 2:"高校生", 3:"19~22歳", 4:"23~29歳", 5:"30~39歳", 6:"40~49歳", 7:"50歳~"]
+    let colourArray: [UIColor] = [.red , .orange , .systemGreen , .blue , .gray]
+    let shareName: [String] = ["小","中","高","大","社"]
+    var ageNumDictionary: [Int: String] = [0:"小学生",1:"中学生", 2:"高校生", 3:"大学生", 4:"社会人"]
 
     
     // UILongPressGestureRecognizer宣言
@@ -110,6 +110,7 @@ class MailViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func buttonForIndexAt(_ menuButton: ASCircularMenuButton, indexForButton: Int) -> UIButton {
+        
         
         let button: UIButton = UIButton()
         if menuButton == shareButton{
@@ -195,7 +196,7 @@ class MailViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let nib = UINib(nibName: "TimelineTableViewCell", bundle: Bundle.main)
         maleTableView.register(nib, forCellReuseIdentifier: "Cell")
         
-        configureDynamicCircularMenuButton(button: shareButton, numberOfMenuItems: 8)
+        configureDynamicCircularMenuButton(button: shareButton, numberOfMenuItems: 5)
         shareButton.menuButtonSize = .large
         
         configureDraggebleCircularMenuButton(button: colourPickerButton, numberOfMenuItems: 8, menuRedius:70, postion: .center)
@@ -369,22 +370,13 @@ class MailViewController: UIViewController, UITableViewDataSource, UITableViewDe
             cell.baseView.alpha = 0.4
             cell.textView.backgroundColor = UIColor.systemGreen
             cell.textView.alpha = 0.4
-       case "19~22歳":
+       case "大学生":
             cell.baseView.backgroundColor = UIColor.blue
             cell.textView.backgroundColor = UIColor.blue
-        case "23~29歳":
+        case "社会人":
             cell.baseView.backgroundColor = UIColor.gray
             cell.textView.backgroundColor = UIColor.gray
-        case "30~39歳":
-            cell.baseView.backgroundColor = UIColor.purple
-            cell.textView.backgroundColor = UIColor.purple
-        case "40~49歳":
-            cell.baseView.backgroundColor = UIColor.systemPink
-            cell.textView.backgroundColor = UIColor.systemPink
-        case "50歳~":
-            cell.baseView.backgroundColor = UIColor.magenta
-            cell.textView.backgroundColor = UIColor.magenta
-            
+       
             
         default:
 //            cell.baseView.backgroundColor = UIColor.orange
