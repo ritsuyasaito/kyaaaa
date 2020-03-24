@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import FirebaseAuth
 
 struct Post {
     // 1つの投稿の設計
@@ -25,7 +26,7 @@ struct Post {
     var naruhodoUsers: [String]? // 投稿にいいねしたユーザーId一覧
     var sorenaUsers: [String]? // 投稿にいいねしたユーザーId一覧
     var kyaaaaUsers: [String]? // 投稿にkyaaaaしたユーザーId一覧
-    var isGood: Bool = false
+    var isNaruhodo: Bool = false
     var isSorena: Bool = false
     var isKyaaaa: Bool = false
     
@@ -120,8 +121,24 @@ struct Post {
                         post.userPhotoURL = data["userPhotoURL"] as? String
                         
                         post.naruhodoUsers = data["naruhodoUsers"] as? [String]
+                        //sorena,rnaruhodo,kyaaaa
+                        if post.naruhodoUsers?.contains(Auth.auth().currentUser!.uid) == true {
+                            post.isNaruhodo = true
+                        } else {
+                            post.isNaruhodo = false
+                        }
                         post.sorenaUsers = data["sorenaUsers"] as? [String]
+                        if post.sorenaUsers?.contains(Auth.auth().currentUser!.uid) == true {
+                            post.isSorena = true
+                        } else {
+                            post.isSorena = false
+                        }
                         post.kyaaaaUsers = data["kyaaaaUsers"] as? [String]
+                        if post.kyaaaaUsers?.contains(Auth.auth().currentUser!.uid) == true {
+                            post.isKyaaaa = true
+                        } else {
+                            post.isKyaaaa = false
+                        }
                         if blockIds.firstIndex(of: post.userId) == nil {
                             posts.append(post)
                         }
@@ -187,8 +204,24 @@ struct Post {
                         post.userPhotoURL = data["userPhotoURL"] as? String
                             
                         post.naruhodoUsers = data["naruhodoUsers"] as? [String]
+                        if post.naruhodoUsers?.contains(Auth.auth().currentUser!.uid) == true {
+                            post.isNaruhodo = true
+                        } else {
+                            post.isNaruhodo = false
+                        }
                         post.sorenaUsers = data["sorenaUsers"] as? [String]
+                        if post.sorenaUsers?.contains(Auth.auth().currentUser!.uid) == true {
+                            post.isSorena = true
+                        } else {
+                            post.isSorena = false
+                        }
                         post.kyaaaaUsers = data["kyaaaaUsers"] as? [String]
+                        if post.kyaaaaUsers?.contains(Auth.auth().currentUser!.uid) == true {
+                            post.isKyaaaa = true
+                        } else {
+                            post.isKyaaaa = false
+                            
+                        }
                         
                         if blockIds.firstIndex(of: post.userId) == nil {
                             posts.append(post)
@@ -252,8 +285,25 @@ struct Post {
                         post.userPhotoURL = data["userPhotoURL"] as? String
                         
                         post.naruhodoUsers = data["naruhodoUsers"] as? [String]
+                        if post.naruhodoUsers?.contains(Auth.auth().currentUser!.uid) == true {
+                            post.isNaruhodo = true
+                        } else {
+                            post.isNaruhodo = false
+                        }
                         post.sorenaUsers = data["sorenaUsers"] as? [String]
+                        if post.sorenaUsers?.contains(Auth.auth().currentUser!.uid) == true {
+                            post.isSorena = true
+                        } else {
+                            post.isSorena = false
+                        }
                         post.kyaaaaUsers = data["kyaaaaUsers"] as? [String]
+                        if post.kyaaaaUsers?.contains(Auth.auth().currentUser!.uid) == true {
+                            post.isKyaaaa = true
+                        } else {
+                            post.isKyaaaa = false
+                            
+                        }
+                        
                         posts.append(post)
                     }
                     
@@ -312,8 +362,24 @@ struct Post {
                         post.userPhotoURL = data["userPhotoURL"] as? String
                         
                         post.naruhodoUsers = data["naruhodoUsers"] as? [String]
+                        if post.naruhodoUsers?.contains(Auth.auth().currentUser!.uid) == true {
+                            post.isNaruhodo = true
+                        } else {
+                            post.isNaruhodo = false
+                        }
                         post.sorenaUsers = data["sorenaUsers"] as? [String]
+                        if post.sorenaUsers?.contains(Auth.auth().currentUser!.uid) == true {
+                            post.isSorena = true
+                        } else {
+                            post.isSorena = false
+                        }
                         post.kyaaaaUsers = data["kyaaaaUsers"] as? [String]
+                        if post.kyaaaaUsers?.contains(Auth.auth().currentUser!.uid) == true {
+                            post.isKyaaaa = true
+                        } else {
+                            post.isKyaaaa = false
+                            
+                        }
                         posts.append(post)
                     }
                     
@@ -354,7 +420,7 @@ struct Post {
     
     func sorena(collection: String, completion: @escaping(Error?) -> ()) {
         guard let userId = UserModel.currentUser()?.uid else { return }
-        if self.kyaaaaUsers?.contains(userId) == true {
+        if self.sorenaUsers?.contains(userId) == true {
             // いいねを解除
             guard let postId = self.uid else { return }
             guard let currentUserId = UserModel.currentUser()?.uid else { return }
@@ -377,7 +443,7 @@ struct Post {
     
     func naruhodo(collection: String, completion: @escaping(Error?) -> ()) {
         guard let userId = UserModel.currentUser()?.uid else { return }
-        if self.kyaaaaUsers?.contains(userId) == true {
+        if self.naruhodoUsers?.contains(userId) == true {
             // いいねを解除
             guard let postId = self.uid else { return }
             guard let currentUserId = UserModel.currentUser()?.uid else { return }
