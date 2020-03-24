@@ -417,7 +417,21 @@ class FemailViewController: UIViewController, UITableViewDataSource, UITableView
         } else {
             cell.naruhodoCountLabel.text = "0"
         }
-        
+        if posts[indexPath.row].isKyaaaa == true {
+            cell.kyaaaaButton.setImage(UIImage(named: "heart-fill"), for: .normal)
+        } else {
+            cell.kyaaaaButton.setImage(UIImage(named: "like"), for: .normal)
+        }
+        if posts[indexPath.row].isNaruhodo == true {
+            cell.naruhodoButton.setImage(UIImage(named: "heart-fill"), for: .normal)
+        } else {
+            cell.naruhodoButton.setImage(UIImage(named: "like"), for: .normal)
+        }
+        if posts[indexPath.row].isSorena == true {
+            cell.sorenaButton.setImage(UIImage(named: "heart-fill"), for: .normal)
+        } else {
+            cell.sorenaButton.setImage(UIImage(named: "like"), for: .normal)
+        }
         
         return cell
     }
