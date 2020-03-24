@@ -80,41 +80,41 @@
                                     <constraint firstAttribute="height" constant="0.5" id="uhZ-rK-gua"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QGr-IT-8EM">
+                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QGr-IT-8EM">
                                 <rect key="frame" x="17" y="328" width="75" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="GFp-Lg-AOj"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="20"/>
-                                <state key="normal" title="sorena">
+                                <state key="normal">
                                     <color key="titleColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="sorenaButtonWithButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="H66-FY-ftf"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="af7-cx-avW">
+                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="af7-cx-avW">
                                 <rect key="frame" x="133" y="328" width="83" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="83" id="R8t-MN-X1J"/>
                                     <constraint firstAttribute="height" constant="21" id="t41-dS-gIe"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="20"/>
-                                <state key="normal" title="naruhodo">
+                                <state key="normal">
                                     <color key="titleColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="naruhodoButtonWithButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="y82-pA-Pgd"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="27k-V3-Loz">
+                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="27k-V3-Loz">
                                 <rect key="frame" x="257" y="328" width="88" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="88" id="7dm-WT-dmj"/>
                                     <constraint firstAttribute="height" constant="21" id="IXs-ps-TVo"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="20"/>
-                                <state key="normal" title="Kyaaaa!!">
+                                <state key="normal">
                                     <color key="titleColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>

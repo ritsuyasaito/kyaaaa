@@ -38,6 +38,8 @@
 		244E9B73240F902F003D6B8A /* selfPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244E9B72240F902F003D6B8A /* selfPostViewController.swift */; };
 		244E9B792411FAAF003D6B8A /* FemailKyaaaaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244E9B782411FAAF003D6B8A /* FemailKyaaaaViewController.swift */; };
 		244E9B80241F4B07003D6B8A /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244E9B7F241F4B07003D6B8A /* CustomButton.swift */; };
+		244E9BA2242A14E4003D6B8A /* heart-fill.png in Resources */ = {isa = PBXBuildFile; fileRef = 244E9BA1242A14E4003D6B8A /* heart-fill.png */; };
+		244E9BA4242A153A003D6B8A /* like.png in Resources */ = {isa = PBXBuildFile; fileRef = 244E9BA3242A153A003D6B8A /* like.png */; };
 		2A0833762417EB4B0012E81E /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0833752417EB4B0012E81E /* TabBarViewController.swift */; };
 		2A0833782417EC5A0012E81E /* 2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A0833772417EC5A0012E81E /* 2@2x.png */; };
 		2A08337A2417ED070012E81E /* tabbar-user-icons@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A0833792417ED070012E81E /* tabbar-user-icons@2x.png */; };
@@ -77,6 +79,8 @@
 		244E9B72240F902F003D6B8A /* selfPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = selfPostViewController.swift; sourceTree = "<group>"; };
 		244E9B782411FAAF003D6B8A /* FemailKyaaaaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FemailKyaaaaViewController.swift; sourceTree = "<group>"; };
 		244E9B7F241F4B07003D6B8A /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		244E9BA1242A14E4003D6B8A /* heart-fill.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "heart-fill.png"; sourceTree = "<group>"; };
+		244E9BA3242A153A003D6B8A /* like.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = like.png; sourceTree = "<group>"; };
 		24F58F720C576286429F4B55 /* Pods-kyaaaa.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kyaaaa.release.xcconfig"; path = "Target Support Files/Pods-kyaaaa/Pods-kyaaaa.release.xcconfig"; sourceTree = "<group>"; };
 		2A0833752417EB4B0012E81E /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		2A0833772417EC5A0012E81E /* 2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "2@2x.png"; sourceTree = "<group>"; };
@@ -183,6 +187,8 @@
 			isa = PBXGroup;
 			children = (
 				2A0833792417ED070012E81E /* tabbar-user-icons@2x.png */,
+				244E9BA1242A14E4003D6B8A /* heart-fill.png */,
+				244E9BA3242A153A003D6B8A /* like.png */,
 				2A0833772417EC5A0012E81E /* 2@2x.png */,
 				240B9C0C2408E1B700FF7FB3 /* female-placeHolder.jpg */,
 				240B9C0E2408E1C000FF7FB3 /* male-placeHolder.jpg */,
@@ -279,10 +285,12 @@
 				2A0833782417EC5A0012E81E /* 2@2x.png in Resources */,
 				240B9C0F2408E1C000FF7FB3 /* male-placeHolder.jpg in Resources */,
 				240B9BC42403788E00FF7FB3 /* LaunchScreen.storyboard in Resources */,
+				244E9BA2242A14E4003D6B8A /* heart-fill.png in Resources */,
 				240B9C072407C5C200FF7FB3 /* Main.storyboard in Resources */,
 				240B9BC12403788E00FF7FB3 /* Assets.xcassets in Resources */,
 				243A939E240CA0CF001BA23A /* TimelineTableViewCell.xib in Resources */,
 				240B9BBF2403788B00FF7FB3 /* Login.storyboard in Resources */,
+				244E9BA4242A153A003D6B8A /* like.png in Resources */,
 				240B9BD02403791F00FF7FB3 /* GoogleService-Info.plist in Resources */,
 				2A08337A2417ED070012E81E /* tabbar-user-icons@2x.png in Resources */,
 				240B9C0D2408E1B700FF7FB3 /* female-placeHolder.jpg in Resources */,

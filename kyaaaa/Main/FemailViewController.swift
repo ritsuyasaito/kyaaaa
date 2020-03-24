@@ -31,6 +31,7 @@ class FemailViewController: UIViewController, UITableViewDataSource, UITableView
     let colourArray: [UIColor] = [.red , .orange , .systemGreen , .blue , .gray]
     let shareName: [String] = ["小","中","高","大","社"]
     var ageNumDictionary: [Int: String] = [0:"小学生",1:"中学生", 2:"高校生", 3:"大学生", 4:"社会人"]
+    var strFilter: String = ""
   
     
     
@@ -82,6 +83,7 @@ class FemailViewController: UIViewController, UITableViewDataSource, UITableView
         if menuButton == shareButton {
             posts = [Post]()
             if let age = ageNumDictionary[indexForButton] {
+                strFilter = age
                 loadData(filterAge: age)
             } else {
                 print("Data取得失敗")
@@ -470,36 +472,41 @@ class FemailViewController: UIViewController, UITableViewDataSource, UITableView
     
     
     func loadTimeline(isAdditional: Bool = false) {
-        isLoading = true
-        Post.getAll(blockIds: userBlockIds, collection: "Femailposts", isAdditional: isAdditional, lastSnapshot: lastSnapshot) { (posts, lastSnapshot, error) in
-            // 読み込み完了
-            self.isLoading = false
-            self.lastSnapshot = lastSnapshot
-            //self.timelineTableView.headRefreshControl.endRefreshing()
-            // self.timelineTableView.footRefreshControl.endRefreshing()
-            
-            if let error = error {
-                print(error)
-                // エラー処理
-                // self.showError(error: error)
-                HUD.show(.error)
-            } else {
-                // 読み込みが成功した場合
-                if let posts = posts {
-                    // 追加読み込みなら配列に追加、そうでないなら配列に再代入
-                    if isAdditional == true {
-                        self.posts = self.posts + posts
-                    } else {
-                        self.posts = posts
+        if strFilter == "" {
+            isLoading = true
+            Post.getAll(blockIds: userBlockIds, collection: "Femailposts", isAdditional: isAdditional, lastSnapshot: lastSnapshot) { (posts, lastSnapshot, error) in
+                // 読み込み完了
+                self.isLoading = false
+                self.lastSnapshot = lastSnapshot
+                //self.timelineTableView.headRefreshControl.endRefreshing()
+                // self.timelineTableView.footRefreshControl.endRefreshing()
+                
+                if let error = error {
+                    print(error)
+                    // エラー処理
+                    // self.showError(error: error)
+                    HUD.show(.error)
+                } else {
+                    // 読み込みが成功した場合
+                    if let posts = posts {
+                        // 追加読み込みなら配列に追加、そうでないなら配列に再代入
+                        if isAdditional == true {
+                            self.posts = self.posts + posts
+                        } else {
+                            self.posts = posts
+                            
+                        }
+                        print("成功")
+                        print(posts)
+                        self.FemaleTableView.reloadData()
                         
                     }
-                    print("成功")
-                    print(posts)
-                    self.FemaleTableView.reloadData()
-                    
                 }
             }
+        } else {
+            loadData(filterAge: strFilter)
         }
+        
     }
     
     func blockUser(selfUserId: String, blockUserId: String, completion: @escaping(Error?) -> ()) {
