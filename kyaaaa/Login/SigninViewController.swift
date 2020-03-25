@@ -49,7 +49,7 @@ class SigninViewController: UIViewController, LoginButtonDelegate{
         
         self.navigationController?.navigationBar.titleTextAttributes = [
             // 文字の色
-            .foregroundColor: UIColor.red
+            .foregroundColor: UIColor.white
         ]
 
 
