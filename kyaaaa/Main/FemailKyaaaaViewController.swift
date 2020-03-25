@@ -54,6 +54,31 @@ class FemailKyaaaaViewController: UIViewController, UITableViewDelegate, UITable
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! TimelineTableViewCell
+        cell.baseView.alpha = 0.8
+        cell.textView.alpha = 0.8
+        
+        switch posts[indexPath.row].age {
+        case "小学生":
+            cell.baseView.backgroundColor = UIColor.red
+            cell.textView.backgroundColor = UIColor.red
+        case "中学生":
+            cell.baseView.backgroundColor = UIColor.orange
+            cell.textView.backgroundColor = UIColor.orange
+        case "高校生":
+            cell.baseView.backgroundColor = UIColor.systemGreen
+            cell.textView.backgroundColor = UIColor.systemGreen
+        case "大学生":
+            cell.baseView.backgroundColor = UIColor.blue
+            cell.textView.backgroundColor = UIColor.blue
+        case "社会人":
+            cell.baseView.backgroundColor = UIColor.gray
+            cell.textView.backgroundColor = UIColor.gray
+            
+        default:
+            cell.baseView.backgroundColor = UIColor(red: 146/255, green: 84/255, blue: 255/255, alpha: 0.8)
+            cell.textView.backgroundColor = UIColor(red: 146/255, green: 84/255, blue: 255/255, alpha: 0.8)
+        }
+        
              //cellで用意したdelegateメソッドをこのViewControllerで書く
              cell.delegate = self
              cell.tag = indexPath.row
@@ -116,7 +141,8 @@ class FemailKyaaaaViewController: UIViewController, UITableViewDelegate, UITable
         selectedPost = posts[tableViewCell.tag]
         self.selectedPost!.sorena(collection: "Femailposts") { (error) in
             if let error = error {
-                HUD.show(.error)
+//                HUD.show(.error)
+                HUD.flash(.error, delay: 0.5)
                 print("error === " + error.localizedDescription)
             } else {
                 self.getkyaaaaPost()
@@ -261,7 +287,8 @@ class FemailKyaaaaViewController: UIViewController, UITableViewDelegate, UITable
                     print(error)
                     // エラー処理
                    // self.showError(error: error)
-                    HUD.show(.error)
+//                    HUD.show(.error)
+                    HUD.flash(.error, delay: 0.5)
                 } else {
                    // 読み込みが成功した場合
                    if let posts = posts {

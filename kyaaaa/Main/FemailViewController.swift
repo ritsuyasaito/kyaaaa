@@ -32,7 +32,7 @@ class FemailViewController: UIViewController, UITableViewDataSource, UITableView
     let shareName: [String] = ["小","中","高","大","社"]
     var ageNumDictionary: [Int: String] = [0:"小学生",1:"中学生", 2:"高校生", 3:"大学生", 4:"社会人"]
     var strFilter: String = ""
-  
+    
     
     
     let transition = BubbleTransition()
@@ -316,7 +316,8 @@ class FemailViewController: UIViewController, UITableViewDataSource, UITableView
                 print(error)
                 // エラー処理
                 // self.showError(error: error)
-                HUD.show(.error)
+//                HUD.show(.error)
+                HUD.flash(.error, delay: 0.5)
             } else {
                 // 読み込みが成功した場合
                 if let posts = posts {
@@ -343,23 +344,29 @@ class FemailViewController: UIViewController, UITableViewDataSource, UITableView
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! TimelineTableViewCell
         
+        cell.baseView.alpha = 0.8
+        cell.textView.alpha = 0.8
+        
         switch posts[indexPath.row].age {
         case "小学生":
             cell.baseView.backgroundColor = UIColor.red
-//            cell.baseView.backgroundColor = UIColor(red: 150, green: 35, blue: 122, alpha: 0.1)
+            cell.textView.backgroundColor = UIColor.red
         case "中学生":
             cell.baseView.backgroundColor = UIColor.orange
+            cell.textView.backgroundColor = UIColor.orange
         case "高校生":
             cell.baseView.backgroundColor = UIColor.systemGreen
+            cell.textView.backgroundColor = UIColor.systemGreen
         case "大学生":
             cell.baseView.backgroundColor = UIColor.blue
+            cell.textView.backgroundColor = UIColor.blue
         case "社会人":
             cell.baseView.backgroundColor = UIColor.gray
-        
+            cell.textView.backgroundColor = UIColor.gray
             
         default:
-            //            cell.baseView.backgroundColor = UIColor.orange
-            cell.baseView.backgroundColor = UIColor(red: 146/255, green: 84/255, blue: 255/255, alpha: 1.0)
+            cell.baseView.backgroundColor = UIColor(red: 146/255, green: 84/255, blue: 255/255, alpha: 0.8)
+            cell.textView.backgroundColor = UIColor(red: 146/255, green: 84/255, blue: 255/255, alpha: 0.8)
         }
         
         cell.delegate = self
@@ -445,9 +452,12 @@ class FemailViewController: UIViewController, UITableViewDataSource, UITableView
             
         } else if segue.identifier == "toPostPage" {
             let postVC = segue.destination as! PostViewController
+            postVC.transitioningDelegate = self
+            postVC.modalPresentationStyle = .custom
             postVC.fromGender = "女性から"
         }
     }
+    
     
     func getUserData() {
         // Firestoreのデータベースを取得
@@ -499,7 +509,8 @@ class FemailViewController: UIViewController, UITableViewDataSource, UITableView
                     print(error)
                     // エラー処理
                     // self.showError(error: error)
-                    HUD.show(.error)
+//                    HUD.show(.error)
+                    HUD.flash(.error, delay: 0.5)
                 } else {
                     // 読み込みが成功した場合
                     if let posts = posts {

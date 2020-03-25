@@ -229,7 +229,8 @@ class MailViewController: UIViewController, UITableViewDataSource, UITableViewDe
         selectedPost = posts[tableViewCell.tag]
         self.selectedPost!.sorena(collection: "Mailposts") { (error) in
             if let error = error {
-                HUD.show(.error)
+//                HUD.show(.error)
+                HUD.flash(.error, delay: 0.5)
                 print("error === " + error.localizedDescription)
             } else {
                 self.loadTimeline()
@@ -356,34 +357,29 @@ class MailViewController: UIViewController, UITableViewDataSource, UITableViewDe
 //        cell.layer.shadowColor = UIColor.black.cgColor
 //        cell.layer.shadowOpacity = 0.23
 //        cell.layer.shadowRadius = 4
+        cell.baseView.alpha = 0.8
+        cell.textView.alpha = 0.8
         
         switch posts[indexPath.row].age {
         case "小学生":
             cell.baseView.backgroundColor = UIColor.red
-            cell.baseView.alpha = 0.6
             cell.textView.backgroundColor = UIColor.red
-            cell.textView.alpha = 0.6
         case "中学生":
             cell.baseView.backgroundColor = UIColor.orange
-            cell.baseView.alpha = 0.9
             cell.textView.backgroundColor = UIColor.orange
-            cell.textView.alpha = 0.9
         case "高校生":
             cell.baseView.backgroundColor = UIColor.systemGreen
-            cell.baseView.alpha = 0.4
             cell.textView.backgroundColor = UIColor.systemGreen
-            cell.textView.alpha = 0.4
        case "大学生":
             cell.baseView.backgroundColor = UIColor.blue
             cell.textView.backgroundColor = UIColor.blue
         case "社会人":
             cell.baseView.backgroundColor = UIColor.gray
             cell.textView.backgroundColor = UIColor.gray
-       
             
         default:
-//            cell.baseView.backgroundColor = UIColor.orange
-            cell.baseView.backgroundColor = UIColor(red: 146/255, green: 84/255, blue: 255/255, alpha: 1.0)
+            cell.baseView.backgroundColor = UIColor(red: 146/255, green: 84/255, blue: 255/255, alpha: 0.8)
+            cell.textView.backgroundColor = UIColor(red: 146/255, green: 84/255, blue: 255/255, alpha: 0.8)
         }
         
         cell.delegate = self
@@ -472,7 +468,8 @@ class MailViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 print(error)
                 // エラー処理
                 // self.showError(error: error)
-                HUD.show(.error)
+//                HUD.show(.error)
+                HUD.flash(.error, delay: 1.0)
             } else {
                 // 読み込みが成功した場合
                 if let posts = posts {
@@ -540,7 +537,8 @@ class MailViewController: UIViewController, UITableViewDataSource, UITableViewDe
                     print(error)
                     // エラー処理
                     // self.showError(error: error)
-                    HUD.show(.error)
+//                    HUD.show(.error)
+                    HUD.flash(.error, delay: 0.5)
                 } else {
                     // 読み込みが成功した場合
                     if let posts = posts {
