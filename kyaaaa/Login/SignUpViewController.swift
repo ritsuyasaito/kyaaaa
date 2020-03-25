@@ -30,6 +30,12 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         textField.resignFirstResponder()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toLogin" {
+            
+        }
+    }
+    
     @IBAction func signUp() {
         guard let email = emailTextField.text else { return }
         guard let password = passwordTextField.text else { return }
@@ -63,9 +69,11 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                                 )
                                 let alert = SCLAlertView(appearance: appearance)
                                 alert.addButton("はい") {
-                                    let storyboard = UIStoryboard(name: "Login", bundle: Bundle.main)
-                                    let rootViewController = storyboard.instantiateViewController(withIdentifier: "Login")
-                                    UIApplication.shared.keyWindow?.rootViewController = rootViewController
+                                    self.performSegue(withIdentifier: "toLogin", sender: nil)
+//                                    let storyboard = UIStoryboard(name: "Login", bundle: Bundle.main)
+//                                    let rootViewController = storyboard.instantiateViewController(withIdentifier: "Login")
+//                                    UIApplication.shared.keyWindow?.rootViewController = rootViewController
+                                    
                                     
                                 }
                                 alert.showInfo("", subTitle: "メール認証を行ってください")
