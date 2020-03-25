@@ -71,7 +71,7 @@
         <!--ログイン-->
         <scene sceneID="W7a-wM-Ly0">
             <objects>
-                <viewController id="i7T-Ev-7TU" customClass="LoginViewController" customModule="kyaaaa" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Login" useStoryboardIdentifierAsRestorationIdentifier="YES" id="i7T-Ev-7TU" customClass="LoginViewController" customModule="kyaaaa" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1hv-sK-rlk">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
