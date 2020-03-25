@@ -123,7 +123,7 @@ class MailViewController: UIViewController, UITableViewDataSource, UITableViewDe
            
         }
         if menuButton == colourPickerButton{
-            button.backgroundColor = colourArray[indexForButton]
+//            button.backgroundColor = colourArray[indexForButton]
         }
         return button
     }
