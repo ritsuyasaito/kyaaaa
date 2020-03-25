@@ -267,10 +267,12 @@ class EditUserProfileViewController: UIViewController, UITextFieldDelegate, UIPi
          logoutButton.startAnimation()
         
         UserModel.logout { (error)  in
-            HUD.show(.progress)
+//            HUD.show(.progress)
+            HUD.flash(.progress, delay: 0.5)
             
             if let error = error {
-                HUD.show(.error)
+//                HUD.show(.error)
+                HUD.flash(.error, delay: 0.5)
                 print(error)
             } else {
                 // ログイン画面に移動

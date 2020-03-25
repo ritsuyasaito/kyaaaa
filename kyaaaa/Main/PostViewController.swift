@@ -37,14 +37,14 @@ class PostViewController: UIViewController, UITextFieldDelegate, UIPickerViewDel
     
     var fromGender: String?
     var collection = "MailPosts"
+    var users = [UserModel]()
     
-   
     
     var ageArray = ["","小学生","中学生","高校生","大学生","社会人"]
     var pickerView1: UIPickerView = UIPickerView()
     
     var currentUser = Auth.auth().currentUser
-
+    
     var userPhotoURL: String?
     var userName: String?
     
@@ -57,6 +57,8 @@ class PostViewController: UIViewController, UITextFieldDelegate, UIPickerViewDel
         pickerView1.delegate = self
         pickerView1.dataSource = self
         
+        
+        
         let toolbar1 = UIToolbar(frame: CGRectMake(0, 0, 0, 35))
         let doneItem1 = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(EditUserProfileViewController.done1))
         let cancelItem1 = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(EditUserProfileViewController.cancel1))
@@ -64,7 +66,7 @@ class PostViewController: UIViewController, UITextFieldDelegate, UIPickerViewDel
         
         self.ageTextField.inputView = pickerView1
         self.ageTextField.inputAccessoryView = toolbar1
-
+        
         // Do any additional setup after loading the view.
         
     }
@@ -80,7 +82,7 @@ class PostViewController: UIViewController, UITextFieldDelegate, UIPickerViewDel
     @objc func cancel1() {
         self.ageTextField.endEditing(true)
     }
-
+    
     @objc func done1() {
         self.ageTextField.endEditing(true)
     }
@@ -96,33 +98,71 @@ class PostViewController: UIViewController, UITextFieldDelegate, UIPickerViewDel
     }
     
     @IBAction func post() {
-        
         var post = Post()
-        post.age = ageTextField.text!
-        post.initial = initialTextField.text!
-        post.text = postTextView.text!
-        post.userId = currentUser?.uid
-        post.userName = userName
-        post.userPhotoURL = userPhotoURL
         
-        post.save(collection: collection, completion: { (error) in
-               DispatchQueue.main.async {
-        //           SVProgressHUD.dismiss()
-                   if let error = error {
-                    print(error)
-                    
+//        if userName == nil{
+//            let alert = UIAlertController(title: "投稿にはユーザーネームが必要です", message: "入力して下さい", preferredStyle: .alert)
+//                let cancelAction = UIAlertAction(title: "キャンセル", style: .default) { (action) in
+//                    alert.dismiss(animated: true, completion: nil)
+//                }
+//            let okAction = UIAlertAction(title: "OK", style: .default) { (action) in
+//                alert.dismiss(animated: true, completion: nil)
+//
+//            }
+//
+//            alert.addAction(cancelAction)
+//            alert.addAction(okAction)
+//            alert.addTextField { (textField) in
+//                textField.placeholder = "ここに入力"
+//            }
+//            self.present(alert, animated: true, completion: nil)
+            //保存のコード
+//        }else{
+            if ageTextField.text == "" || postTextView.text == ""{
+                  let alertText = "宛先または投稿文が未入力です。"
+                  let alertController = UIAlertController(title: "エラー", message: alertText, preferredStyle: .alert)
+                  let okAction = UIAlertAction(title: "OK", style: .default, handler: { (action) in
+                  })
+                  alertController.addAction(okAction)
+                  self.present(alertController, animated: true, completion: nil)
+              }else{
+                 
+                  post.age = ageTextField.text!
+                  post.initial = initialTextField.text!
+                  post.text = postTextView.text!
+                  post.userId = currentUser?.uid
+                if post.userName != nil{
+                     post.userName = userName
+                }else{
+                    post.userName = "名無し"
+                }
+                 
                 
-                   //    self.showError(error: error)
-                   } else {
-               
-           //            self.showSucsessAlert()
-                        self.dismiss(animated: true, completion: nil)
-                    
-                   }
-               }
-        })
-        self.dismiss(animated: true, completion: nil)
-           
+                  post.userPhotoURL = userPhotoURL
+                  
+                  post.save(collection: collection, completion: { (error) in
+                      DispatchQueue.main.async {
+                          //           SVProgressHUD.dismiss()
+                          if let error = error {
+                              print(error)
+                              
+                              
+                              //    self.showError(error: error)
+                          } else {
+                              
+                              //            self.showSucsessAlert()
+                              self.dismiss(animated: true, completion: nil)
+                              
+                          }
+                      }
+                  })
+                  self.dismiss(animated: true, completion: nil)
+              }
+//        }
+        
+  
+        
+        
     }
     
     func loadUserData() {
@@ -154,5 +194,5 @@ class PostViewController: UIViewController, UITextFieldDelegate, UIPickerViewDel
     }
     
     
-
+    
 }
