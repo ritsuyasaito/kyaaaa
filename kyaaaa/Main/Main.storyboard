@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -40,20 +40,13 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9OU-YS-GDa">
                                 <rect key="frame" x="167" y="730" width="80" height="83"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <state key="normal" title="投稿">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="toPostPage" destination="5Io-fi-ch7" eventType="touchUpInside" id="6Ad-Vt-h1K"/>
                                 </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mxp-5Q-YrN" customClass="ASCircularMenuButton" customModule="ASExtendedCircularMenu">
-                                <rect key="frame" x="51" y="754" width="41" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="color">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -71,7 +64,6 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="colourPickerButton" destination="mxp-5Q-YrN" id="gjm-6l-Zxu"/>
                         <outlet property="longPressGesRec" destination="qPG-6k-vsG" id="AXN-Zn-epm"/>
                         <outlet property="maleTableView" destination="Pmh-AQ-6MR" id="hMp-pl-8vZ"/>
                         <outlet property="postButton" destination="9OU-YS-GDa" id="jIq-MV-8YE"/>
@@ -101,6 +93,7 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cDZ-jm-hJm">
                                 <rect key="frame" x="20" y="44" width="48" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="戻る"/>
                                 <connections>
                                     <action selector="back" destination="JbL-ME-Bqg" eventType="touchUpInside" id="ekh-Wf-9NU"/>
@@ -185,6 +178,7 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LtE-cL-OZW">
                                 <rect key="frame" x="356" y="373" width="45" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="編集"/>
                                 <connections>
                                     <action selector="didTapEditButton" destination="1Zv-gJ-0Op" eventType="touchUpInside" id="NpN-z1-uf5"/>
@@ -338,7 +332,9 @@
                                 <rect key="frame" x="80" y="720" width="259" height="36"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="ログアウト"/>
+                                <state key="normal" title="ログアウト">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="logout:" destination="NMq-77-m0b" eventType="touchUpInside" id="qA1-Bu-3vm"/>
                                 </connections>
@@ -354,7 +350,9 @@
                                 <rect key="frame" x="78" y="657" width="259" height="36"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="保存"/>
+                                <state key="normal" title="保存">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="saveProfile:" destination="NMq-77-m0b" eventType="touchUpInside" id="cb4-Xg-0yQ"/>
                                 </connections>
@@ -462,10 +460,10 @@
                                 <gestureRecognizers/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="em6-6x-nmz">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="em6-6x-nmz" id="3gG-uj-zgA">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <gestureRecognizers/>
@@ -481,24 +479,19 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YJJ-bP-dHp">
                                 <rect key="frame" x="167" y="736" width="80" height="77"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <state key="normal" title="投稿">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="toPostPage" destination="u3I-KQ-Yd3" eventType="touchUpInside" id="xu5-bI-mmM"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ICo-mp-ZGp" customClass="ASCircularMenuButton" customModule="ASExtendedCircularMenu">
-                                <rect key="frame" x="58" y="759" width="35" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="color">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e78-5L-pEl" customClass="ASCircularMenuButton" customModule="ASExtendedCircularMenu">
                                 <rect key="frame" x="334" y="759" width="40" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <state key="normal" title="kyaaa">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -520,7 +513,6 @@
                     </navigationItem>
                     <connections>
                         <outlet property="FemaleTableView" destination="o77-R4-eND" id="SlU-Bi-tb7"/>
-                        <outlet property="colourPickerButton" destination="ICo-mp-ZGp" id="enh-z5-ejQ"/>
                         <outlet property="longPressGesRec" destination="4a4-Qa-dqS" id="5li-XX-G4g"/>
                         <outlet property="postButton" destination="YJJ-bP-dHp" id="7cI-DD-Fj1"/>
                         <outlet property="shareButton" destination="e78-5L-pEl" id="xHQ-eV-xir"/>
@@ -705,14 +697,14 @@
             <point key="canvasLocation" x="4637.68115942029" y="-963.95089285714278"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="CNV-qz-5rc"/>
+        <segue reference="gpB-Xv-4O0"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="female-placeHolder.jpg" width="312" height="312"/>
-        <image name="person.crop.circle.fill.badge.checkmark" catalog="system" width="64" height="50"/>
-        <image name="person.crop.circle.fill.badge.exclam" catalog="system" width="64" height="50"/>
+        <image name="person.crop.circle.fill.badge.checkmark" catalog="system" width="128" height="101"/>
+        <image name="person.crop.circle.fill.badge.exclam" catalog="system" width="128" height="101"/>
         <image name="tabbar-user-icons.png" width="48" height="48"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="FXO-5R-Mru"/>
-        <segue reference="TZ1-yd-mgA"/>
-    </inferredMetricsTieBreakers>
 </document>

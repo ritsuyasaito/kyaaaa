@@ -103,7 +103,7 @@ class FemailViewController: UIViewController, UITableViewDataSource, UITableView
             
         }
         if menuButton == colourPickerButton{
-            button.backgroundColor = colourArray[indexForButton]
+//            button.backgroundColor = colourArray[indexForButton]
         }
         return button
     }
@@ -278,7 +278,7 @@ class FemailViewController: UIViewController, UITableViewDataSource, UITableView
         FemaleTableView.register(nib, forCellReuseIdentifier: "Cell")
         
         
-        configureDynamicCircularMenuButton(button: shareButton, numberOfMenuItems: 8)
+        configureDynamicCircularMenuButton(button: shareButton, numberOfMenuItems: 5)
         shareButton.menuButtonSize = .large
         
         configureDraggebleCircularMenuButton(button: colourPickerButton, numberOfMenuItems: 8, menuRedius: 70, postion: .center)
