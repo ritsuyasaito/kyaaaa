@@ -44,6 +44,8 @@
 		2A0833782417EC5A0012E81E /* 2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A0833772417EC5A0012E81E /* 2@2x.png */; };
 		2A08337A2417ED070012E81E /* tabbar-user-icons@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A0833792417ED070012E81E /* tabbar-user-icons@2x.png */; };
 		2A687280241915A7004B7432 /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A68727F241915A7004B7432 /* NavigationViewController.swift */; };
+		2AB61B92242CAD5600E1DFF6 /* kiyakuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB61B91242CAD5600E1DFF6 /* kiyakuViewController.swift */; };
+		2AB61B9A242CB36600E1DFF6 /* privacyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB61B99242CB36600E1DFF6 /* privacyViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -86,6 +88,8 @@
 		2A0833772417EC5A0012E81E /* 2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "2@2x.png"; sourceTree = "<group>"; };
 		2A0833792417ED070012E81E /* tabbar-user-icons@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar-user-icons@2x.png"; sourceTree = "<group>"; };
 		2A68727F241915A7004B7432 /* NavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewController.swift; sourceTree = "<group>"; };
+		2AB61B91242CAD5600E1DFF6 /* kiyakuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = kiyakuViewController.swift; sourceTree = "<group>"; };
+		2AB61B99242CB36600E1DFF6 /* privacyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = privacyViewController.swift; sourceTree = "<group>"; };
 		7296136D7E71358EFA1CADB0 /* Pods-kyaaaa.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kyaaaa.debug.xcconfig"; path = "Target Support Files/Pods-kyaaaa/Pods-kyaaaa.debug.xcconfig"; sourceTree = "<group>"; };
 		9AFA8380FB5D76B887643C2B /* Pods_kyaaaa.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_kyaaaa.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -143,6 +147,8 @@
 			isa = PBXGroup;
 			children = (
 				240B9BFD2407C3AE00FF7FB3 /* SigninViewController.swift */,
+				2AB61B99242CB36600E1DFF6 /* privacyViewController.swift */,
+				2AB61B91242CAD5600E1DFF6 /* kiyakuViewController.swift */,
 				240B9C1C240B9E8100FF7FB3 /* LoginBaseView2.swift */,
 				240B9BFF2407C3C100FF7FB3 /* LoginViewController.swift */,
 				240B9C012407C3E200FF7FB3 /* SignUpViewController.swift */,
@@ -155,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				240B9C062407C5C200FF7FB3 /* Main.storyboard */,
+				243A9397240BDBF6001BA23A /* FemailViewController.swift */,
 				2A0833752417EB4B0012E81E /* TabBarViewController.swift */,
 				2A68727F241915A7004B7432 /* NavigationViewController.swift */,
 				240B9C102408E41000FF7FB3 /* MailViewController.swift */,
@@ -166,7 +173,6 @@
 				244E9B6E240F8E14003D6B8A /* UserTabmanViewController.swift */,
 				243A939B240CA0CF001BA23A /* TimelineTableViewCell.swift */,
 				243A939C240CA0CF001BA23A /* TimelineTableViewCell.xib */,
-				243A9397240BDBF6001BA23A /* FemailViewController.swift */,
 				240B9C1A240A689800FF7FB3 /* PostViewController.swift */,
 				240B9C162408FF5C00FF7FB3 /* EditUserProfileViewController.swift */,
 			);
@@ -368,6 +374,7 @@
 				2A0833762417EB4B0012E81E /* TabBarViewController.swift in Sources */,
 				240B9C092407D3E800FF7FB3 /* UserPageViewController.swift in Sources */,
 				2A687280241915A7004B7432 /* NavigationViewController.swift in Sources */,
+				2AB61B9A242CB36600E1DFF6 /* privacyViewController.swift in Sources */,
 				240B9C1B240A689800FF7FB3 /* PostViewController.swift in Sources */,
 				244E9B792411FAAF003D6B8A /* FemailKyaaaaViewController.swift in Sources */,
 				244E9B71240F9022003D6B8A /* kyaaaaViewController.swift in Sources */,
@@ -380,6 +387,7 @@
 				240B9BFE2407C3AE00FF7FB3 /* SigninViewController.swift in Sources */,
 				240B9C132408F85E00FF7FB3 /* ImageUpLoader.swift in Sources */,
 				240B9C112408E41000FF7FB3 /* MailViewController.swift in Sources */,
+				2AB61B92242CAD5600E1DFF6 /* kiyakuViewController.swift in Sources */,
 				243A939A240C9D2A001BA23A /* FirstViewController.swift in Sources */,
 				240B9BB82403788B00FF7FB3 /* AppDelegate.swift in Sources */,
 				243A9398240BDBF6001BA23A /* FemailViewController.swift in Sources */,

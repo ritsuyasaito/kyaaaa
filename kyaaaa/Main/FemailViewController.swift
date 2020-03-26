@@ -281,10 +281,10 @@ class FemailViewController: UIViewController, UITableViewDataSource, UITableView
         configureDynamicCircularMenuButton(button: shareButton, numberOfMenuItems: 5)
         shareButton.menuButtonSize = .large
         
-        configureDraggebleCircularMenuButton(button: colourPickerButton, numberOfMenuItems: 8, menuRedius: 70, postion: .center)
-        colourPickerButton.menuButtonSize = .medium
-        colourPickerButton.sholudMenuButtonAnimate = false
-        
+//        configureDraggebleCircularMenuButton(button: colourPickerButton, numberOfMenuItems: 8, menuRedius: 70, postion: .center)
+//        colourPickerButton.menuButtonSize = .medium
+//        colourPickerButton.sholudMenuButtonAnimate = false
+//        
         longPressGesRec.delegate = self
         FemaleTableView.addGestureRecognizer(longPressGesRec)
         
