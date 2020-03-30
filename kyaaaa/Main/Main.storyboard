@@ -843,6 +843,13 @@
             <point key="canvasLocation" x="4637.68115942029" y="-963.95089285714278"/>
         </scene>
     </scenes>
+<<<<<<< HEAD
+=======
+    <inferredMetricsTieBreakers>
+        <segue reference="CNV-qz-5rc"/>
+        <segue reference="gpB-Xv-4O0"/>
+    </inferredMetricsTieBreakers>
+>>>>>>> f52634ce15e8a38fde1ae9cac98f4e6f6799be7f
     <resources>
         <image name="icons8-女性.png" width="32" height="32"/>
         <image name="icons8-男性.png" width="32" height="32"/>
