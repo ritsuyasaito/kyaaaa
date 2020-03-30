@@ -436,19 +436,19 @@ class MailViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
         
         if posts[indexPath.row].isKyaaaa == true {
-            cell.kyaaaaButton.setImage(UIImage(named: "heart-fill"), for: .normal)
+            cell.kyaaaaButton.setImage(UIImage(named: "icons8-ハッピー-100.png"), for: .normal)
         } else {
-            cell.kyaaaaButton.setImage(UIImage(named: "like"), for: .normal)
+            cell.kyaaaaButton.setImage(UIImage(named: "icons8-ハッピー-400.png"), for: .normal)
         }
         if posts[indexPath.row].isNaruhodo == true {
-            cell.naruhodoButton.setImage(UIImage(named: "heart-fill"), for: .normal)
+            cell.naruhodoButton.setImage(UIImage(named: "icons8-クレイジー-100 (1).png"), for: .normal)
         } else {
-            cell.naruhodoButton.setImage(UIImage(named: "like"), for: .normal)
+            cell.naruhodoButton.setImage(UIImage(named: "icons8-クレイジー-100.png"), for: .normal)
         }
         if posts[indexPath.row].isSorena == true {
-            cell.sorenaButton.setImage(UIImage(named: "heart-fill"), for: .normal)
+            cell.sorenaButton.setImage(UIImage(named: "icons8-驚いた-80 (1).png"), for: .normal)
         } else {
-            cell.sorenaButton.setImage(UIImage(named: "like"), for: .normal)
+            cell.sorenaButton.setImage(UIImage(named: "icons8-驚いた-80.png"), for: .normal)
         }
         
         
@@ -669,10 +669,32 @@ class MailViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     @IBAction func toPostPage() {
-        if userGender == "男" {
-            
+        if self.userGender == ""{
+            let appearance = SCLAlertView.SCLAppearance(
+                                 showCloseButton: false
+                             )
+                             let alert = SCLAlertView(appearance: appearance)
+                             alert.addButton("はい") {
+
+                             }
+
+                   alert.showWarning("", subTitle: "ユーザー編集画面で性別を登録してください")
+
+        }else if self.userGender == "男"{
+            performSegue(withIdentifier: "toPostPage", sender: nil)
+
+        }else{
+            let appearance = SCLAlertView.SCLAppearance(
+                          showCloseButton: false
+                      )
+                      let alert = SCLAlertView(appearance: appearance)
+                      alert.addButton("はい") {
+
+                      }
+
+            alert.showWarning("", subTitle: "このボタンは男性のみ押せます")
         }
-        performSegue(withIdentifier: "toPostPage", sender: nil)
+       
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

@@ -61,6 +61,12 @@
 		2A0833762417EB4B0012E81E /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0833752417EB4B0012E81E /* TabBarViewController.swift */; };
 		2A0833782417EC5A0012E81E /* 2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A0833772417EC5A0012E81E /* 2@2x.png */; };
 		2A08337A2417ED070012E81E /* tabbar-user-icons@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A0833792417ED070012E81E /* tabbar-user-icons@2x.png */; };
+		2A142D8524325749002B1AA0 /* icons8-ハッピー-100.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A142D7F24325745002B1AA0 /* icons8-ハッピー-100.png */; };
+		2A142D8624325749002B1AA0 /* icons8-驚いた-80 (1).png in Resources */ = {isa = PBXBuildFile; fileRef = 2A142D8024325746002B1AA0 /* icons8-驚いた-80 (1).png */; };
+		2A142D8724325749002B1AA0 /* icons8-クレイジー-100 (1).png in Resources */ = {isa = PBXBuildFile; fileRef = 2A142D8124325747002B1AA0 /* icons8-クレイジー-100 (1).png */; };
+		2A142D8824325749002B1AA0 /* icons8-クレイジー-100.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A142D8224325747002B1AA0 /* icons8-クレイジー-100.png */; };
+		2A142D8924325749002B1AA0 /* icons8-ハッピー-400.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A142D8324325748002B1AA0 /* icons8-ハッピー-400.png */; };
+		2A142D8A24325749002B1AA0 /* icons8-驚いた-80.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A142D8424325748002B1AA0 /* icons8-驚いた-80.png */; };
 		2A687280241915A7004B7432 /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A68727F241915A7004B7432 /* NavigationViewController.swift */; };
 		2AB61B92242CAD5600E1DFF6 /* kiyakuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB61B91242CAD5600E1DFF6 /* kiyakuViewController.swift */; };
 		2AB61B9A242CB36600E1DFF6 /* privacyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB61B99242CB36600E1DFF6 /* privacyViewController.swift */; };
@@ -125,6 +131,12 @@
 		2A0833752417EB4B0012E81E /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		2A0833772417EC5A0012E81E /* 2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "2@2x.png"; sourceTree = "<group>"; };
 		2A0833792417ED070012E81E /* tabbar-user-icons@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar-user-icons@2x.png"; sourceTree = "<group>"; };
+		2A142D7F24325745002B1AA0 /* icons8-ハッピー-100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-ハッピー-100.png"; sourceTree = "<group>"; };
+		2A142D8024325746002B1AA0 /* icons8-驚いた-80 (1).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-驚いた-80 (1).png"; sourceTree = "<group>"; };
+		2A142D8124325747002B1AA0 /* icons8-クレイジー-100 (1).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-クレイジー-100 (1).png"; sourceTree = "<group>"; };
+		2A142D8224325747002B1AA0 /* icons8-クレイジー-100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-クレイジー-100.png"; sourceTree = "<group>"; };
+		2A142D8324325748002B1AA0 /* icons8-ハッピー-400.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-ハッピー-400.png"; sourceTree = "<group>"; };
+		2A142D8424325748002B1AA0 /* icons8-驚いた-80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-驚いた-80.png"; sourceTree = "<group>"; };
 		2A68727F241915A7004B7432 /* NavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewController.swift; sourceTree = "<group>"; };
 		2AB61B91242CAD5600E1DFF6 /* kiyakuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = kiyakuViewController.swift; sourceTree = "<group>"; };
 		2AB61B99242CB36600E1DFF6 /* privacyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = privacyViewController.swift; sourceTree = "<group>"; };
@@ -234,6 +246,12 @@
 		240B9C0B2408E0EF00FF7FB3 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				2A142D8124325747002B1AA0 /* icons8-クレイジー-100 (1).png */,
+				2A142D8224325747002B1AA0 /* icons8-クレイジー-100.png */,
+				2A142D7F24325745002B1AA0 /* icons8-ハッピー-100.png */,
+				2A142D8324325748002B1AA0 /* icons8-ハッピー-400.png */,
+				2A142D8024325746002B1AA0 /* icons8-驚いた-80 (1).png */,
+				2A142D8424325748002B1AA0 /* icons8-驚いた-80.png */,
 				2AB61B9B243236FC00E1DFF6 /* icons8-女性@2x.png */,
 				2AB61B9D2432371000E1DFF6 /* icons8-男性@2x.png */,
 				2A0833792417ED070012E81E /* tabbar-user-icons@2x.png */,
@@ -356,11 +374,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A142D8524325749002B1AA0 /* icons8-ハッピー-100.png in Resources */,
 				244E9BE72431DAC6003D6B8A /* kyaaaa_black.jpg in Resources */,
 				244E9BD82431D301003D6B8A /* Icon-App-40x40@1x.png in Resources */,
 				244E9BD92431D301003D6B8A /* Icon-App-20x20@1x.png in Resources */,
 				2A0833782417EC5A0012E81E /* 2@2x.png in Resources */,
 				244E9BE12431D301003D6B8A /* Icon-App-60x60@3x.png in Resources */,
+				2A142D8624325749002B1AA0 /* icons8-驚いた-80 (1).png in Resources */,
+				2A142D8924325749002B1AA0 /* icons8-ハッピー-400.png in Resources */,
 				2AB61B9E2432371000E1DFF6 /* icons8-男性@2x.png in Resources */,
 				244E9BE02431D301003D6B8A /* Icon-App-40x40@2x.png in Resources */,
 				240B9C0F2408E1C000FF7FB3 /* male-placeHolder.jpg in Resources */,
@@ -371,15 +392,18 @@
 				240B9BC42403788E00FF7FB3 /* LaunchScreen.storyboard in Resources */,
 				2AB61B9C243236FC00E1DFF6 /* icons8-女性@2x.png in Resources */,
 				244E9BDC2431D301003D6B8A /* ItunesArtwork@2x.png in Resources */,
+				2A142D8824325749002B1AA0 /* icons8-クレイジー-100.png in Resources */,
 				244E9BDB2431D301003D6B8A /* Icon-App-20x20@3x.png in Resources */,
 				244E9BA2242A14E4003D6B8A /* heart-fill.png in Resources */,
 				244E9BDE2431D301003D6B8A /* Icon-App-20x20@2x.png in Resources */,
 				240B9C072407C5C200FF7FB3 /* Main.storyboard in Resources */,
 				240B9BC12403788E00FF7FB3 /* Assets.xcassets in Resources */,
 				243A939E240CA0CF001BA23A /* TimelineTableViewCell.xib in Resources */,
+				2A142D8A24325749002B1AA0 /* icons8-驚いた-80.png in Resources */,
 				244E9BD72431D301003D6B8A /* Icon-App-29x29@1x.png in Resources */,
 				240B9BBF2403788B00FF7FB3 /* Login.storyboard in Resources */,
 				244E9BA4242A153A003D6B8A /* like.png in Resources */,
+				2A142D8724325749002B1AA0 /* icons8-クレイジー-100 (1).png in Resources */,
 				244E9BDF2431D301003D6B8A /* Icon-App-29x29@3x.png in Resources */,
 				240B9BD02403791F00FF7FB3 /* GoogleService-Info.plist in Resources */,
 				244E9BDD2431D301003D6B8A /* Contents.json in Resources */,
