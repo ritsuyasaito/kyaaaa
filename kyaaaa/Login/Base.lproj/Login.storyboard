@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Isd-y6-TAA">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7Ob-Yj-LXf">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -75,15 +75,16 @@
                             <constraint firstItem="l7t-L9-GgQ" firstAttribute="top" secondItem="tL3-uY-toF" secondAttribute="bottom" constant="8" id="4pU-F7-6Of"/>
                             <constraint firstItem="kFE-k5-1Pm" firstAttribute="leading" secondItem="dyV-dT-63a" secondAttribute="trailing" constant="8" id="Cb7-Mk-XWe"/>
                             <constraint firstItem="2VJ-Dv-UvM" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="CvD-pZ-af6"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="kFE-k5-1Pm" secondAttribute="bottom" constant="19" id="EBy-4w-xLe"/>
                             <constraint firstItem="2VJ-Dv-UvM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="N5k-si-gy2"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="kFE-k5-1Pm" secondAttribute="trailing" constant="103" id="NZJ-2U-Tzd"/>
                             <constraint firstItem="tL3-uY-toF" firstAttribute="top" secondItem="2VJ-Dv-UvM" secondAttribute="bottom" constant="149" id="aRc-WL-uF3"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="tL3-uY-toF" secondAttribute="trailing" constant="31" id="cjO-wD-3WD"/>
                             <constraint firstItem="kFE-k5-1Pm" firstAttribute="top" secondItem="l7t-L9-GgQ" secondAttribute="bottom" constant="15" id="dPu-08-43X"/>
                             <constraint firstItem="dyV-dT-63a" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="54" id="fjN-K5-0Ge"/>
                             <constraint firstItem="l7t-L9-GgQ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="32" id="gLb-rB-wVr"/>
                             <constraint firstItem="dyV-dT-63a" firstAttribute="top" secondItem="l7t-L9-GgQ" secondAttribute="bottom" constant="25" id="nBn-73-NJL"/>
                             <constraint firstItem="2VJ-Dv-UvM" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="tne-ON-ihq"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="dyV-dT-63a" secondAttribute="bottom" constant="29" id="vgV-WN-qi6"/>
                             <constraint firstItem="tL3-uY-toF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="32" id="x9h-kc-uhF"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -621,11 +622,30 @@ e. その他，開発者が本サービスの利用を適当でないと判断�
             </objects>
             <point key="canvasLocation" x="3931.884057971015" y="466.74107142857139"/>
         </scene>
+        <!--Launch View Controller-->
+        <scene sceneID="jAs-3u-4z2">
+            <objects>
+                <viewController storyboardIdentifier="RootNavigationController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="7Ob-Yj-LXf" customClass="launchViewController" customModule="kyaaaa" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ja4-nj-Rcb">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="LGt-ng-91N"/>
+                    </view>
+                    <connections>
+                        <segue destination="Isd-y6-TAA" kind="presentation" identifier="toStart" id="2dj-Cn-10z"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kwl-La-5la" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-739" y="106"/>
+        </scene>
         <!--Navigation View Controller-->
         <scene sceneID="vas-qp-htE">
             <objects>
-                <navigationController storyboardIdentifier="RootNavigationController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Isd-y6-TAA" customClass="NavigationViewController" customModule="kyaaaa" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="Isd-y6-TAA" customClass="NavigationViewController" customModule="kyaaaa" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="bPg-jD-NbH"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Z6m-w3-x5b">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -678,10 +698,10 @@ e. その他，開発者が本サービスの利用を適当でないと判断�
             <point key="canvasLocation" x="3021.739130434783" y="466.74107142857139"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="9SN-Ob-NqV"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="kyaaaa_black.jpg" width="1024" height="1024"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="gcI-6w-fgv"/>
-    </inferredMetricsTieBreakers>
 </document>
