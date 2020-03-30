@@ -45,56 +45,103 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         guard let email = emailTextField.text else { return }
         guard let password = passwordTextField.text else { return }
         
+        let ud = UserDefaults.standard
+        let isFirst = ud.bool(forKey: "SecondLogin")
         
-        
-        
-        UserModel.login(email: email, password: password) { (error) in
-            //SVProgressHUD.dismiss()
-            if let error = error {
-                print(error)
-                
-                let view = MessageView.viewFromNib(layout: .messageView)
-                view.configureTheme(.error)
-                view.button?.isHidden = true
-                view.titleLabel?.text = "エラー"
-                view.bodyLabel?.text = "有効でないメールアドレスか、パスワードが異なります。"
-                SwiftMessages.show(view: view)
-            } else {
-                if Auth.auth().currentUser != nil{
-                    Auth.auth().currentUser?.reload(completion: { (error) in
-                        if error == nil{
-                            if Auth.auth().currentUser?.isEmailVerified == true{
-                                HUD.flash(.success, delay: 1.0)
-                                let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-                                let rootViewController = storyboard.instantiateViewController(withIdentifier: "First")
-                                UIApplication.shared.keyWindow?.rootViewController = rootViewController
-                                
-                                //ログイン状態の保持
-                                let ud = UserDefaults.standard
-                                ud.set(true, forKey: "isLogin")
-                                ud.synchronize()
-                            }else if Auth.auth().currentUser?.isEmailVerified == false{
-                                let appearance = SCLAlertView.SCLAppearance(
-                                    showCloseButton: false
-                                )
-                                let alert = SCLAlertView(appearance: appearance)
-                                alert.addButton("はい") {
+        if isFirst == false {
+            UserModel.signUp(email: email, password: password) { (error) in
+                if let error = error {
+                    print(error)
+                    
+                    let view = MessageView.viewFromNib(layout: .messageView)
+                    view.configureTheme(.error)
+                    view.button?.isHidden = true
+                    view.titleLabel?.text = "エラー"
+                    view.bodyLabel?.text = "有効でないメールアドレスか、パスワードが異なります。"
+                    SwiftMessages.show(view: view)
+                } else {
+                    if Auth.auth().currentUser != nil{
+                        Auth.auth().currentUser?.reload(completion: { (error) in
+                            if error == nil{
+                                if Auth.auth().currentUser?.isEmailVerified == true{
+                                    HUD.flash(.success, delay: 1.0)
+                                    let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+                                    let rootViewController = storyboard.instantiateViewController(withIdentifier: "First")
+                                    UIApplication.shared.keyWindow?.rootViewController = rootViewController
                                     
+                                    //ログイン状態の保持
+                                    let ud = UserDefaults.standard
+                                    ud.set(true, forKey: "isLogin")
+                                    ud.set(true, forKey: "SecondLogin")
+                                    ud.synchronize()
+                                }else if Auth.auth().currentUser?.isEmailVerified == false{
+                                    let appearance = SCLAlertView.SCLAppearance(
+                                        showCloseButton: false
+                                    )
+                                    let alert = SCLAlertView(appearance: appearance)
+                                    alert.addButton("はい") {
+                                        
+                                        
+                                    }
                                     
+                                    alert.showInfo("", subTitle: "メール認証を行ってください")
                                 }
-                                
-                                alert.showInfo("", subTitle: "メール認証を行ってください")
                             }
-                        }
-                    })
+                        })
+                    }
+                    
                 }
-                
-                
-                
-                
-                
+            }
+            
+        } else {
+            UserModel.login(email: email, password: password) { (error) in
+                //SVProgressHUD.dismiss()
+                if let error = error {
+                    print(error)
+                    
+                    let view = MessageView.viewFromNib(layout: .messageView)
+                    view.configureTheme(.error)
+                    view.button?.isHidden = true
+                    view.titleLabel?.text = "エラー"
+                    view.bodyLabel?.text = "有効でないメールアドレスか、パスワードが異なります。"
+                    SwiftMessages.show(view: view)
+                } else {
+                    if Auth.auth().currentUser != nil{
+                        Auth.auth().currentUser?.reload(completion: { (error) in
+                            if error == nil{
+                                if Auth.auth().currentUser?.isEmailVerified == true{
+                                    HUD.flash(.success, delay: 1.0)
+                                    let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+                                    let rootViewController = storyboard.instantiateViewController(withIdentifier: "First")
+                                    UIApplication.shared.keyWindow?.rootViewController = rootViewController
+                                    
+                                    //ログイン状態の保持
+                                    let ud = UserDefaults.standard
+                                    ud.set(true, forKey: "isLogin")
+                                    ud.set(true, forKey: "SecondLogin")
+                                    ud.synchronize()
+                                }else if Auth.auth().currentUser?.isEmailVerified == false{
+                                    let appearance = SCLAlertView.SCLAppearance(
+                                        showCloseButton: false
+                                    )
+                                    let alert = SCLAlertView(appearance: appearance)
+                                    alert.addButton("はい") {
+                                        
+                                        
+                                    }
+                                    
+                                    alert.showInfo("", subTitle: "メール認証を行ってください")
+                                }
+                            }
+                        })
+                    }
+                    
+                }
             }
         }
+        
+        
+        
         
         
         
