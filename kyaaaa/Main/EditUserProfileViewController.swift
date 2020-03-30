@@ -218,6 +218,7 @@ class EditUserProfileViewController: UIViewController, UITextFieldDelegate, UIPi
                             //           SVProgressHUD.dismiss()
                             if let error = error {
                                 HUD.flash(.error, delay: 1.0)
+                                print(error)
                             } else {
                                 HUD.flash(.success, delay: 0.2)
                                 self.navigationController?.popViewController(animated: true)
