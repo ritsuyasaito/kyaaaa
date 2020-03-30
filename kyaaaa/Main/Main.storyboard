@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="0Ew-UM-NGl">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -482,6 +482,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="9CW-57-qaR"/>
                     </view>
+                    <navigationItem key="navigationItem" id="E7K-yu-cKq"/>
                     <connections>
                         <outlet property="button" destination="VeT-R6-yAq" id="ADa-v3-c78"/>
                         <outlet property="logoutButton" destination="OLU-19-Pae" id="dt0-13-w3X"/>
@@ -543,12 +544,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FCT-b3-hjO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1542" y="-309"/>
+            <point key="canvasLocation" x="-2409" y="-346"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="v8E-Bu-djX">
             <objects>
-                <tabBarController storyboardIdentifier="First" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="0Ew-UM-NGl" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="First" automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="0Ew-UM-NGl" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="gSZ-ZY-NAl"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="JKr-kd-c5h">
@@ -669,7 +670,7 @@
         <scene sceneID="Cvu-gU-xJT">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Yn4-Pa-dAM" customClass="NavigationViewController" customModule="kyaaaa" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="female" selectedImage="tabbar-user-icons.png" id="vOB-XV-v1q"/>
+                    <tabBarItem key="tabBarItem" title="female" image="icons8-女性.png" id="vOB-XV-v1q"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="geF-B0-5kr">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -688,7 +689,7 @@
         <scene sceneID="zVX-SP-SUx">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ekz-BW-9On" customClass="NavigationViewController" customModule="kyaaaa" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="male" selectedImage="tabbar-user-icons.png" id="hHl-cP-wj5"/>
+                    <tabBarItem key="tabBarItem" title="male" image="icons8-男性.png" id="hHl-cP-wj5"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="2NG-Wb-DmG">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -708,7 +709,7 @@
             <objects>
                 <viewController id="hid-7g-WaN" customClass="UserTabmanViewController" customModule="kyaaaa" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bKE-07-HA5">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="140"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="390"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="nzs-XO-GBB"/>
@@ -842,13 +843,14 @@
             <point key="canvasLocation" x="4637.68115942029" y="-963.95089285714278"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="person.crop.circle.fill.badge.checkmark" catalog="system" width="64" height="50"/>
-        <image name="person.crop.circle.fill.badge.exclam" catalog="system" width="64" height="50"/>
-        <image name="tabbar-user-icons.png" width="48" height="48"/>
-    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="FXO-5R-Mru"/>
         <segue reference="TZ1-yd-mgA"/>
     </inferredMetricsTieBreakers>
+    <resources>
+        <image name="icons8-女性.png" width="32" height="32"/>
+        <image name="icons8-男性.png" width="32" height="32"/>
+        <image name="person.crop.circle.fill.badge.checkmark" catalog="system" width="128" height="101"/>
+        <image name="person.crop.circle.fill.badge.exclam" catalog="system" width="128" height="101"/>
+    </resources>
 </document>
