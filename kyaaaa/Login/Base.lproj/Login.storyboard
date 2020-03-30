@@ -15,14 +15,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2VJ-Dv-UvM">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2VJ-Dv-UvM">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="548"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="548" id="pgn-aT-r3n"/>
+                                    <constraint firstAttribute="width" constant="414" id="xNn-zG-rif"/>
+                                </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l7t-L9-GgQ" customClass="CustomButton" customModule="kyaaaa" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l7t-L9-GgQ" customClass="CustomButton" customModule="kyaaaa" customModuleProvider="target">
                                 <rect key="frame" x="32" y="746" width="351" height="41"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="351" id="gmI-ib-HVD"/>
+                                    <constraint firstAttribute="height" constant="41" id="oiw-VV-DF1"/>
+                                </constraints>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Eメールでサインアップ">
                                     <color key="titleColor" red="1" green="0.49405741689999999" blue="0.1193599924" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -31,18 +37,22 @@
                                     <segue destination="9qd-Sp-KBm" kind="show" id="TWK-HX-sHt"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="すでにメンバーの場合..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dyV-dT-63a">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="すでにメンバーの場合..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dyV-dT-63a">
                                 <rect key="frame" x="54" y="812" width="187" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="g4n-mJ-rEm"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kFE-k5-1Pm" customClass="CustomButton" customModule="kyaaaa" customModuleProvider="target">
-                                <rect key="frame" x="249" y="802" width="87" height="41"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kFE-k5-1Pm" customClass="CustomButton" customModule="kyaaaa" customModuleProvider="target">
+                                <rect key="frame" x="249" y="802" width="62" height="41"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="41" id="iUL-By-1WN"/>
+                                </constraints>
                                 <state key="normal" title="ログイン">
                                     <color key="titleColor" red="1" green="0.49405741689999999" blue="0.1193599924" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -50,13 +60,32 @@
                                     <segue destination="i7T-Ev-7TU" kind="show" id="9SN-Ob-NqV"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tL3-uY-toF" customClass="LoginBaseView2" customModule="kyaaaa" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tL3-uY-toF" customClass="LoginBaseView2" customModule="kyaaaa" customModuleProvider="target">
                                 <rect key="frame" x="32" y="697" width="351" height="41"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="41" id="kON-nA-Zkb"/>
+                                    <constraint firstAttribute="width" constant="351" id="owa-w5-gfb"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="l7t-L9-GgQ" secondAttribute="trailing" constant="31" id="3Bf-TO-htp"/>
+                            <constraint firstItem="l7t-L9-GgQ" firstAttribute="top" secondItem="tL3-uY-toF" secondAttribute="bottom" constant="8" id="4pU-F7-6Of"/>
+                            <constraint firstItem="kFE-k5-1Pm" firstAttribute="leading" secondItem="dyV-dT-63a" secondAttribute="trailing" constant="8" id="Cb7-Mk-XWe"/>
+                            <constraint firstItem="2VJ-Dv-UvM" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="CvD-pZ-af6"/>
+                            <constraint firstItem="2VJ-Dv-UvM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="N5k-si-gy2"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="kFE-k5-1Pm" secondAttribute="trailing" constant="103" id="NZJ-2U-Tzd"/>
+                            <constraint firstItem="tL3-uY-toF" firstAttribute="top" secondItem="2VJ-Dv-UvM" secondAttribute="bottom" constant="149" id="aRc-WL-uF3"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="tL3-uY-toF" secondAttribute="trailing" constant="31" id="cjO-wD-3WD"/>
+                            <constraint firstItem="kFE-k5-1Pm" firstAttribute="top" secondItem="l7t-L9-GgQ" secondAttribute="bottom" constant="15" id="dPu-08-43X"/>
+                            <constraint firstItem="dyV-dT-63a" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="54" id="fjN-K5-0Ge"/>
+                            <constraint firstItem="l7t-L9-GgQ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="32" id="gLb-rB-wVr"/>
+                            <constraint firstItem="dyV-dT-63a" firstAttribute="top" secondItem="l7t-L9-GgQ" secondAttribute="bottom" constant="25" id="nBn-73-NJL"/>
+                            <constraint firstItem="2VJ-Dv-UvM" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="tne-ON-ihq"/>
+                            <constraint firstItem="tL3-uY-toF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="32" id="x9h-kc-uhF"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="ようこそKyaaaa!へ。" id="Nfo-xb-Nlv"/>
@@ -319,7 +348,7 @@
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="iNV-PA-xOF">
                                         <rect key="frame" x="0.0" y="0.0" width="328" height="554"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                        <mutableString key="text">開発者（以下，「開発者」といいます。）は，本ウェブサイト上で提供するサービス（以下,「本サービス」といいます。）におけるプライバシー情報の取扱いについて，以下のとおりプライバシーポリシー（以下，「本ポリシー」といいます。）を定めます。
+                                        <string key="text">開発者（以下，「開発者」といいます。）は，本ウェブサイト上で提供するサービス（以下,「本サービス」といいます。）におけるプライバシー情報の取扱いについて，以下のとおりプライバシーポリシー（以下，「本ポリシー」といいます。）を定めます。
 
 第1条（プライバシー情報）
 
@@ -375,7 +404,7 @@
 第８条（プライバシーポリシーの変更）
 
 本ポリシーの内容は，ユーザーに通知することなく，変更することができるものとします。
-開発者が別途定める場合を除いて，変更後のプライバシーポリシーは，本ウェブサイトに掲載したときから効力を生じるものとします。</mutableString>
+開発者が別途定める場合を除いて，変更後のプライバシーポリシーは，本ウェブサイトに掲載したときから効力を生じるものとします。</string>
                                         <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -441,7 +470,7 @@
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Zfs-mp-17M">
                                         <rect key="frame" x="0.0" y="0.0" width="328" height="564"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                        <mutableString key="text">この利用規約（以下，「本規約」といいます。）は，開発者（以下，「開発者」といいます。）がこのウェブサイト上で提供するサービス（以下，「本サービス」といいます。）の利用条件を定めるものです。登録ユーザーの皆さま（以下，「ユーザー」といいます。）には，本規約に従って，本サービスをご利用いただきます。
+                                        <string key="text">この利用規約（以下，「本規約」といいます。）は，開発者（以下，「開発者」といいます。）がこのウェブサイト上で提供するサービス（以下，「本サービス」といいます。）の利用条件を定めるものです。登録ユーザーの皆さま（以下，「ユーザー」といいます。）には，本規約に従って，本サービスをご利用いただきます。
 
 第1条（適用）
 1. 本規約は，ユーザーと開発者との間の本サービスの利用に関わる一切の関係に適用されるものとします。
@@ -540,7 +569,7 @@ e. その他，開発者が本サービスの利用を適当でないと判断�
 本規約の解釈にあたっては，日本法を準拠法とします。
 本サービスに関して紛争が生じた場合には，開発者の本店所在地を管轄する裁判所を専属的合意管轄とします。
 
-</mutableString>
+</string>
                                         <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -650,6 +679,6 @@ e. その他，開発者が本サービスの利用を適当でないと判断�
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="gcI-6w-fgv"/>
+        <segue reference="9SN-Ob-NqV"/>
     </inferredMetricsTieBreakers>
 </document>
