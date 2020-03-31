@@ -36,6 +36,9 @@ class SigninViewController: UIViewController, LoginButtonDelegate{
         fbLoginButton.frame = CGRect(x: 32, y: 650, width: 351, height: 41)
 
 
+    //fbLoginButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+
+
 
         //許可するもの
         fbLoginButton.permissions = ["public_profile, email"]
