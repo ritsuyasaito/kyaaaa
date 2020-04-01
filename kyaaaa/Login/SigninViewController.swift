@@ -35,8 +35,9 @@ class SigninViewController: UIViewController, LoginButtonDelegate{
 //        　fbLoginButton.frame = CGRect(x: view.frame.size.width / 2 - view.frame.size.width / 4, y: view.frame.size.height / 4, width: view.frame.size.width / 2, height: 660)
         fbLoginButton.frame = CGRect(x: 32, y: 650, width: 351, height: 41)
 
-
     //fbLoginButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+
+
 
 
 
