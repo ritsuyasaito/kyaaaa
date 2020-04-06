@@ -135,11 +135,41 @@ struct UserModel {
              
            }
         
-        
-        
        }
     
     
+    
+    // 会員登録
+    static func signUp2(email: String, password: String, completion: @escaping(Error?) -> ()) {
+        Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
+         completion(error)
+         if error == nil {
+             let currentUser = Auth.auth().currentUser
+             
+             var user = UserModel()
+             user.uid = currentUser?.uid
+             user.email = currentUser?.email
+             // Firestoreのデータベースを取得
+              let db = Firestore.firestore()
+              // データベースのpostsパスに対して投稿データを追加し保存
+              
+             db.collection("users").document(user.uid).setData([
+                  "displayName" : "",
+                  "photoURL" : "",
+                  "age" : "",
+                  "gender" : "",
+                  
+             
+              ]) { error in
+                  // 処理が終了したらcompletionブロックにerrorを返す.errorがnilなら成功
+                  completion(error)
+              }
+             
+         }
+          
+        }
+     
+    }
     
  
     

@@ -266,7 +266,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8vC-RO-6Rw">
-                                <rect key="frame" x="0.0" y="423" width="414" height="390"/>
+                                <rect key="frame" x="0.0" y="420" width="414" height="393"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <segue destination="hid-7g-WaN" kind="embed" id="qWK-Up-OzR"/>
@@ -295,7 +295,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nka-IB-fDi">
-                                <rect key="frame" x="249" y="378" width="150" height="35"/>
+                                <rect key="frame" x="249" y="375" width="150" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="14d-T3-KFg"/>
                                     <constraint firstAttribute="height" constant="35" id="y5Q-M2-LrA"/>
@@ -308,7 +308,7 @@
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="5ZS-9p-Zqa" firstAttribute="top" secondItem="9E7-7m-ueL" secondAttribute="bottom" constant="5" id="12f-4P-DNY"/>
-                            <constraint firstItem="Nka-IB-fDi" firstAttribute="top" secondItem="LtE-cL-OZW" secondAttribute="bottom" constant="38" id="38G-Qs-jWu"/>
+                            <constraint firstItem="Nka-IB-fDi" firstAttribute="top" secondItem="LtE-cL-OZW" secondAttribute="bottom" constant="35" id="38G-Qs-jWu"/>
                             <constraint firstItem="91t-To-jHD" firstAttribute="leading" secondItem="zAe-NG-n8e" secondAttribute="leading" constant="20" id="6wY-wL-Tja"/>
                             <constraint firstItem="zAe-NG-n8e" firstAttribute="trailing" secondItem="LtE-cL-OZW" secondAttribute="trailing" constant="20" id="8R3-1X-ek7"/>
                             <constraint firstItem="9E7-7m-ueL" firstAttribute="top" secondItem="eTp-94-3kO" secondAttribute="bottom" constant="2" id="9l9-ki-ifj"/>
@@ -370,6 +370,7 @@
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Lfw-HQ-rYV">
                                 <rect key="frame" x="116" y="447" width="50" height="34"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="XSD-9b-4wV"/>
                                     <constraint firstAttribute="width" constant="50" id="nbE-kH-Ubx"/>
@@ -377,8 +378,9 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Xuo-D1-hZ2">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Xuo-D1-hZ2" customClass="￥">
                                 <rect key="frame" x="260" y="447" width="104" height="34"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="104" id="Jxk-Cp-l71"/>
                                     <constraint firstAttribute="height" constant="34" id="rrX-5F-vOl"/>
@@ -396,13 +398,19 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oqO-wf-rss">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oqO-wf-rss" customClass="JiroTextField" customModule="TextFieldEffects">
                                 <rect key="frame" x="50" y="383" width="314" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="GM4-8X-VBR"/>
                                 </constraints>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ユーザー名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zw7-ZB-Mbf">
                                 <rect key="frame" x="50" y="348" width="130" height="30"/>
@@ -843,12 +851,6 @@
             <point key="canvasLocation" x="4637.68115942029" y="-963.95089285714278"/>
         </scene>
     </scenes>
-
-    <inferredMetricsTieBreakers>
-        <segue reference="CNV-qz-5rc"/>
-        <segue reference="gpB-Xv-4O0"/>
-    </inferredMetricsTieBreakers>
-
     <resources>
         <image name="icons8-女性.png" width="32" height="32"/>
         <image name="icons8-男性.png" width="32" height="32"/>
@@ -856,7 +858,7 @@
         <image name="person.crop.circle.fill.badge.exclam" catalog="system" width="64" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="FXO-5R-Mru"/>
-        <segue reference="TZ1-yd-mgA"/>
+        <segue reference="CNV-qz-5rc"/>
+        <segue reference="gpB-Xv-4O0"/>
     </inferredMetricsTieBreakers>
 </document>
