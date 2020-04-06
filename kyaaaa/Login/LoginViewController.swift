@@ -23,6 +23,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet private weak var emailTextField: UITextField!
     @IBOutlet private weak var passwordTextField: UITextField!
     
+    var isFirstLogin: Bool = false
+    
     
     
     
@@ -31,6 +33,15 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         emailTextField.delegate = self
         passwordTextField.delegate = self
+        
+        let ud = UserDefaults.standard
+        let isFirst = ud.bool(forKey: "isFirstLogin")
+        
+        if isFirstLogin == true {
+            ud.set(true, forKey: "isFirstLogin")
+        } else {
+            ud.set(true, forKey: "isFirstLogin")
+        }
         
         
         
@@ -46,10 +57,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         guard let password = passwordTextField.text else { return }
         
         let ud = UserDefaults.standard
-        let isFirst = ud.bool(forKey: "SecondLogin")
+        let isFirst = ud.bool(forKey: "isFirstLogin")
         
-        if isFirst == false {
-            UserModel.signUp(email: email, password: password) { (error) in
+        if isFirstLogin == true || isFirst == true {
+            UserModel.signUp2(email: email, password: password) { (error) in
                 if let error = error {
                     print(error)
                     
@@ -72,7 +83,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                                     //ログイン状態の保持
                                     let ud = UserDefaults.standard
                                     ud.set(true, forKey: "isLogin")
-                                    ud.set(true, forKey: "SecondLogin")
+                                    ud.set(false, forKey: "isFirstLogin")
+                                
                                     ud.synchronize()
                                 }else if Auth.auth().currentUser?.isEmailVerified == false{
                                     let appearance = SCLAlertView.SCLAppearance(
@@ -118,7 +130,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                                     //ログイン状態の保持
                                     let ud = UserDefaults.standard
                                     ud.set(true, forKey: "isLogin")
-                                    ud.set(true, forKey: "SecondLogin")
+                                   
                                     ud.synchronize()
                                 }else if Auth.auth().currentUser?.isEmailVerified == false{
                                     let appearance = SCLAlertView.SCLAppearance(

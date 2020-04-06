@@ -32,7 +32,8 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toLogin" {
-            
+            let nextVC = segue.destination as! LoginViewController
+            nextVC.isFirstLogin = true
         }
     }
     
@@ -70,6 +71,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                                 let alert = SCLAlertView(appearance: appearance)
                                 alert.addButton("はい") {
                                     self.performSegue(withIdentifier: "toLogin", sender: nil)
+                                    
 //                                    let storyboard = UIStoryboard(name: "Login", bundle: Bundle.main)
 //                                    let rootViewController = storyboard.instantiateViewController(withIdentifier: "Login")
 //                                    UIApplication.shared.keyWindow?.rootViewController = rootViewController

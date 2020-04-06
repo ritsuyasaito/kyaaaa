@@ -47,7 +47,8 @@ class EditUserProfileViewController: UIViewController, UITextFieldDelegate, UIPi
         button.layer.shadowOpacity = 0.2
         //        button.addTarget(self, action: #selector(buttonAction(_:)), for: .touchUpInside)
         
-        logoutButton.backgroundColor = .magenta
+        //logoutButton.backgroundColor = .magenta
+        logoutButton.backgroundColor = .lightGray
         logoutButton.setTitle("ログアウト", for: .normal)
         logoutButton.layer.cornerRadius = button.layer.bounds.width / 17
         logoutButton.spinnerColor = .white
