@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7Ob-Yj-LXf">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7Ob-Yj-LXf">
+    <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,88 +15,85 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kyaaaa_black.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="2VJ-Dv-UvM">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="548"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="548" id="pgn-aT-r3n"/>
-                                    <constraint firstAttribute="width" constant="414" id="xNn-zG-rif"/>
-                                </constraints>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l7t-L9-GgQ" customClass="CustomButton" customModule="kyaaaa" customModuleProvider="target">
-                                <rect key="frame" x="32" y="746" width="351" height="41"/>
+                                <rect key="frame" x="30" y="747" width="354" height="40"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="351" id="gmI-ib-HVD"/>
-                                    <constraint firstAttribute="height" constant="41" id="oiw-VV-DF1"/>
+                                    <constraint firstAttribute="height" constant="40" id="1mV-Hc-aAs"/>
                                 </constraints>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Eメールでサインアップ">
                                     <color key="titleColor" red="1" green="0.49405741689999999" blue="0.1193599924" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
                                     <segue destination="9qd-Sp-KBm" kind="show" id="TWK-HX-sHt"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="すでにメンバーの場合..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dyV-dT-63a">
-                                <rect key="frame" x="54" y="812" width="187" height="21"/>
+                                <rect key="frame" x="50" y="822" width="187" height="10"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="g4n-mJ-rEm"/>
+                                    <constraint firstAttribute="height" constant="10" id="SCv-oi-ytb"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kFE-k5-1Pm" customClass="CustomButton" customModule="kyaaaa" customModuleProvider="target">
-                                <rect key="frame" x="249" y="802" width="62" height="41"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="41" id="iUL-By-1WN"/>
-                                </constraints>
+                                <rect key="frame" x="247" y="812" width="157" height="30"/>
                                 <state key="normal" title="ログイン">
                                     <color key="titleColor" red="1" green="0.49405741689999999" blue="0.1193599924" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
                                     <segue destination="i7T-Ev-7TU" kind="show" id="9SN-Ob-NqV"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tL3-uY-toF" customClass="LoginBaseView2" customModule="kyaaaa" customModuleProvider="target">
-                                <rect key="frame" x="32" y="697" width="351" height="41"/>
+                                <rect key="frame" x="30" y="697" width="354" height="40"/>
                                 <color key="backgroundColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="41" id="kON-nA-Zkb"/>
-                                    <constraint firstAttribute="width" constant="351" id="owa-w5-gfb"/>
+                                    <constraint firstAttribute="height" constant="40" id="JL2-C4-r7m"/>
                                 </constraints>
                             </view>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kyaaaa_black.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="2VJ-Dv-UvM">
+                                <rect key="frame" x="0.0" y="88" width="414" height="297"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="297" id="vWx-C3-t2Z"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="l7t-L9-GgQ" secondAttribute="trailing" constant="31" id="3Bf-TO-htp"/>
-                            <constraint firstItem="l7t-L9-GgQ" firstAttribute="top" secondItem="tL3-uY-toF" secondAttribute="bottom" constant="8" id="4pU-F7-6Of"/>
-                            <constraint firstItem="kFE-k5-1Pm" firstAttribute="leading" secondItem="dyV-dT-63a" secondAttribute="trailing" constant="8" id="Cb7-Mk-XWe"/>
-                            <constraint firstItem="2VJ-Dv-UvM" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="CvD-pZ-af6"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="kFE-k5-1Pm" secondAttribute="bottom" constant="19" id="EBy-4w-xLe"/>
-                            <constraint firstItem="2VJ-Dv-UvM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="N5k-si-gy2"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="kFE-k5-1Pm" secondAttribute="trailing" constant="103" id="NZJ-2U-Tzd"/>
-                            <constraint firstItem="tL3-uY-toF" firstAttribute="top" secondItem="2VJ-Dv-UvM" secondAttribute="bottom" constant="149" id="aRc-WL-uF3"/>
-                            <constraint firstItem="kFE-k5-1Pm" firstAttribute="top" secondItem="l7t-L9-GgQ" secondAttribute="bottom" constant="15" id="dPu-08-43X"/>
-                            <constraint firstItem="dyV-dT-63a" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="54" id="fjN-K5-0Ge"/>
-                            <constraint firstItem="l7t-L9-GgQ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="32" id="gLb-rB-wVr"/>
-                            <constraint firstItem="dyV-dT-63a" firstAttribute="top" secondItem="l7t-L9-GgQ" secondAttribute="bottom" constant="25" id="nBn-73-NJL"/>
-                            <constraint firstItem="2VJ-Dv-UvM" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="tne-ON-ihq"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="dyV-dT-63a" secondAttribute="bottom" constant="29" id="vgV-WN-qi6"/>
-                            <constraint firstItem="tL3-uY-toF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="32" id="x9h-kc-uhF"/>
+                            <constraint firstItem="l7t-L9-GgQ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="0my-oB-qp6"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="kFE-k5-1Pm" secondAttribute="bottom" constant="20" id="1xj-hO-Gqy"/>
+                            <constraint firstItem="2VJ-Dv-UvM" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="4hH-6g-F4k"/>
+                            <constraint firstItem="dyV-dT-63a" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="79M-47-rmG"/>
+                            <constraint firstItem="kFE-k5-1Pm" firstAttribute="leading" secondItem="dyV-dT-63a" secondAttribute="trailing" constant="10" id="B7B-Ro-I2q"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="dyV-dT-63a" secondAttribute="bottom" constant="30" id="D3t-3B-j4k"/>
+                            <constraint firstItem="kFE-k5-1Pm" firstAttribute="top" secondItem="l7t-L9-GgQ" secondAttribute="bottom" constant="25" id="EAr-Wj-pnC"/>
+                            <constraint firstItem="2VJ-Dv-UvM" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="MWy-mW-mpz"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="tL3-uY-toF" secondAttribute="trailing" constant="30" id="OJ1-fy-GMw"/>
+                            <constraint firstItem="l7t-L9-GgQ" firstAttribute="top" secondItem="tL3-uY-toF" secondAttribute="bottom" constant="10" id="TcK-Gl-abl"/>
+                            <constraint firstItem="2VJ-Dv-UvM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="U2r-Uu-JSJ"/>
+                            <constraint firstItem="tL3-uY-toF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="VRl-ce-lH1"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="l7t-L9-GgQ" secondAttribute="trailing" constant="30" id="ofQ-IE-xpj"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="kFE-k5-1Pm" secondAttribute="trailing" constant="10" id="vbh-hk-hU7"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="ようこそKyaaaa!へ。" id="Nfo-xb-Nlv"/>
                     <connections>
+                        <outlet property="button" destination="l7t-L9-GgQ" id="40L-pd-wGV"/>
                         <outlet property="loginBaseView" destination="tL3-uY-toF" id="mlf-yS-QOR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1047.8260869565217" y="105.80357142857143"/>
+            <point key="canvasLocation" x="1047.2" y="105.69715142428787"/>
         </scene>
         <!--ログイン-->
         <scene sceneID="W7a-wM-Ly0">
@@ -108,6 +105,7 @@
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="メールアドレス" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nrx-tt-VfH" customClass="HoshiTextField" customModule="TextFieldEffects">
                                 <rect key="frame" x="20" y="268" width="374" height="50"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="lQN-4R-bFP"/>
                                 </constraints>
@@ -131,6 +129,7 @@
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="パスワード" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Pg7-0p-YeV" customClass="HoshiTextField" customModule="TextFieldEffects">
                                 <rect key="frame" x="20" y="338" width="374" height="50"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="CrY-Dz-jYb"/>
                                 </constraints>
@@ -193,7 +192,7 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="27"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="メール" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sb7-tn-F6P">
                                 <rect key="frame" x="35" y="183" width="52" height="21"/>
@@ -203,7 +202,7 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="161-xL-WLG" customClass="CustomButton" customModule="kyaaaa" customModuleProvider="target">
                                 <rect key="frame" x="35" y="385" width="344" height="55"/>
@@ -213,6 +212,7 @@
                                 </constraints>
                                 <state key="normal" title="同意してサインアップ">
                                     <color key="titleColor" red="1" green="0.49405741689999999" blue="0.1193599924" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
                                     <action selector="signUp" destination="9qd-Sp-KBm" eventType="touchUpInside" id="tz9-H7-Ore"/>
@@ -240,7 +240,8 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BNn-tp-CH4">
-                                <rect key="frame" x="132.5" y="470" width="149" height="30"/>
+                                <rect key="frame" x="132.66666666666666" y="470" width="148.99999999999997" height="30"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="9fh-T3-k8z"/>
                                     <constraint firstAttribute="width" constant="149" id="sja-0u-CWW"/>
@@ -248,6 +249,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <state key="normal" title="プライバシーポリシー">
                                     <color key="titleColor" red="1" green="0.49405741689999999" blue="0.1193599924" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
                                     <segue destination="lff-mp-xJ0" kind="show" id="xuS-D3-ean"/>
@@ -261,7 +263,7 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YPz-Ui-8gV" customClass="HoshiTextField" customModule="TextFieldEffects">
                                 <rect key="frame" x="20" y="311" width="374" height="44"/>
@@ -285,7 +287,8 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hAP-Wk-XMN">
-                                <rect key="frame" x="132.5" y="530" width="149" height="30"/>
+                                <rect key="frame" x="132.66666666666666" y="530" width="148.99999999999997" height="30"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="4Wc-kH-bVg"/>
                                     <constraint firstAttribute="width" constant="149" id="ONA-Se-JRX"/>
@@ -293,6 +296,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <state key="normal" title="利用規約">
                                     <color key="titleColor" red="1" green="0.68239037229999999" blue="0.40374035139999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
                                     <segue destination="9TK-To-AGG" kind="show" id="Srq-Hd-gtq"/>
@@ -406,7 +410,7 @@
 
 本ポリシーの内容は，ユーザーに通知することなく，変更することができるものとします。
 開発者が別途定める場合を除いて，変更後のプライバシーポリシーは，本ウェブサイトに掲載したときから効力を生じるものとします。</string>
-                                        <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
@@ -429,6 +433,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="同意する">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
                                     <action selector="agree" destination="gVo-fa-MS3" eventType="touchUpInside" id="s3a-Ua-S8Z"/>
@@ -571,7 +576,7 @@ e. その他，開発者が本サービスの利用を適当でないと判断�
 本サービスに関して紛争が生じた場合には，開発者の本店所在地を管轄する裁判所を専属的合意管轄とします。
 
 </string>
-                                        <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
@@ -594,6 +599,7 @@ e. その他，開発者が本サービスの利用を適当でないと判断�
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="同意する">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
                                     <action selector="agree" destination="ZoP-C9-Gv8" eventType="touchUpInside" id="r6H-0w-25O"/>
@@ -698,10 +704,10 @@ e. その他，開発者が本サービスの利用を適当でないと判断�
             <point key="canvasLocation" x="3021.739130434783" y="466.74107142857139"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="kyaaaa_black.jpg" width="1024" height="1024"/>
-    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="9SN-Ob-NqV"/>
     </inferredMetricsTieBreakers>
+    <resources>
+        <image name="kyaaaa_black.jpg" width="1024" height="1024"/>
+    </resources>
 </document>

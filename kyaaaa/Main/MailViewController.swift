@@ -172,7 +172,22 @@ class MailViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        guard let currentUser = currentUser else {
+                         
+                         //ログインに戻る
+                         
+                         //ログアウト登録成功
+                         let storyboard = UIStoryboard(name: "Login", bundle: Bundle.main)
+                         let RootViewController = storyboard.instantiateViewController(withIdentifier: "RootNavigationController")
+                         UIApplication.shared.keyWindow?.rootViewController = RootViewController
+                         
+                         //ログアウト状態の保持
+                         let ud = UserDefaults.standard
+                         ud.set(false, forKey: "isLogin")
+                         ud.synchronize()
+                         
+                         return
+                     }
         // これを実行しないと context.biometryType が有効にならないので一度実行
         context.canEvaluatePolicy(.deviceOwnerAuthentication, error: nil)
         state = .loggedout

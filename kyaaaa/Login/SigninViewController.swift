@@ -19,7 +19,10 @@ class SigninViewController: UIViewController, LoginButtonDelegate{
   
 //    @IBOutlet var GoogleButton:GIDSignInButton!
     @IBOutlet weak var loginBaseView: LoginBaseView2!
+    
     let fbLoginButton: FBLoginButton = FBLoginButton()
+    
+    @IBOutlet var button: UIButton!
     
     var displayName = String()
     var pictureURL = String()
@@ -32,8 +35,15 @@ class SigninViewController: UIViewController, LoginButtonDelegate{
         GIDSignIn.sharedInstance().signIn()
         
         fbLoginButton.delegate = self
+        let number = button.frame.minY
+        let y = Int(number) - 100
+        print(number)
+        print("$")
+        print(y)
 //        　fbLoginButton.frame = CGRect(x: view.frame.size.width / 2 - view.frame.size.width / 4, y: view.frame.size.height / 4, width: view.frame.size.width / 2, height: 660)
-        fbLoginButton.frame = CGRect(x: 32, y: 650, width: 351, height: 41)
+       // fbLoginButton.frame = CGRect(x: 30, y: view.frame.size.width * 13/10 , width: view.frame.size.width - 60, height: 40)
+        fbLoginButton.frame = CGRect(x: 30, y:y  , width: Int(view.frame.size.width) - 60, height: 40)
+        //fbLoginButton.frame = CGRect(x: <#T##Double#>, y: <#T##Double#>, width: <#T##Double#>, height: <#T##Double#>)
 
     //fbLoginButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
 
