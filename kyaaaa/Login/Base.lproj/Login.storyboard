@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7Ob-Yj-LXf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7Ob-Yj-LXf">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,20 +15,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kyaaaa_black.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="2VJ-Dv-UvM">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="kyaaaa_black.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="2VJ-Dv-UvM">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="548"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="548" id="pgn-aT-r3n"/>
-                                    <constraint firstAttribute="width" constant="414" id="xNn-zG-rif"/>
-                                </constraints>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l7t-L9-GgQ" customClass="CustomButton" customModule="kyaaaa" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l7t-L9-GgQ" customClass="CustomButton" customModule="kyaaaa" customModuleProvider="target">
                                 <rect key="frame" x="32" y="746" width="351" height="41"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="351" id="gmI-ib-HVD"/>
-                                    <constraint firstAttribute="height" constant="41" id="oiw-VV-DF1"/>
-                                </constraints>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Eメールでサインアップ">
                                     <color key="titleColor" red="1" green="0.49405741689999999" blue="0.1193599924" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -37,22 +31,18 @@
                                     <segue destination="9qd-Sp-KBm" kind="show" id="TWK-HX-sHt"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="すでにメンバーの場合..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dyV-dT-63a">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="すでにメンバーの場合..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dyV-dT-63a">
                                 <rect key="frame" x="54" y="812" width="187" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="g4n-mJ-rEm"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kFE-k5-1Pm" customClass="CustomButton" customModule="kyaaaa" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kFE-k5-1Pm" customClass="CustomButton" customModule="kyaaaa" customModuleProvider="target">
                                 <rect key="frame" x="249" y="802" width="62" height="41"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="41" id="iUL-By-1WN"/>
-                                </constraints>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="ログイン">
                                     <color key="titleColor" red="1" green="0.49405741689999999" blue="0.1193599924" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -60,38 +50,22 @@
                                     <segue destination="i7T-Ev-7TU" kind="show" id="9SN-Ob-NqV"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tL3-uY-toF" customClass="LoginBaseView2" customModule="kyaaaa" customModuleProvider="target">
-                                <rect key="frame" x="32" y="697" width="351" height="41"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tL3-uY-toF" customClass="LoginBaseView2" customModule="kyaaaa" customModuleProvider="target">
+                                <rect key="frame" x="31.5" y="697" width="351" height="41"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="41" id="kON-nA-Zkb"/>
-                                    <constraint firstAttribute="width" constant="351" id="owa-w5-gfb"/>
-                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="l7t-L9-GgQ" secondAttribute="trailing" constant="31" id="3Bf-TO-htp"/>
-                            <constraint firstItem="l7t-L9-GgQ" firstAttribute="top" secondItem="tL3-uY-toF" secondAttribute="bottom" constant="8" id="4pU-F7-6Of"/>
-                            <constraint firstItem="kFE-k5-1Pm" firstAttribute="leading" secondItem="dyV-dT-63a" secondAttribute="trailing" constant="8" id="Cb7-Mk-XWe"/>
-                            <constraint firstItem="2VJ-Dv-UvM" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="CvD-pZ-af6"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="kFE-k5-1Pm" secondAttribute="bottom" constant="19" id="EBy-4w-xLe"/>
-                            <constraint firstItem="2VJ-Dv-UvM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="N5k-si-gy2"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="kFE-k5-1Pm" secondAttribute="trailing" constant="103" id="NZJ-2U-Tzd"/>
-                            <constraint firstItem="tL3-uY-toF" firstAttribute="top" secondItem="2VJ-Dv-UvM" secondAttribute="bottom" constant="149" id="aRc-WL-uF3"/>
-                            <constraint firstItem="kFE-k5-1Pm" firstAttribute="top" secondItem="l7t-L9-GgQ" secondAttribute="bottom" constant="15" id="dPu-08-43X"/>
-                            <constraint firstItem="dyV-dT-63a" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="54" id="fjN-K5-0Ge"/>
-                            <constraint firstItem="l7t-L9-GgQ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="32" id="gLb-rB-wVr"/>
-                            <constraint firstItem="dyV-dT-63a" firstAttribute="top" secondItem="l7t-L9-GgQ" secondAttribute="bottom" constant="25" id="nBn-73-NJL"/>
-                            <constraint firstItem="2VJ-Dv-UvM" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="tne-ON-ihq"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="dyV-dT-63a" secondAttribute="bottom" constant="29" id="vgV-WN-qi6"/>
-                            <constraint firstItem="tL3-uY-toF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="32" id="x9h-kc-uhF"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="ようこそKyaaaa!へ。" id="Nfo-xb-Nlv"/>
                     <connections>
+                        <outlet property="kyaaaaImageView" destination="2VJ-Dv-UvM" id="lgX-2W-pWl"/>
                         <outlet property="loginBaseView" destination="tL3-uY-toF" id="mlf-yS-QOR"/>
+                        <outlet property="signInButton" destination="kFE-k5-1Pm" id="zwa-Lr-4Uk"/>
+                        <outlet property="signUpButton" destination="l7t-L9-GgQ" id="ad0-cg-xpQ"/>
+                        <outlet property="textLabel" destination="dyV-dT-63a" id="IYQ-XR-fq0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -698,10 +672,10 @@ e. その他，開発者が本サービスの利用を適当でないと判断�
             <point key="canvasLocation" x="3021.739130434783" y="466.74107142857139"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="kyaaaa_black.jpg" width="1024" height="1024"/>
-    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="9SN-Ob-NqV"/>
     </inferredMetricsTieBreakers>
+    <resources>
+        <image name="kyaaaa_black.jpg" width="1024" height="1024"/>
+    </resources>
 </document>
