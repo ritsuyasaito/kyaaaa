@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7Ob-Yj-LXf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7Ob-Yj-LXf">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,10 +16,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l7t-L9-GgQ" customClass="CustomButton" customModule="kyaaaa" customModuleProvider="target">
-                                <rect key="frame" x="30" y="747" width="354" height="40"/>
+                                <rect key="frame" x="42" y="747" width="330" height="40"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="1mV-Hc-aAs"/>
+                                    <constraint firstAttribute="width" constant="330" id="5mT-HF-miP"/>
                                 </constraints>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Eメールでサインアップ">
@@ -43,6 +44,7 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kFE-k5-1Pm" customClass="CustomButton" customModule="kyaaaa" customModuleProvider="target">
                                 <rect key="frame" x="247" y="812" width="157" height="30"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="ログイン">
                                     <color key="titleColor" red="1" green="0.49405741689999999" blue="0.1193599924" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -52,10 +54,11 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tL3-uY-toF" customClass="LoginBaseView2" customModule="kyaaaa" customModuleProvider="target">
-                                <rect key="frame" x="30" y="697" width="354" height="40"/>
+                                <rect key="frame" x="42" y="644" width="330" height="100"/>
                                 <color key="backgroundColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="JL2-C4-r7m"/>
+                                    <constraint firstAttribute="height" constant="100" id="JL2-C4-r7m"/>
+                                    <constraint firstAttribute="width" constant="330" id="kXj-Ep-A51"/>
                                 </constraints>
                             </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kyaaaa_black.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="2VJ-Dv-UvM">
@@ -68,19 +71,17 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="l7t-L9-GgQ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="0my-oB-qp6"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="kFE-k5-1Pm" secondAttribute="bottom" constant="20" id="1xj-hO-Gqy"/>
+                            <constraint firstItem="tL3-uY-toF" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="3yw-Dm-R6z"/>
                             <constraint firstItem="2VJ-Dv-UvM" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="4hH-6g-F4k"/>
                             <constraint firstItem="dyV-dT-63a" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="79M-47-rmG"/>
                             <constraint firstItem="kFE-k5-1Pm" firstAttribute="leading" secondItem="dyV-dT-63a" secondAttribute="trailing" constant="10" id="B7B-Ro-I2q"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="dyV-dT-63a" secondAttribute="bottom" constant="30" id="D3t-3B-j4k"/>
                             <constraint firstItem="kFE-k5-1Pm" firstAttribute="top" secondItem="l7t-L9-GgQ" secondAttribute="bottom" constant="25" id="EAr-Wj-pnC"/>
                             <constraint firstItem="2VJ-Dv-UvM" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="MWy-mW-mpz"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="tL3-uY-toF" secondAttribute="trailing" constant="30" id="OJ1-fy-GMw"/>
-                            <constraint firstItem="l7t-L9-GgQ" firstAttribute="top" secondItem="tL3-uY-toF" secondAttribute="bottom" constant="10" id="TcK-Gl-abl"/>
+                            <constraint firstItem="l7t-L9-GgQ" firstAttribute="top" secondItem="tL3-uY-toF" secondAttribute="bottom" constant="3" id="TcK-Gl-abl"/>
                             <constraint firstItem="2VJ-Dv-UvM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="U2r-Uu-JSJ"/>
-                            <constraint firstItem="tL3-uY-toF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="VRl-ce-lH1"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="l7t-L9-GgQ" secondAttribute="trailing" constant="30" id="ofQ-IE-xpj"/>
+                            <constraint firstItem="l7t-L9-GgQ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="lCN-RX-nlL"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="kFE-k5-1Pm" secondAttribute="trailing" constant="10" id="vbh-hk-hU7"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -93,7 +94,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1047.2" y="105.69715142428787"/>
+            <point key="canvasLocation" x="1046.376811594203" y="105.13392857142857"/>
         </scene>
         <!--ログイン-->
         <scene sceneID="W7a-wM-Ly0">
@@ -187,6 +188,7 @@
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="メールアドレスで登録" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D1C-w0-m8Z">
                                 <rect key="frame" x="20" y="128" width="294" height="50"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="LMD-PW-mqh"/>
                                 </constraints>
@@ -196,6 +198,7 @@
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="メール" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sb7-tn-F6P">
                                 <rect key="frame" x="35" y="183" width="52" height="21"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="Zd6-Aj-d9I"/>
                                     <constraint firstAttribute="width" constant="52" id="cU1-d2-Mly"/>
@@ -257,6 +260,7 @@
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="パスワード" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uqV-xQ-bsC">
                                 <rect key="frame" x="35" y="273" width="87" height="21"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="0tH-zk-dAm"/>
                                     <constraint firstAttribute="width" constant="87" id="Ema-14-lz1"/>
@@ -352,7 +356,7 @@
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="iNV-PA-xOF">
                                         <rect key="frame" x="0.0" y="0.0" width="328" height="554"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <string key="text">開発者（以下，「開発者」といいます。）は，本ウェブサイト上で提供するサービス（以下,「本サービス」といいます。）におけるプライバシー情報の取扱いについて，以下のとおりプライバシーポリシー（以下，「本ポリシー」といいます。）を定めます。
 
 第1条（プライバシー情報）
@@ -410,7 +414,7 @@
 
 本ポリシーの内容は，ユーザーに通知することなく，変更することができるものとします。
 開発者が別途定める場合を除いて，変更後のプライバシーポリシーは，本ウェブサイトに掲載したときから効力を生じるものとします。</string>
-                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
@@ -475,7 +479,7 @@
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Zfs-mp-17M">
                                         <rect key="frame" x="0.0" y="0.0" width="328" height="564"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <string key="text">この利用規約（以下，「本規約」といいます。）は，開発者（以下，「開発者」といいます。）がこのウェブサイト上で提供するサービス（以下，「本サービス」といいます。）の利用条件を定めるものです。登録ユーザーの皆さま（以下，「ユーザー」といいます。）には，本規約に従って，本サービスをご利用いただきます。
 
 第1条（適用）
@@ -576,7 +580,7 @@ e. その他，開発者が本サービスの利用を適当でないと判断�
 本サービスに関して紛争が生じた場合には，開発者の本店所在地を管轄する裁判所を専属的合意管轄とします。
 
 </string>
-                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
@@ -705,7 +709,7 @@ e. その他，開発者が本サービスの利用を適当でないと判断�
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="9SN-Ob-NqV"/>
+        <segue reference="gcI-6w-fgv"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="kyaaaa_black.jpg" width="1024" height="1024"/>

@@ -11,9 +11,27 @@ import Firebase
 import FBSDKCoreKit
 import GoogleSignIn
 import IQKeyboardManagerSwift
+import FBSDKLoginKit
+import FBSDKCoreKit
+import FacebookLogin
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate,LoginButtonDelegate{
+    func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
+         if error == nil{
+                      if result?.isCancelled == true{
+                          //キャンセルされた場合は何もしないで返す
+                          return
+                      }
+                  }
+                  
+                  let credential = FacebookAuthProvider.credential(withAccessToken: AccessToken.current!.tokenString)
+    }
+    
+    func loginButtonDidLogOut(_ loginButton: FBLoginButton) {
+        
+    }
+    
    
     
     var window: UIWindow?
@@ -25,8 +43,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         FirebaseApp.configure()
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
         GIDSignIn.sharedInstance().delegate = self
+        
        
         ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
+        //face.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
         
         return true
     }

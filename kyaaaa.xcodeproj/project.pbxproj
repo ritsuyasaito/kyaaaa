@@ -68,6 +68,7 @@
 		2A142D8924325749002B1AA0 /* icons8-ハッピー-400.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A142D8324325748002B1AA0 /* icons8-ハッピー-400.png */; };
 		2A142D8A24325749002B1AA0 /* icons8-驚いた-80.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A142D8424325748002B1AA0 /* icons8-驚いた-80.png */; };
 		2A687280241915A7004B7432 /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A68727F241915A7004B7432 /* NavigationViewController.swift */; };
+		2A77D2D3248B8C5C00228BE3 /* FBLoginBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A77D2D2248B8C5C00228BE3 /* FBLoginBaseView.swift */; };
 		2AB61B92242CAD5600E1DFF6 /* kiyakuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB61B91242CAD5600E1DFF6 /* kiyakuViewController.swift */; };
 		2AB61B9A242CB36600E1DFF6 /* privacyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB61B99242CB36600E1DFF6 /* privacyViewController.swift */; };
 		2AB61B9C243236FC00E1DFF6 /* icons8-女性@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2AB61B9B243236FC00E1DFF6 /* icons8-女性@2x.png */; };
@@ -138,6 +139,7 @@
 		2A142D8324325748002B1AA0 /* icons8-ハッピー-400.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-ハッピー-400.png"; sourceTree = "<group>"; };
 		2A142D8424325748002B1AA0 /* icons8-驚いた-80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-驚いた-80.png"; sourceTree = "<group>"; };
 		2A68727F241915A7004B7432 /* NavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewController.swift; sourceTree = "<group>"; };
+		2A77D2D2248B8C5C00228BE3 /* FBLoginBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBLoginBaseView.swift; sourceTree = "<group>"; };
 		2AB61B91242CAD5600E1DFF6 /* kiyakuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = kiyakuViewController.swift; sourceTree = "<group>"; };
 		2AB61B99242CB36600E1DFF6 /* privacyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = privacyViewController.swift; sourceTree = "<group>"; };
 		2AB61B9B243236FC00E1DFF6 /* icons8-女性@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-女性@2x.png"; sourceTree = "<group>"; };
@@ -204,6 +206,7 @@
 				2AB61B99242CB36600E1DFF6 /* privacyViewController.swift */,
 				2AB61B91242CAD5600E1DFF6 /* kiyakuViewController.swift */,
 				240B9C1C240B9E8100FF7FB3 /* LoginBaseView2.swift */,
+				2A77D2D2248B8C5C00228BE3 /* FBLoginBaseView.swift */,
 				240B9BFF2407C3C100FF7FB3 /* LoginViewController.swift */,
 				240B9C012407C3E200FF7FB3 /* SignUpViewController.swift */,
 				240B9BBD2403788B00FF7FB3 /* Login.storyboard */,
@@ -495,6 +498,7 @@
 				240B9C172408FF5C00FF7FB3 /* EditUserProfileViewController.swift in Sources */,
 				240B9BBC2403788B00FF7FB3 /* ViewController.swift in Sources */,
 				244E9B6F240F8E14003D6B8A /* UserTabmanViewController.swift in Sources */,
+				2A77D2D3248B8C5C00228BE3 /* FBLoginBaseView.swift in Sources */,
 				244E9B73240F902F003D6B8A /* selfPostViewController.swift in Sources */,
 				240B9BFE2407C3AE00FF7FB3 /* SigninViewController.swift in Sources */,
 				240B9C132408F85E00FF7FB3 /* ImageUpLoader.swift in Sources */,

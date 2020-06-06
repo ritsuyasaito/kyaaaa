@@ -15,12 +15,17 @@ import FacebookLogin
 import Firebase
 import FirebaseAuth
 
-class SigninViewController: UIViewController, LoginButtonDelegate{
+class SigninViewController: UIViewController{
+   
+    
   
 //    @IBOutlet var GoogleButton:GIDSignInButton!
     @IBOutlet weak var loginBaseView: LoginBaseView2!
     
-    let fbLoginButton: FBLoginButton = FBLoginButton()
+   // @IBOutlet weak var fBLoginBaseView: FBLoginBaseView!
+    
+    //let fbLoginButton: FBLoginButton = FBLoginButton()
+    
     
     @IBOutlet var button: UIButton!
     
@@ -34,15 +39,17 @@ class SigninViewController: UIViewController, LoginButtonDelegate{
         GIDSignIn.sharedInstance().presentingViewController = self
         GIDSignIn.sharedInstance().signIn()
         
-        fbLoginButton.delegate = self
-        let number = button.frame.minY
+    
+        loginBaseView.delegate = self
+       
+        let number = button.frame.size.width
         let y = Int(number) - 100
         print(number)
         print("$")
         print(y)
 //        　fbLoginButton.frame = CGRect(x: view.frame.size.width / 2 - view.frame.size.width / 4, y: view.frame.size.height / 4, width: view.frame.size.width / 2, height: 660)
        // fbLoginButton.frame = CGRect(x: 30, y: view.frame.size.width * 13/10 , width: view.frame.size.width - 60, height: 40)
-        fbLoginButton.frame = CGRect(x: 30, y:y  , width: Int(view.frame.size.width) - 60, height: 40)
+       // fbLoginButton.frame = CGRect(x: 30, y:y  , width: Int(view.frame.size.width) - 60, height: 40)
         //fbLoginButton.frame = CGRect(x: <#T##Double#>, y: <#T##Double#>, width: <#T##Double#>, height: <#T##Double#>)
 
     //fbLoginButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
@@ -52,8 +59,8 @@ class SigninViewController: UIViewController, LoginButtonDelegate{
 
 
         //許可するもの
-        fbLoginButton.permissions = ["public_profile, email"]
-        view.addSubview(fbLoginButton)
+       // fbLoginButton.permissions = ["public_profile, email"]
+       // view.addSubview(fbLoginButton)
         
         // 半透明の指定（デフォルト値）
         self.navigationController?.navigationBar.isTranslucent = true
@@ -87,7 +94,7 @@ class SigninViewController: UIViewController, LoginButtonDelegate{
 //                                                        accessToken: authentication.accessToken)
 //      // ...
 //    }
-    
+    /*
     //FBログイン
        func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
            //aigninする
@@ -144,19 +151,53 @@ class SigninViewController: UIViewController, LoginButtonDelegate{
        func loginButtonDidLogOut(_ loginButton: FBLoginButton) {
            
        }
-      
+      */
 
 }
 
 
-extension SigninViewController: LoginBaseViewDelegate {
+extension SigninViewController: LoginBaseViewDelegate ,FBLoginBaseViewDelegate{
+   
+    func fBLoginBaseView(succeededBy type: FBLoginType) {
+            switch type {
+            case .firebase:
+                print("Success FireBase")
+            case .facebook:
+                print("Success Google Login")
+            
+
+            }
+            //ログイン成功
+            let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+            let rootViewController = storyboard.instantiateViewController(withIdentifier: "First")
+            UIApplication.shared.keyWindow?.rootViewController = rootViewController
+
+            //ログイン状態の保持
+            let ud = UserDefaults.standard
+            ud.set(true, forKey: "isLogin")
+            ud.synchronize()
+    }
+    
+    func fBLoginBaseView(failedBy type: FBLoginType) {
+        switch type {
+        case .firebase:
+            print("Failed FireBase")
+        case .facebook:
+            print("Failed Google Login")
+
+        }
+    }
+    
     func loginBaseView(succeededBy type: LoginType) {
         switch type {
         case .firebase:
             print("Success FireBase")
         case .google:
             print("Success Google Login")
+        
 
+        case .facebook:
+             print("Success FaceBook Login")
         }
         //ログイン成功
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
@@ -176,6 +217,8 @@ extension SigninViewController: LoginBaseViewDelegate {
         case .google:
             print("Failed Google Login")
 
+        case .facebook:
+            print("Failed FaceBook Login")
         }
     }
 }
