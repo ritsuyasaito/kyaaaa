@@ -1,0 +1,22 @@
+{
+  "name": "ASExtendedCircularMenu",
+  "version": "0.1.1",
+  "summary": "ASExtendedCircularMenu is a librery for circular menu control with Dynamic Draggble option.",
+  "description": "ASExtendedCircularMenu is a librery for circular menu control with Dynamic Draggble option. It is developed in swift 3.0 .",
+  "homepage": "https://github.com/anshul18895/ASExtendedCircularMenu",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "anshul18895": "anshul18895@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/anshul18895/ASExtendedCircularMenu.git",
+    "tag": "0.1.1"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "ASExtendedCircularMenu/Classes/**/*"
+}
