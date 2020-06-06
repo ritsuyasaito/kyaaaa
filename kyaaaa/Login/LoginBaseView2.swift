@@ -105,7 +105,12 @@ class LoginBaseView2: UIView, GIDSignInDelegate {
         
         //          GIDSignIn.sharedInstance().uiDelegate = self これはまじで不明
         
-        let button = GIDSignInButton(frame: CGRect(x: 0, y: 0, width: self.frame.size.width, height: 50))
+        let button = GIDSignInButton(frame: CGRect(x:0 , y:0 , width:self.frame.size.width, height : self.frame.size.height*1.3))
+      
+//        button.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+//        button.heightAnchor.constraint(equalTo: self.heightAnchor).isActive = true
+   
+
         return button
     }
     
