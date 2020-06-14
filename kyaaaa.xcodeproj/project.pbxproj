@@ -58,6 +58,7 @@
 		244E9BE52431D301003D6B8A /* Icon-App-29x29@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 244E9BD52431D300003D6B8A /* Icon-App-29x29@2x.png */; };
 		244E9BE72431DAC6003D6B8A /* kyaaaa_black.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 244E9BE62431DAC5003D6B8A /* kyaaaa_black.jpg */; };
 		244E9BE92431F85B003D6B8A /* launchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244E9BE82431F85B003D6B8A /* launchViewController.swift */; };
+		2476BBE224964BE300DE5895 /* FBLoginBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2476BBE124964BE300DE5895 /* FBLoginBaseView.swift */; };
 		2A0833762417EB4B0012E81E /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0833752417EB4B0012E81E /* TabBarViewController.swift */; };
 		2A0833782417EC5A0012E81E /* 2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A0833772417EC5A0012E81E /* 2@2x.png */; };
 		2A08337A2417ED070012E81E /* tabbar-user-icons@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A0833792417ED070012E81E /* tabbar-user-icons@2x.png */; };
@@ -127,6 +128,7 @@
 		244E9BD52431D300003D6B8A /* Icon-App-29x29@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-29x29@2x.png"; sourceTree = "<group>"; };
 		244E9BE62431DAC5003D6B8A /* kyaaaa_black.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = kyaaaa_black.jpg; sourceTree = "<group>"; };
 		244E9BE82431F85B003D6B8A /* launchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = launchViewController.swift; sourceTree = "<group>"; };
+		2476BBE124964BE300DE5895 /* FBLoginBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBLoginBaseView.swift; sourceTree = "<group>"; };
 		24F58F720C576286429F4B55 /* Pods-kyaaaa.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kyaaaa.release.xcconfig"; path = "Target Support Files/Pods-kyaaaa/Pods-kyaaaa.release.xcconfig"; sourceTree = "<group>"; };
 		2A0833752417EB4B0012E81E /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		2A0833772417EC5A0012E81E /* 2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "2@2x.png"; sourceTree = "<group>"; };
@@ -203,6 +205,7 @@
 				240B9BFD2407C3AE00FF7FB3 /* SigninViewController.swift */,
 				2AB61B99242CB36600E1DFF6 /* privacyViewController.swift */,
 				2AB61B91242CAD5600E1DFF6 /* kiyakuViewController.swift */,
+				2476BBE124964BE300DE5895 /* FBLoginBaseView.swift */,
 				240B9C1C240B9E8100FF7FB3 /* LoginBaseView2.swift */,
 				240B9BFF2407C3C100FF7FB3 /* LoginViewController.swift */,
 				240B9C012407C3E200FF7FB3 /* SignUpViewController.swift */,
@@ -495,6 +498,7 @@
 				240B9C172408FF5C00FF7FB3 /* EditUserProfileViewController.swift in Sources */,
 				240B9BBC2403788B00FF7FB3 /* ViewController.swift in Sources */,
 				244E9B6F240F8E14003D6B8A /* UserTabmanViewController.swift in Sources */,
+				2476BBE224964BE300DE5895 /* FBLoginBaseView.swift in Sources */,
 				244E9B73240F902F003D6B8A /* selfPostViewController.swift in Sources */,
 				240B9BFE2407C3AE00FF7FB3 /* SigninViewController.swift in Sources */,
 				240B9C132408F85E00FF7FB3 /* ImageUpLoader.swift in Sources */,

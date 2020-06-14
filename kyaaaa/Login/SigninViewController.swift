@@ -15,16 +15,19 @@ import FacebookLogin
 import Firebase
 import FirebaseAuth
 
-class SigninViewController: UIViewController, LoginButtonDelegate{
+class SigninViewController: UIViewController{
+   
+    
   
 //    @IBOutlet var GoogleButton:GIDSignInButton!
-    @IBOutlet var kyaaaaImageView: UIView!
-    @IBOutlet var signUpButton: UIButton!
-    @IBOutlet var textLabel: UILabel!
-    @IBOutlet var signInButton: UIButton!
-    
     @IBOutlet weak var loginBaseView: LoginBaseView2!
-    let fbLoginButton: FBLoginButton = FBLoginButton()
+    
+   // @IBOutlet weak var fBLoginBaseView: FBLoginBaseView!
+    
+    //let fbLoginButton: FBLoginButton = FBLoginButton()
+    
+    
+    @IBOutlet var button: UIButton!
     
     var displayName = String()
     var pictureURL = String()
@@ -36,67 +39,28 @@ class SigninViewController: UIViewController, LoginButtonDelegate{
         GIDSignIn.sharedInstance().presentingViewController = self
         GIDSignIn.sharedInstance().signIn()
         
-        fbLoginButton.delegate = self
+    
+        loginBaseView.delegate = self
+       
+        let number = button.frame.size.width
+        let y = Int(number) - 100
+        print(number)
+        print("$")
+        print(y)
 //        　fbLoginButton.frame = CGRect(x: view.frame.size.width / 2 - view.frame.size.width / 4, y: view.frame.size.height / 4, width: view.frame.size.width / 2, height: 660)
-        
-      
+       // fbLoginButton.frame = CGRect(x: 30, y: view.frame.size.width * 13/10 , width: view.frame.size.width - 60, height: 40)
+       // fbLoginButton.frame = CGRect(x: 30, y:y  , width: Int(view.frame.size.width) - 60, height: 40)
+        //fbLoginButton.frame = CGRect(x: <#T##Double#>, y: <#T##Double#>, width: <#T##Double#>, height: <#T##Double#>)
 
     //fbLoginButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
 
 
-        fbLoginButton.translatesAutoresizingMaskIntoConstraints = false
-        kyaaaaImageView.translatesAutoresizingMaskIntoConstraints = false
-        textLabel.translatesAutoresizingMaskIntoConstraints = false
-        signInButton.translatesAutoresizingMaskIntoConstraints = false
-        signUpButton.translatesAutoresizingMaskIntoConstraints = false
-        loginBaseView.translatesAutoresizingMaskIntoConstraints = false
+
+
 
         //許可するもの
-        fbLoginButton.permissions = ["public_profile, email"]
-        view.addSubview(fbLoginButton)
-        
-        // AutolayOut
-        kyaaaaImageView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
-        kyaaaaImageView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 0).isActive = true
-        kyaaaaImageView.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 1.0).isActive = true
-        kyaaaaImageView.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.5).isActive = true
-         //---------------
-        textLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor, constant: -70).isActive = true
-        textLabel.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -10).isActive = true
-        textLabel.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.50).isActive = true
-        textLabel.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.05).isActive = true
-        
-        //---------------
-        signInButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor, constant: 65).isActive = true
-        signInButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -10).isActive = true
-        signInButton.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.3).isActive = true
-        signInButton.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.05).isActive = true
-        
-        //---------------
-        signUpButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        signUpButton.bottomAnchor.constraint(equalTo: self.signInButton.topAnchor, constant: -5).isActive = true
-        //signUpButton.topAnchor.constraint(equalTo: self.loginBaseView.bottomAnchor, constant: 5).isActive = true
-        signUpButton.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.85).isActive = true
-        signUpButton.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.08).isActive = true
-        
-        //---------------
-        loginBaseView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        loginBaseView.bottomAnchor.constraint(equalTo: self.signUpButton.topAnchor, constant: -5).isActive = true
-        loginBaseView.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.85).isActive = true
-        loginBaseView.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.08).isActive = true
-        
-        
-        //---------------
-       // fbLoginButton.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: 100).isActive = true
-        fbLoginButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-      
-
-        fbLoginButton.bottomAnchor.constraint(equalTo: self.loginBaseView.topAnchor, constant: -5).isActive = true
-        fbLoginButton.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.85).isActive = true
-//
-        fbLoginButton.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.08).isActive = true
-        
-
+       // fbLoginButton.permissions = ["public_profile, email"]
+       // view.addSubview(fbLoginButton)
         
         // 半透明の指定（デフォルト値）
         self.navigationController?.navigationBar.isTranslucent = true
@@ -118,10 +82,10 @@ class SigninViewController: UIViewController, LoginButtonDelegate{
 //    //googleログイン
 //    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
 //      // ...
-//        
+//
 //      if let error = error {
 //        self.delegate?.loginBaseView(failedBy: .google)
-//                
+//
 //        return
 //      }
 //
@@ -130,7 +94,7 @@ class SigninViewController: UIViewController, LoginButtonDelegate{
 //                                                        accessToken: authentication.accessToken)
 //      // ...
 //    }
-    
+    /*
     //FBログイン
        func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
            //aigninする
@@ -187,19 +151,53 @@ class SigninViewController: UIViewController, LoginButtonDelegate{
        func loginButtonDidLogOut(_ loginButton: FBLoginButton) {
            
        }
-      
+      */
 
 }
 
 
-extension SigninViewController: LoginBaseViewDelegate {
+extension SigninViewController: LoginBaseViewDelegate ,FBLoginBaseViewDelegate{
+   
+    func fBLoginBaseView(succeededBy type: FBLoginType) {
+            switch type {
+            case .firebase:
+                print("Success FireBase")
+            case .facebook:
+                print("Success Google Login")
+            
+
+            }
+            //ログイン成功
+            let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+            let rootViewController = storyboard.instantiateViewController(withIdentifier: "First")
+            UIApplication.shared.keyWindow?.rootViewController = rootViewController
+
+            //ログイン状態の保持
+            let ud = UserDefaults.standard
+            ud.set(true, forKey: "isLogin")
+            ud.synchronize()
+    }
+    
+    func fBLoginBaseView(failedBy type: FBLoginType) {
+        switch type {
+        case .firebase:
+            print("Failed FireBase")
+        case .facebook:
+            print("Failed Google Login")
+
+        }
+    }
+    
     func loginBaseView(succeededBy type: LoginType) {
         switch type {
         case .firebase:
             print("Success FireBase")
         case .google:
             print("Success Google Login")
+        
 
+        case .facebook:
+             print("Success FaceBook Login")
         }
         //ログイン成功
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
@@ -219,8 +217,8 @@ extension SigninViewController: LoginBaseViewDelegate {
         case .google:
             print("Failed Google Login")
 
+        case .facebook:
+            print("Failed FaceBook Login")
         }
     }
 }
-
-
